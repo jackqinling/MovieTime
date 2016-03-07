@@ -1,0 +1,19 @@
+//
+//  AwardPersonModel.h
+//  ZQLHotMovieLine
+//
+//  Created by zhaoqinling on 16/1/31.
+//  Copyright © 2016年 MS. All rights reserved.
+//
+
+#import "ZQLBaseModel.h"
+
+@interface AwardPersonModel : ZQLBaseModel
+
+@property (nonatomic, strong) NSString * aid;
+
+@property (nonatomic, strong) NSString * nameCn;
+
+@property (nonatomic, strong) NSString * nameEn;
+
+@end

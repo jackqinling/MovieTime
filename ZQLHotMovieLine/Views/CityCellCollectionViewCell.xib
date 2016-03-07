@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CityCellCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="132" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="132" height="50"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLH-MK-TAh">
+                        <rect key="frame" x="0.0" y="0.0" width="132" height="50"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="iLH-MK-TAh" secondAttribute="bottom" id="D6T-Bs-jdL"/>
+                <constraint firstAttribute="trailing" secondItem="iLH-MK-TAh" secondAttribute="trailing" id="YXN-N7-hJL"/>
+                <constraint firstItem="iLH-MK-TAh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ZDO-aX-LTe"/>
+                <constraint firstItem="iLH-MK-TAh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="e8s-7M-Zn5"/>
+            </constraints>
+            <size key="customSize" width="132" height="50"/>
+            <connections>
+                <outlet property="cityLabel" destination="iLH-MK-TAh" id="p2l-ER-aDW"/>
+            </connections>
+            <point key="canvasLocation" x="389" y="334"/>
+        </collectionViewCell>
+    </objects>
+</document>

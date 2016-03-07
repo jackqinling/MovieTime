@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="317" id="KGk-i7-Jjw" customClass="PerfectMovieCell">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="317"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="316.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WEc-MN-hxw">
+                        <rect key="frame" x="0.0" y="10" width="343" height="112.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="WEc-MN-hxw" secondAttribute="height" multiplier="64:21" id="Y47-ZX-Smm"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="340" verticalHuggingPriority="349" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="800" text="啊发发佛号更好地后覅奥红豆糕我挂号费哈尔就够额挂号费骄傲rfe rwr wrwr" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocs-jp-TIG">
+                        <rect key="frame" x="12" y="132" width="224" height="57.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="afjofdaof案件佛案发of懂啊发发阿娇高峰为更好哦啊安抚及哦啊好的哦啊死噶尔玩法" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxD-fD-DPn">
+                        <rect key="frame" x="12" y="195.5" width="230" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" horizontalHuggingPriority="230" verticalHuggingPriority="234" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" translatesAutoresizingMaskIntoConstraints="NO" id="5TI-nc-9jc" customClass="UIImageView">
+                        <rect key="frame" x="12" y="265" width="268" height="1"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Qcz-XT-fA0"/>
+                            <constraint firstAttribute="height" constant="1" id="VZ5-b8-P0y"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Qcz-XT-fA0"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L5v-mh-dto">
+                        <rect key="frame" x="280" y="228" width="50" height="75"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="L5v-mh-dto" secondAttribute="height" multiplier="10:15" id="0xM-36-Fnj"/>
+                            <constraint firstAttribute="width" constant="50" id="JHM-V7-FSO"/>
+                            <constraint firstAttribute="height" constant="75" id="W7c-4F-zGe"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JHM-V7-FSO"/>
+                            </mask>
+                        </variation>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="史蒂夫·乔布斯" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dt1-Vj-TEY">
+                        <rect key="frame" x="183" y="272" width="82" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="753" text="Steve Jobs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJw-TV-7uh">
+                        <rect key="frame" x="202" y="289" width="62.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="L5v-mh-dto" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hxD-fD-DPn" secondAttribute="trailing" constant="30" id="3Mb-7f-QJw"/>
+                    <constraint firstItem="L5v-mh-dto" firstAttribute="leading" secondItem="Dt1-Vj-TEY" secondAttribute="trailing" constant="15" id="3ot-zA-neV"/>
+                    <constraint firstItem="Dt1-Vj-TEY" firstAttribute="top" secondItem="5TI-nc-9jc" secondAttribute="bottom" constant="6" id="4Xu-2w-ZVM"/>
+                    <constraint firstItem="L5v-mh-dto" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ocs-jp-TIG" secondAttribute="trailing" constant="30" id="6mU-kg-Hhq"/>
+                    <constraint firstItem="Dt1-Vj-TEY" firstAttribute="trailing" secondItem="YJw-TV-7uh" secondAttribute="trailing" id="8Nd-NO-hlz"/>
+                    <constraint firstItem="Dt1-Vj-TEY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="G5H-TK-g2T"/>
+                    <constraint firstItem="WEc-MN-hxw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="GBm-Je-mfc"/>
+                    <constraint firstItem="Dt1-Vj-TEY" firstAttribute="top" secondItem="hxD-fD-DPn" secondAttribute="bottom" constant="15" id="Gwg-2E-LXd"/>
+                    <constraint firstItem="Dt1-Vj-TEY" firstAttribute="top" secondItem="5TI-nc-9jc" secondAttribute="bottom" constant="6" id="IfV-SH-kNE"/>
+                    <constraint firstItem="hxD-fD-DPn" firstAttribute="leading" secondItem="5TI-nc-9jc" secondAttribute="leading" id="KGP-O1-1D4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="L5v-mh-dto" secondAttribute="bottom" constant="5" id="PhY-uE-pJd"/>
+                    <constraint firstItem="5TI-nc-9jc" firstAttribute="top" secondItem="hxD-fD-DPn" secondAttribute="bottom" constant="8" id="R0c-sB-pIu"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="hxD-fD-DPn" secondAttribute="bottom" constant="67" id="SSk-GK-AJZ"/>
+                    <constraint firstItem="hxD-fD-DPn" firstAttribute="top" secondItem="ocs-jp-TIG" secondAttribute="bottom" constant="6" id="Tpy-gD-lmy"/>
+                    <constraint firstItem="YJw-TV-7uh" firstAttribute="top" secondItem="Dt1-Vj-TEY" secondAttribute="bottom" constant="1" id="UQQ-MG-RgB"/>
+                    <constraint firstItem="WEc-MN-hxw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="UUG-R5-z0f"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="YJw-TV-7uh" secondAttribute="bottom" constant="5" id="Wfh-II-TQS"/>
+                    <constraint firstAttribute="trailing" secondItem="WEc-MN-hxw" secondAttribute="trailing" id="XxV-Km-y56"/>
+                    <constraint firstItem="ocs-jp-TIG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="ZaU-mG-CNJ"/>
+                    <constraint firstItem="L5v-mh-dto" firstAttribute="leading" secondItem="5TI-nc-9jc" secondAttribute="trailing" id="a1z-v4-roA"/>
+                    <constraint firstItem="hxD-fD-DPn" firstAttribute="leading" secondItem="ocs-jp-TIG" secondAttribute="leading" id="cc7-oF-ymm"/>
+                    <constraint firstItem="ocs-jp-TIG" firstAttribute="top" secondItem="WEc-MN-hxw" secondAttribute="bottom" constant="10" id="h7R-wA-LGg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="L5v-mh-dto" secondAttribute="trailing" constant="5" id="mWa-tP-giz"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ocs-jp-TIG" secondAttribute="trailing" constant="10" id="uaj-yg-zPL"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="uaj-yg-zPL"/>
+                        <exclude reference="SSk-GK-AJZ"/>
+                        <exclude reference="R0c-sB-pIu"/>
+                        <exclude reference="4Xu-2w-ZVM"/>
+                        <exclude reference="Gwg-2E-LXd"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bookImageView" destination="L5v-mh-dto" id="0QQ-Bj-nmH"/>
+                <outlet property="descLabel" destination="hxD-fD-DPn" id="CuW-cB-6B4"/>
+                <outlet property="titleChLabel" destination="Dt1-Vj-TEY" id="o6t-i1-gfc"/>
+                <outlet property="titleEnLabel" destination="YJw-TV-7uh" id="3ji-Cr-xgC"/>
+                <outlet property="titleLabel" destination="ocs-jp-TIG" id="g3x-cT-Q1h"/>
+                <outlet property="topCoverImageView" destination="WEc-MN-hxw" id="Qva-nI-S8s"/>
+            </connections>
+            <point key="canvasLocation" x="62.5" y="293.5"/>
+        </tableViewCell>
+    </objects>
+</document>

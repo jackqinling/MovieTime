@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="279" id="KGk-i7-Jjw" customClass="GoodsCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="360"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="359.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xeg-6R-lXK" customClass="ZQLDefinedImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="120" id="83g-SV-o0R"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KyV-b8-S8x" customClass="ZQLDefinedImageView">
+                        <rect key="frame" x="0.0" y="120" width="125" height="239"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="125" id="nyR-RA-DFG"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dr9-ml-Dyi" customClass="ZQLDefinedImageView">
+                        <rect key="frame" x="126" y="121" width="194" height="118.5"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fan-4v-9p0" customClass="ZQLDefinedImageView">
+                        <rect key="frame" x="126" y="240.5" width="194" height="118.5"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KyV-b8-S8x" firstAttribute="top" secondItem="Xeg-6R-lXK" secondAttribute="bottom" id="7V2-OD-FXH"/>
+                    <constraint firstItem="KyV-b8-S8x" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Bxe-ai-VNF"/>
+                    <constraint firstAttribute="trailing" secondItem="Fan-4v-9p0" secondAttribute="trailing" id="Ecx-UP-efl"/>
+                    <constraint firstItem="dr9-ml-Dyi" firstAttribute="height" secondItem="Fan-4v-9p0" secondAttribute="height" id="H4L-TK-Gpl"/>
+                    <constraint firstItem="dr9-ml-Dyi" firstAttribute="top" secondItem="Xeg-6R-lXK" secondAttribute="bottom" constant="1" id="JV6-Ym-WMD"/>
+                    <constraint firstAttribute="bottom" secondItem="KyV-b8-S8x" secondAttribute="bottom" id="Kle-cA-i78"/>
+                    <constraint firstItem="Xeg-6R-lXK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Lsu-0W-hn5"/>
+                    <constraint firstAttribute="trailing" secondItem="Xeg-6R-lXK" secondAttribute="trailing" id="Nmd-Qn-5gB"/>
+                    <constraint firstItem="dr9-ml-Dyi" firstAttribute="width" secondItem="Fan-4v-9p0" secondAttribute="width" id="S4j-nk-An7"/>
+                    <constraint firstItem="Fan-4v-9p0" firstAttribute="leading" secondItem="KyV-b8-S8x" secondAttribute="trailing" constant="1" id="WF1-kt-bfj"/>
+                    <constraint firstAttribute="bottom" secondItem="Fan-4v-9p0" secondAttribute="bottom" id="avs-Hu-XQH"/>
+                    <constraint firstItem="Xeg-6R-lXK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="cw0-fh-gpn"/>
+                    <constraint firstItem="Fan-4v-9p0" firstAttribute="top" secondItem="dr9-ml-Dyi" secondAttribute="bottom" constant="1" id="iWD-so-7yD"/>
+                    <constraint firstItem="dr9-ml-Dyi" firstAttribute="leading" secondItem="KyV-b8-S8x" secondAttribute="trailing" constant="1" id="lZp-nx-L1r"/>
+                    <constraint firstAttribute="trailing" secondItem="dr9-ml-Dyi" secondAttribute="trailing" id="pfA-4k-eDf"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Ecx-UP-efl"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <connections>
+                <outletCollection property="goodButtons" destination="KyV-b8-S8x" id="do3-jo-Cdo"/>
+                <outletCollection property="goodButtons" destination="dr9-ml-Dyi" id="NLt-ZB-rbx"/>
+                <outletCollection property="goodButtons" destination="Fan-4v-9p0" id="fzx-vD-wtU"/>
+                <outletCollection property="goodButtons" destination="Xeg-6R-lXK" id="PMK-Ys-PKJ"/>
+            </connections>
+            <point key="canvasLocation" x="161" y="231.5"/>
+        </tableViewCell>
+    </objects>
+</document>
