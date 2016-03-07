@@ -23,7 +23,7 @@
 
 //电影周边  传入 relatedId 对应movieId
 #define RelatedGoodsUrl @"http://api.m.mtime.cn/Search/RelatedGoodsById.api?relatedObjType=1"
-//http://api.m.mtime.cn/Search/RelatedGoodsById.api?relatedId=207407&relatedObjType=1
+//http://api.m.mtime.cn/Search/RelatedGoodsById.api?relatedId=177861&relatedObjType=1
 //传入movieId
 #define ActorsUrl @"http://m.mtime.cn/Service/callback.mi/Movie/MovieCreditsWithTypes.api"
 //http://m.mtime.cn/Service/callback.mi/movie/Detail.api?locationId=290&movieId=192895

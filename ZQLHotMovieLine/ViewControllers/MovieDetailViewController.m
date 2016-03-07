@@ -14,10 +14,19 @@
 #import "MovieAwardCell.h"
 #import "ImagesCell.h"
 #import "MovieGoodModel.h"
+#import "MovieGoodsCell.h"
+
+typedef enum {
+    RelatedGoods = 0,
+    BoxOffice,
+    Actors,
+    Images,
+}Sectinon;
 
 static NSString * actorCellID = @"actorCell";
 static NSString * awardCellID = @"officeCell";
 static NSString * imageCellID = @"imgageCell";
+static NSString * goodsCellID = @"goodsCell";
 
 @interface MovieDetailViewController ()<UIScrollViewDelegate>
 
@@ -30,8 +39,8 @@ static NSString * imageCellID = @"imgageCell";
     BOOL _isCollapsed;
     CGRect _rect;
     MovieHeaderView * _header;
-    
     MovieDetailModel * _movieModel;
+    MovieGoodModel * _goodModel;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -113,7 +122,7 @@ static NSString * imageCellID = @"imgageCell";
     [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ActorCell class]) bundle:nil] forCellReuseIdentifier:actorCellID];
     [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([MovieAwardCell class]) bundle:nil] forCellReuseIdentifier:awardCellID];
     [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ImagesCell class]) bundle:nil] forCellReuseIdentifier:imageCellID];
-    
+    [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([MovieGoodsCell class]) bundle:nil] forCellReuseIdentifier:goodsCellID];
     
     [self.view addSubview:self.baseTableView];
 }
@@ -150,10 +159,7 @@ static NSString * imageCellID = @"imgageCell";
         
     } modelClassNameArray:@[@"MovieDetailModel"]];
     
-    [self.manager requestWithGetMethod:RelatedGoodsUrl parameters:@{@"relatedId":self.model.movieId} complicate:^(BOOL success, id object) {
-        if (success) {
-        }
-    } modelClassNameArray:@[@"MovieGoodModel"]];
+
 }
 
 //开头的视图
@@ -175,7 +181,7 @@ static NSString * imageCellID = @"imgageCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 3;
+    return 4;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -188,7 +194,9 @@ static NSString * imageCellID = @"imgageCell";
         return 115;
     }else if(indexPath.section == 2){
         return ((ZScreenWidth - 54) / 4.0f + 46 + 15);
-    }else
+    }else if (indexPath.section == 3 && _goodModel.goodsList.count != 0){
+        return 240;
+    }
         return 0;
 }
 
@@ -217,6 +225,22 @@ static NSString * imageCellID = @"imgageCell";
         cell.model = _movieModel;
         return cell;
     }
+    if (indexPath.section == 3) {
+        MovieGoodsCell * cell = [tableView dequeueReusableCellWithIdentifier:goodsCellID forIndexPath:indexPath];
+        if (_goodModel == nil) {
+            [self.manager requestWithGetMethod:RelatedGoodsUrl parameters:@{@"relatedId":self.model.movieId} complicate:^(BOOL success, id object) {
+                if (success) {
+                    _goodModel = object[0][0];
+                    cell.model = _goodModel;
+                    if (_goodModel.goodsList.count == 0) {
+                        cell.hidden = YES;
+                    }
+                    [self.baseTableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationLeft];
+                }
+            } modelClassNameArray:@[@"MovieGoodModel"]];
+        }
+        return cell;
+    }
     return nil;
 }
 
@@ -226,18 +250,19 @@ static NSString * imageCellID = @"imgageCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        if ([_movieModel.weekBoxOffice isEqualToString:@""]) {
+    if (section == 0 && [_movieModel.weekBoxOffice isEqualToString:@""]) {
             return 0.1;
-        }
+    }
+    if (section == 3 && _goodModel.goodsList.count == 0) {
+        return 0.1;
     }
     return 20;
 
 }
 
-#pragma mark tableView代理方法
+#pragma mark - scrollView代理方法
 
-//在此代理里尽量吧所有情况都写明不然会有延迟反应,导致界面失调
+//在此代理里尽量把所有情况都写明不然会有延迟反应,导致界面失调
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //头视图随着tableview滚动联动
     if (scrollView.contentOffset.y >= -68) {

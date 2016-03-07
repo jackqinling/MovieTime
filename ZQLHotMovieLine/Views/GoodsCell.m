@@ -22,7 +22,7 @@
     _models = models;
     int i = 0;
     for (SubGoodModel * good in models) {
-       
+
         [self.goodButtons[i] setImageWithURL:[NSURL URLWithString:good.image] placeholderImage:[UIImage imageNamed:@"mtime_default_image_146x146"]];
         i++;
     }

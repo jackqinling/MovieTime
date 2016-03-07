@@ -26,6 +26,7 @@
 #define ScrollViewHeight (self.frame.size.height - HeadSubViewHeight)
 #define PageWidth (ImageWidth + HeadImageSpace)
 
+
 @interface HeadPosterView ()<UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundImage;
@@ -111,7 +112,7 @@
     
     for (MovieModel * model in _movies) {
         
-        ZQLDefinedImageView * button = [[ZQLDefinedImageView alloc] initWithFrame:CGRectMake(PreGap + ImageWidth * (0.5 + i) + (i + 1) * HeadImageSpace, (self.headScrollView.frame.size.height - ImageWidth * 1.4) / 2.0f, ImageWidth, ImageWidth * 1.4)];
+        ZQLDefinedImageView * button = [[ZQLDefinedImageView alloc] initWithFrame:CGRectMake(PreGap + ImageWidth * (0.5 + i) + (i + 1) * HeadImageSpace, ImageWidth * 0.25 + NaviBarHeight, ImageWidth, ImageWidth * 1.4)];
         
         [button setImageWithURL:[NSURL URLWithString:model.img]];
         [button addTarget:self action:@selector(onClickImage:)];

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MovieGoodModel.h"
 @interface MovieGoodsCell : UITableViewCell
+
+@property (nonatomic, strong) MovieGoodModel * model;
 
 @end
