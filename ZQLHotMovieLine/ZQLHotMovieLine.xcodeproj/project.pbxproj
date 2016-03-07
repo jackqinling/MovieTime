@@ -1248,6 +1248,14 @@
 		BB8A24C81C6857D60064EE7D /* ActorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8A24C71C6857D60064EE7D /* ActorModel.m */; };
 		BBB66E661C61AD9100377A7A /* MovieAwardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB66E641C61AD9100377A7A /* MovieAwardCell.m */; };
 		BBB66E671C61AD9100377A7A /* MovieAwardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB66E651C61AD9100377A7A /* MovieAwardCell.xib */; };
+		BBB8429F1C8D6D0900C51F6F /* LongCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB8429D1C8D6D0900C51F6F /* LongCommentCell.m */; };
+		BBB842A01C8D6D0900C51F6F /* LongCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB8429E1C8D6D0900C51F6F /* LongCommentCell.xib */; };
+		BBB842A41C8D6D2500C51F6F /* ShortCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB842A21C8D6D2500C51F6F /* ShortCommentCell.m */; };
+		BBB842A51C8D6D2500C51F6F /* ShortCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB842A31C8D6D2500C51F6F /* ShortCommentCell.xib */; };
+		BBB842A91C8D718800C51F6F /* LongCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB842A81C8D718800C51F6F /* LongCommentModel.m */; };
+		BBB842AC1C8D723800C51F6F /* ShortCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB842AB1C8D723800C51F6F /* ShortCommentModel.m */; };
+		BBB842AF1C8D729800C51F6F /* CommentDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB842AE1C8D729800C51F6F /* CommentDetailModel.m */; };
+		BBB842B21C8DAC8100C51F6F /* SCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB842B11C8DAC8100C51F6F /* SCommentModel.m */; };
 		BBC519041C584962007BF606 /* MovieDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC519031C584962007BF606 /* MovieDetailModel.m */; };
 		BBC519071C584C40007BF606 /* DirectorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC519061C584C40007BF606 /* DirectorModel.m */; };
 		BBC5190A1C584DC1007BF606 /* MovieStyleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC519091C584DC1007BF606 /* MovieStyleModel.m */; };
@@ -2658,6 +2666,20 @@
 		BBB66E631C61AD9100377A7A /* MovieAwardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieAwardCell.h; sourceTree = "<group>"; };
 		BBB66E641C61AD9100377A7A /* MovieAwardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieAwardCell.m; sourceTree = "<group>"; };
 		BBB66E651C61AD9100377A7A /* MovieAwardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieAwardCell.xib; sourceTree = "<group>"; };
+		BBB8429C1C8D6D0900C51F6F /* LongCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongCommentCell.h; sourceTree = "<group>"; };
+		BBB8429D1C8D6D0900C51F6F /* LongCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongCommentCell.m; sourceTree = "<group>"; };
+		BBB8429E1C8D6D0900C51F6F /* LongCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LongCommentCell.xib; sourceTree = "<group>"; };
+		BBB842A11C8D6D2500C51F6F /* ShortCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortCommentCell.h; sourceTree = "<group>"; };
+		BBB842A21C8D6D2500C51F6F /* ShortCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortCommentCell.m; sourceTree = "<group>"; };
+		BBB842A31C8D6D2500C51F6F /* ShortCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortCommentCell.xib; sourceTree = "<group>"; };
+		BBB842A71C8D718800C51F6F /* LongCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongCommentModel.h; sourceTree = "<group>"; };
+		BBB842A81C8D718800C51F6F /* LongCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongCommentModel.m; sourceTree = "<group>"; };
+		BBB842AA1C8D723800C51F6F /* ShortCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortCommentModel.h; sourceTree = "<group>"; };
+		BBB842AB1C8D723800C51F6F /* ShortCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortCommentModel.m; sourceTree = "<group>"; };
+		BBB842AD1C8D729800C51F6F /* CommentDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailModel.h; sourceTree = "<group>"; };
+		BBB842AE1C8D729800C51F6F /* CommentDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailModel.m; sourceTree = "<group>"; };
+		BBB842B01C8DAC8100C51F6F /* SCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCommentModel.h; sourceTree = "<group>"; };
+		BBB842B11C8DAC8100C51F6F /* SCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCommentModel.m; sourceTree = "<group>"; };
 		BBC519021C584962007BF606 /* MovieDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailModel.h; sourceTree = "<group>"; };
 		BBC519031C584962007BF606 /* MovieDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailModel.m; sourceTree = "<group>"; };
 		BBC519051C584C40007BF606 /* DirectorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectorModel.h; sourceTree = "<group>"; };
@@ -4553,6 +4575,7 @@
 		BB0C446F1C5C5C9C00CB2C35 /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
+				BBB8429B1C8D6CBB00C51F6F /* CommentCell */,
 				BBD053601C630B3800C2BF2F /* ImagesCell */,
 				BBD0535A1C62F97000C2BF2F /* ActorsCell */,
 				BBB66E621C61AD5600377A7A /* BoxOfficeAwardBoxCell */,
@@ -4644,6 +4667,34 @@
 			name = BoxOfficeAwardBoxCell;
 			sourceTree = "<group>";
 		};
+		BBB8429B1C8D6CBB00C51F6F /* CommentCell */ = {
+			isa = PBXGroup;
+			children = (
+				BBB8429C1C8D6D0900C51F6F /* LongCommentCell.h */,
+				BBB8429D1C8D6D0900C51F6F /* LongCommentCell.m */,
+				BBB8429E1C8D6D0900C51F6F /* LongCommentCell.xib */,
+				BBB842A11C8D6D2500C51F6F /* ShortCommentCell.h */,
+				BBB842A21C8D6D2500C51F6F /* ShortCommentCell.m */,
+				BBB842A31C8D6D2500C51F6F /* ShortCommentCell.xib */,
+			);
+			name = CommentCell;
+			sourceTree = "<group>";
+		};
+		BBB842A61C8D716000C51F6F /* MovieCommentModel */ = {
+			isa = PBXGroup;
+			children = (
+				BBB842A71C8D718800C51F6F /* LongCommentModel.h */,
+				BBB842A81C8D718800C51F6F /* LongCommentModel.m */,
+				BBB842AA1C8D723800C51F6F /* ShortCommentModel.h */,
+				BBB842AB1C8D723800C51F6F /* ShortCommentModel.m */,
+				BBB842AD1C8D729800C51F6F /* CommentDetailModel.h */,
+				BBB842AE1C8D729800C51F6F /* CommentDetailModel.m */,
+				BBB842B01C8DAC8100C51F6F /* SCommentModel.h */,
+				BBB842B11C8DAC8100C51F6F /* SCommentModel.m */,
+			);
+			name = MovieCommentModel;
+			sourceTree = "<group>";
+		};
 		BBC519001C5848AA007BF606 /* HomeModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -4661,6 +4712,7 @@
 		BBC519011C584917007BF606 /* MovieDetailModels */ = {
 			isa = PBXGroup;
 			children = (
+				BBB842A61C8D716000C51F6F /* MovieCommentModel */,
 				BB7092231C61849C007C6918 /* MovieGoodModel */,
 				BB7092221C618486007C6918 /* MovieDetailModel */,
 			);
@@ -5207,6 +5259,7 @@
 				4EC7D30D1C452DD1009B5C11 /* v10_ciemaDetailRateSelected@3x.png in Resources */,
 				4EC7D3B31C452DD1009B5C11 /* v10_selected_seats_background@2x.png in Resources */,
 				4EC7D27F1C452DD1009B5C11 /* refreshDefault@2x.png in Resources */,
+				BBB842A01C8D6D0900C51F6F /* LongCommentCell.xib in Resources */,
 				4EC7D2AD1C452DD1009B5C11 /* st_icon_bookmark1@2x.png in Resources */,
 				4EC7D2561C452DD1009B5C11 /* gift_logo_watermark.png in Resources */,
 				4EC7D38E1C452DD1009B5C11 /* v10_portrait@2x.png in Resources */,
@@ -5885,6 +5938,7 @@
 				4EC7D05D1C452DD1009B5C11 /* bt_line_gray_80@3x.png in Resources */,
 				4EC7D0371C452DD1009B5C11 /* loading0019@3x.png in Resources */,
 				4EC7D0651C452DD1009B5C11 /* bt_line_green_68@3x.png in Resources */,
+				BBB842A51C8D6D2500C51F6F /* ShortCommentCell.xib in Resources */,
 				4EC7D0661C452DD1009B5C11 /* bt_line_green_68_press@2x.png in Resources */,
 				4EC7D1E31C452DD1009B5C11 /* icon_search_buy@3x.png in Resources */,
 				4EC7D2451C452DD1009B5C11 /* pic_share_weibosina.png in Resources */,
@@ -5997,6 +6051,7 @@
 				BBC519071C584C40007BF606 /* DirectorModel.m in Sources */,
 				4ECDE16D1C43B48D00813DBA /* NSString+MagicalDataImport.m in Sources */,
 				4EC730FC1C45FEEF009D0C6D /* adverParaModel.m in Sources */,
+				BBB842B21C8DAC8100C51F6F /* SCommentModel.m in Sources */,
 				4ECDE18A1C43B48D00813DBA /* View+MASAdditions.m in Sources */,
 				BB8A24C81C6857D60064EE7D /* ActorModel.m in Sources */,
 				4ECDE1671C43B48D00813DBA /* MagicalImportFunctions.m in Sources */,
@@ -6011,6 +6066,7 @@
 				4EC493861C50860600D9430A /* JSONHTTPClient.m in Sources */,
 				4ECDE16C1C43B48D00813DBA /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				BBD053641C630B5400C2BF2F /* ImagesCell.m in Sources */,
+				BBB8429F1C8D6D0900C51F6F /* LongCommentCell.m in Sources */,
 				4ECDE0B71C43B28300813DBA /* ZQLCoreDataManager.m in Sources */,
 				4EC493601C5085E400D9430A /* UIAlertView+AFNetworking.m in Sources */,
 				BB0C44831C5E08D600CB2C35 /* AwardPersonModel.m in Sources */,
@@ -6046,6 +6102,7 @@
 				4ECDE1831C43B48D00813DBA /* MASConstraint.m in Sources */,
 				4E9EA5BC1C4A182A00B196A9 /* ZQLDefinedImageView.m in Sources */,
 				4ECDE19D1C43B4BD00813DBA /* ZQLRootVCManager.m in Sources */,
+				BBB842A91C8D718800C51F6F /* LongCommentModel.m in Sources */,
 				BBCC1B0C1C5A18FB003ECE6E /* UIView+ZQLTransitonAnimation.m in Sources */,
 				4E3B26911C466F1700A40FD7 /* MovieModel.m in Sources */,
 				4ECDE16E1C43B48D00813DBA /* NSManagedObject+MagicalAggregation.m in Sources */,
@@ -6063,6 +6120,7 @@
 				BBC5190A1C584DC1007BF606 /* MovieStyleModel.m in Sources */,
 				BBCC1B081C5A139A003ECE6E /* CitiesChoiceViewController.m in Sources */,
 				4ECDE15A1C43B48D00813DBA /* DJRefreshBottomView.m in Sources */,
+				BBB842A41C8D6D2500C51F6F /* ShortCommentCell.m in Sources */,
 				4ECDE15C1C43B48D00813DBA /* DJRefreshView.m in Sources */,
 				4ECDE1821C43B48D00813DBA /* MASCompositeConstraint.m in Sources */,
 				4EC4935F1C5085E400D9430A /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -6075,6 +6133,7 @@
 				BB0C447D1C5E07B200CB2C35 /* WinAwardModel.m in Sources */,
 				4EC730F41C45F6DA009D0C6D /* adverModel.m in Sources */,
 				4EC7CBBC1C4525D5009B5C11 /* DiscoveryViewController.m in Sources */,
+				BBB842AC1C8D723800C51F6F /* ShortCommentModel.m in Sources */,
 				4EC493551C5085E400D9430A /* AFHTTPRequestOperation.m in Sources */,
 				4EC3E5BD1C50CAC2002CCFD4 /* HomeAdScrollCell.m in Sources */,
 				4EC493561C5085E400D9430A /* AFHTTPRequestOperationManager.m in Sources */,
@@ -6111,6 +6170,7 @@
 				4E0606B01C50F11400F230BC /* MovieDetailOneCell.m in Sources */,
 				4ECDE17A1C43B48D00813DBA /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
 				4ECDE1891C43B48D00813DBA /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				BBB842AF1C8D729800C51F6F /* CommentDetailModel.m in Sources */,
 				4EC7CBB71C4525BC009B5C11 /* StoreViewController.m in Sources */,
 				4ECDE1741C43B48D00813DBA /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				4ED0DD881C40F71600E1AFB0 /* ZQLHotMovieLine.xcdatamodeld in Sources */,

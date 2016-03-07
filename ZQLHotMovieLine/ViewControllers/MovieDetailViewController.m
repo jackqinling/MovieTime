@@ -16,12 +16,6 @@
 #import "MovieGoodModel.h"
 #import "MovieGoodsCell.h"
 
-typedef enum {
-    RelatedGoods = 0,
-    BoxOffice,
-    Actors,
-    Images,
-}Sectinon;
 
 static NSString * actorCellID = @"actorCell";
 static NSString * awardCellID = @"officeCell";
@@ -188,7 +182,7 @@ static NSString * goodsCellID = @"goodsCell";
     if (indexPath.section == 1) {
         return 320;
     }else if (indexPath.section == 0){
-        if ([_movieModel.weekBoxOffice isEqualToString:@""]) {
+        if ([_movieModel.weekBoxOffice isEqualToString:@""] && _movieModel.awards.count == 0) {
             return 0;
         }
         return 115;
@@ -215,7 +209,7 @@ static NSString * goodsCellID = @"goodsCell";
     if (indexPath.section == 0) {
         MovieAwardCell * cell = [tableView dequeueReusableCellWithIdentifier:awardCellID forIndexPath:indexPath];
         cell.model = _movieModel;
-        if ([_movieModel.weekBoxOffice isEqualToString:@""]) {
+        if ([_movieModel.weekBoxOffice isEqualToString:@""] && _movieModel.awards.count == 0) {
             cell.hidden = YES;
         }
         return cell;
@@ -250,7 +244,7 @@ static NSString * goodsCellID = @"goodsCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0 && [_movieModel.weekBoxOffice isEqualToString:@""]) {
+    if (section == 0 && ([_movieModel.weekBoxOffice isEqualToString:@""] && _movieModel.awards.count == 0)) {
             return 0.1;
     }
     if (section == 3 && _goodModel.goodsList.count == 0) {
