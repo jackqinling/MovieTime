@@ -67,14 +67,15 @@
 
 @implementation HeadPosterView
 
-- (instancetype)initWithFrame:(CGRect)frame{
-    if (self == [super initWithFrame:frame]) {
-        self = [[[NSBundle mainBundle] loadNibNamed:@"HeadPosterView" owner:nil options:nil] firstObject];
-        self.frame = frame;
-        
-    }
-    return self;
-}
+//这句话是干啥的
+//- (instancetype)initWithFrame:(CGRect)frame{
+//    if (self == [super initWithFrame:frame]) {
+//        self = [[[NSBundle mainBundle] loadNibNamed:@"HeadPosterView" owner:nil options:nil] firstObject];
+//        self.frame = frame;
+//        
+//    }
+//    return self;
+//}
 + (instancetype)viewWithModel:(MovieInfoModel *)model frame:(CGRect)frame{
     
     HeadPosterView * headView = [[[NSBundle mainBundle] loadNibNamed:@"HeadPosterView" owner:nil options:nil] firstObject];

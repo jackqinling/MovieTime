@@ -26,6 +26,9 @@
 - (void)setModel:(SCommentModel *)model{
     
     _model = model;
+    
+    self.headImageView.layer.masksToBounds = YES;
+    self.headImageView.layer.cornerRadius = self.headImageView.frame.size.width / 2.0f;
     [self.headImageView setImageWithURL:[NSURL URLWithString:_model.caimg] placeholderImage:PlaceHolder];
     self.nickNameLabel.text = _model.ca;
     self.contentLabel.text = _model.ce;

@@ -36,6 +36,9 @@
     CommentDetailModel * dModel = _model.comments[0];
     self.commentLabel.text = dModel.title;
     self.contentLabel.text = dModel.content;
+    
+    self.headImageView.layer.masksToBounds = YES;
+    self.headImageView.layer.cornerRadius = self.headImageView.frame.size.width / 2.0f;
     [self.headImageView setImageWithURL:[NSURL URLWithString:dModel.headurl] placeholderImage:PlaceHolder];
     self.nickNameLabel.text = dModel.nickname;
     NSDate * date = [NSDate dateWithTimeIntervalSince1970:dModel.modifyTime.integerValue];

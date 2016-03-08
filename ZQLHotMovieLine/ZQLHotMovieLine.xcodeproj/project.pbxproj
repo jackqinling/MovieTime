@@ -1273,6 +1273,8 @@
 		BBD0535F1C62F99100C2BF2F /* ActorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD0535D1C62F99100C2BF2F /* ActorCell.xib */; };
 		BBD053641C630B5400C2BF2F /* ImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD053621C630B5400C2BF2F /* ImagesCell.m */; };
 		BBD053651C630B5400C2BF2F /* ImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD053631C630B5400C2BF2F /* ImagesCell.xib */; };
+		BBFAF8821C8E74A2006EE41A /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFAF8811C8E74A2006EE41A /* SectionHeaderView.m */; };
+		BBFAF8841C8E74B5006EE41A /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFAF8831C8E74B5006EE41A /* SectionHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2709,6 +2711,9 @@
 		BBD053611C630B5400C2BF2F /* ImagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesCell.h; sourceTree = "<group>"; };
 		BBD053621C630B5400C2BF2F /* ImagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesCell.m; sourceTree = "<group>"; };
 		BBD053631C630B5400C2BF2F /* ImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagesCell.xib; sourceTree = "<group>"; };
+		BBFAF8801C8E74A2006EE41A /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderView.h; sourceTree = "<group>"; };
+		BBFAF8811C8E74A2006EE41A /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderView.m; sourceTree = "<group>"; };
+		BBFAF8831C8E74B5006EE41A /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4738,6 +4743,7 @@
 		BBCDB6381C5A7F42005C85DA /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BBFAF87F1C8E7445006EE41A /* SectionHeaderView */,
 				BB6F060F1C5F35FA00056A01 /* CitySectionHeaderView */,
 				BBCDB63E1C5A7FA7005C85DA /* CityCell */,
 				4EC63F641C546730005E5E5C /* PerfectMovieCell */,
@@ -4817,6 +4823,16 @@
 				4EC6092F1C54D4B3007B6149 /* MovieDetailViewController.xib */,
 			);
 			name = MovieDetailViewController;
+			sourceTree = "<group>";
+		};
+		BBFAF87F1C8E7445006EE41A /* SectionHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				BBFAF8801C8E74A2006EE41A /* SectionHeaderView.h */,
+				BBFAF8811C8E74A2006EE41A /* SectionHeaderView.m */,
+				BBFAF8831C8E74B5006EE41A /* SectionHeaderView.xib */,
+			);
+			name = SectionHeaderView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -5123,6 +5139,7 @@
 				4EC7D40B1C452DD1009B5C11 /* wizard3_568@2x.jpg in Resources */,
 				4EC7D05F1C452DD1009B5C11 /* bt_line_gray_80_press@3x.png in Resources */,
 				4EC7D0B91C452DD1009B5C11 /* dianyingyuansheng_circle@3x.png in Resources */,
+				BBFAF8841C8E74B5006EE41A /* SectionHeaderView.xib in Resources */,
 				4EC7D0D71C452DD1009B5C11 /* icon_audio_volume@3x.png in Resources */,
 				4EC7D22A1C452DD1009B5C11 /* LaunchImage@2x.png in Resources */,
 				4EC7D22F1C452DD1009B5C11 /* movie_default_image_146x146@2x.png in Resources */,
@@ -6057,6 +6074,7 @@
 				4ECDE1671C43B48D00813DBA /* MagicalImportFunctions.m in Sources */,
 				BB0C447A1C5E028600CB2C35 /* AwardModel.m in Sources */,
 				BB0C44891C5E0E7B00CB2C35 /* MovieImageModel.m in Sources */,
+				BBFAF8821C8E74A2006EE41A /* SectionHeaderView.m in Sources */,
 				4ECDE17C1C43B48D00813DBA /* MagicalRecord+ErrorHandling.m in Sources */,
 				4EC7CBB21C45256B009B5C11 /* TicketViewController.m in Sources */,
 				BBD0535E1C62F99100C2BF2F /* ActorCell.m in Sources */,

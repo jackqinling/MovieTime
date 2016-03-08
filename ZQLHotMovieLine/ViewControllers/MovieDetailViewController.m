@@ -15,12 +15,29 @@
 #import "ImagesCell.h"
 #import "MovieGoodModel.h"
 #import "MovieGoodsCell.h"
+#import "LongCommentCell.h"
+#import "ShortCommentCell.h"
+#import "LongCommentModel.h"
+#import "ShortCommentModel.h"
+//对应长评论
+#import "CommentDetailModel.h"
+#import "ShortCommentModel.h"
 
+typedef enum {
+    Goods = 0,
+    BoxOffice,
+    Actor,
+    Images,
+    LongCom,
+    ShortCom,
+}Section;
 
 static NSString * actorCellID = @"actorCell";
 static NSString * awardCellID = @"officeCell";
 static NSString * imageCellID = @"imgageCell";
 static NSString * goodsCellID = @"goodsCell";
+static NSString * lComCellID = @"lComCell";
+static NSString * sComCellID = @"sComCell";
 
 @interface MovieDetailViewController ()<UIScrollViewDelegate>
 
@@ -35,6 +52,8 @@ static NSString * goodsCellID = @"goodsCell";
     MovieHeaderView * _header;
     MovieDetailModel * _movieModel;
     MovieGoodModel * _goodModel;
+    LongCommentModel * _lComModel;
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -112,13 +131,21 @@ static NSString * goodsCellID = @"goodsCell";
     self.baseTableView.contentOffset = CGPointMake(0, -(320 + StatusBarHeight - 60));
     self.baseTableView.showsVerticalScrollIndicator = NO;
     self.baseTableView.showsHorizontalScrollIndicator = NO;
+    
     //注册cell
-    [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ActorCell class]) bundle:nil] forCellReuseIdentifier:actorCellID];
-    [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([MovieAwardCell class]) bundle:nil] forCellReuseIdentifier:awardCellID];
-    [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ImagesCell class]) bundle:nil] forCellReuseIdentifier:imageCellID];
-    [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([MovieGoodsCell class]) bundle:nil] forCellReuseIdentifier:goodsCellID];
+    NSArray * nibName = @[@"ActorCell", @"MovieAwardCell", @"ImagesCell", @"MovieGoodsCell", @"LongCommentCell"];
+    NSArray * idArray = @[actorCellID, awardCellID, imageCellID, goodsCellID, lComCellID];
+    [self registerTableViewWithCellNibNameArray:nibName withIdentfierArray:idArray];
     
     [self.view addSubview:self.baseTableView];
+}
+
+- (void)registerTableViewWithCellNibNameArray:(NSArray *)CellNibName withIdentfierArray:(NSArray *)IdentifierStr{
+    int i = 0;
+    for (NSString * nibName in CellNibName) {
+        [self.baseTableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:IdentifierStr[i]];
+        i++;
+    }
 }
 - (void)settingNaviBarItem{
     
