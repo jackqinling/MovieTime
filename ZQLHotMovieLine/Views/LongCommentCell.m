@@ -31,28 +31,34 @@
 - (void)setModel:(LongCommentModel *)model{
     
     _model = model;
-    
-    self.totalLabel.text = [NSString stringWithFormat:@"精选影评(%@)", _model.totalCount];
-    CommentDetailModel * dModel = _model.comments[0];
-    self.commentLabel.text = dModel.title;
-    self.contentLabel.text = dModel.content;
-    
-    self.headImageView.layer.masksToBounds = YES;
-    self.headImageView.layer.cornerRadius = self.headImageView.frame.size.width / 2.0f;
-    [self.headImageView setImageWithURL:[NSURL URLWithString:dModel.headurl] placeholderImage:PlaceHolder];
-    self.nickNameLabel.text = dModel.nickname;
-    NSDate * date = [NSDate dateWithTimeIntervalSince1970:dModel.modifyTime.integerValue];
-    self.timeLabel.text = [date description];
-    if ([dModel.rating isEqualToString:@""]) {
-        self.ratingLabel.text = @"";
-    }else{
-        NSString * str = [NSString stringWithFormat:@"看过 - 评分 %0.2f", (float)dModel.rating.integerValue];
-        NSMutableAttributedString * atrStr = [[NSMutableAttributedString alloc] initWithString:str attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11], NSForegroundColorAttributeName:[UIColor blackColor]}];
+    if (_model.comments.count != 0) {
+        self.totalLabel.text = [NSString stringWithFormat:@"精选影评(%@)", _model.totalCount];
+        CommentDetailModel * dModel = _model.comments[0];
+        self.commentLabel.text = dModel.title;
+        NSMutableString * contentStr = [NSMutableString stringWithString:dModel.content];
+        [contentStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:NSMakeRange(0, contentStr.length)];
+        self.contentLabel.text = contentStr;
         
-        NSRange range = NSRangeFromString(str);
-        [atrStr setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor barColor]} range:NSMakeRange(range.length - 2, 2)];
-        
-        self.ratingLabel.attributedText = atrStr;
+        self.headImageView.layer.masksToBounds = YES;
+        self.headImageView.layer.cornerRadius = self.headImageView.frame.size.width / 2.0f;
+        [self.headImageView setImageWithURL:[NSURL URLWithString:dModel.headurl] placeholderImage:PlaceHolder];
+        self.nickNameLabel.text = dModel.nickname;
+        NSDate * date = [NSDate dateWithTimeIntervalSince1970:dModel.modifyTime.integerValue];
+        NSDateFormatter * dateFormater = [[NSDateFormatter alloc] init];
+        dateFormater.dateFormat = @"yyyy-MM-dd HH:mm";
+        NSString * dateStr = [dateFormater stringFromDate:date];
+        self.timeLabel.text = dateStr;
+        if ([dModel.rating isEqualToString:@"0"]) {
+            self.ratingLabel.text = @"";
+        }else{
+            NSString * str = [NSString stringWithFormat:@"看过 - 评分 %0.1f", (float)dModel.rating.integerValue];
+            NSMutableAttributedString * atrStr = [[NSMutableAttributedString alloc] initWithString:str attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11], NSForegroundColorAttributeName:[UIColor blackColor]}];
+            
+            [atrStr setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor greenBack], NSFontAttributeName:[UIFont systemFontOfSize:14]} range:NSMakeRange(str.length - 3, 3)];
+            
+            self.ratingLabel.attributedText = atrStr;
+        }
+
     }
 }
 

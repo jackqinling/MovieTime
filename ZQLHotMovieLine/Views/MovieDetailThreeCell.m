@@ -40,19 +40,19 @@
 
             NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[_model.images[i] url1]]];
             UIImage * image = [UIImage imageWithData:data];
-            
-            UIImageView * newImageView = [[UIImageView alloc] init];
-            
-            newImageView.frame = CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.width * image.size.height / image.size.width );
-            newImageView.contentMode = UIViewContentModeScaleAspectFill;
-            
-            newImageView.image = image;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [imageView addSubview:newImageView];
-                imageView.clipsToBounds = YES;
-            });
+            if (image) {
+                UIImageView * newImageView = [[UIImageView alloc] init];
+                
+                newImageView.frame = CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.width * image.size.height / image.size.width );
+                newImageView.contentMode = UIViewContentModeScaleAspectFill;
+                
+                newImageView.image = image;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [imageView addSubview:newImageView];
+                    imageView.clipsToBounds = YES;
+                });
 
-            
+            }
             i++;
         }
     });

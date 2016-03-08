@@ -16,7 +16,7 @@
 
 @end
 
-@interface SectionHeaderView : UIView
+@interface SectionHeaderView : UITableViewHeaderFooterView
 
 @property (nonatomic, copy) NSString * title;
 

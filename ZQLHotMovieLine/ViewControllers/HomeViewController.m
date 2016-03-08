@@ -18,6 +18,7 @@
 #import "MovieDetailViewController.h"
 #import "CitiesChoiceViewController.h"
 #import "HotMovieModel.h"
+#import "SectionHeaderView.h"
 
 typedef enum {
     Market = 0,
@@ -36,6 +37,8 @@ static NSString * const oneMovieCellID = @"oneCell";
 static NSString * const threeMovieCellID = @"threeCell";
 
 static NSString * const perfectMovieCellID = @"perfectCell";
+
+static NSString * const sectionViewID = @"sectionHeaderView";
 
 #define HeaderHeight 200
 
@@ -68,12 +71,14 @@ static NSString * const perfectMovieCellID = @"perfectCell";
 - (void)settingTableView{
     
     self.baseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20, ZScreenWidth, ZScreenHeight - 69) style:UITableViewStyleGrouped];
+    
     //注册 cell
-    [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([GoodsCell class]) bundle:nil] forCellReuseIdentifier:goodsCellID];
-    [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([HomeAdScrollCell class]) bundle:nil] forCellReuseIdentifier:adCellID];
-    [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([MovieDetailOneCell class]) bundle:nil] forCellReuseIdentifier:oneMovieCellID];
-    [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([MovieDetailThreeCell class]) bundle:nil] forCellReuseIdentifier:threeMovieCellID];
-    [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([PerfectMovieCell class]) bundle:nil] forCellReuseIdentifier:perfectMovieCellID];
+    NSArray * nibNameArray = @[@"GoodsCell", @"HomeAdScrollCell", @"MovieDetailOneCell", @"MovieDetailThreeCell", @"PerfectMovieCell"];
+    NSArray * identifArray = @[goodsCellID, adCellID, oneMovieCellID, threeMovieCellID, perfectMovieCellID];
+    [self registerTableViewWithCellNibNameArray:nibNameArray withIdentfierArray:identifArray];
+    
+    [self.baseTableView registerClass:[SectionHeaderView class] forHeaderFooterViewReuseIdentifier:sectionViewID];
+//    [self.baseTableView registerNib:[UINib nibWithNibName:NSStringFromClass([SectionHeaderView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:sectionViewID];
     
     self.baseTableView.bounces = NO;
     self.baseTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -256,6 +261,9 @@ static NSString * const perfectMovieCellID = @"perfectCell";
         return nil;
     }
     
+    SectionHeaderView * sectionView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:sectionViewID];
+    
+    sectionView.title = titles[section];
     UIView * backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth, 30)];
     backView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 10, ZScreenWidth, 30)];
@@ -282,7 +290,7 @@ static NSString * const perfectMovieCellID = @"perfectCell";
     
     [backView addSubview:view];
     return backView;
-    return nil;
+  
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -365,7 +373,7 @@ static NSString * const perfectMovieCellID = @"perfectCell";
     
     switch (indexPath.section) {
         case Market:
-            return 330;
+            return ZScreenWidth * 1.10;
             break;
         case Adver:
             return ZScreenWidth / 4.0f;

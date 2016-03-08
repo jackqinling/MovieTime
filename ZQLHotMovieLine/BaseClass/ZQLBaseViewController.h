@@ -34,4 +34,7 @@
 - (void)onClickDiscover:(UIButton *)button;
 
 - (void)changeNaviBarAlpha:(float)alhpa;
+
+- (void)registerTableViewWithCellNibNameArray:(NSArray *)CellNibName withIdentfierArray:(NSArray *)IdentifierStr;
+
 @end

@@ -1275,6 +1275,7 @@
 		BBD053651C630B5400C2BF2F /* ImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD053631C630B5400C2BF2F /* ImagesCell.xib */; };
 		BBFAF8821C8E74A2006EE41A /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFAF8811C8E74A2006EE41A /* SectionHeaderView.m */; };
 		BBFAF8841C8E74B5006EE41A /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFAF8831C8E74B5006EE41A /* SectionHeaderView.xib */; };
+		BBFAF8871C8E9F89006EE41A /* TestHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFAF8861C8E9F89006EE41A /* TestHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2714,6 +2715,8 @@
 		BBFAF8801C8E74A2006EE41A /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderView.h; sourceTree = "<group>"; };
 		BBFAF8811C8E74A2006EE41A /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderView.m; sourceTree = "<group>"; };
 		BBFAF8831C8E74B5006EE41A /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		BBFAF8851C8E9F89006EE41A /* TestHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHeaderView.h; sourceTree = "<group>"; };
+		BBFAF8861C8E9F89006EE41A /* TestHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4831,6 +4834,8 @@
 				BBFAF8801C8E74A2006EE41A /* SectionHeaderView.h */,
 				BBFAF8811C8E74A2006EE41A /* SectionHeaderView.m */,
 				BBFAF8831C8E74B5006EE41A /* SectionHeaderView.xib */,
+				BBFAF8851C8E9F89006EE41A /* TestHeaderView.h */,
+				BBFAF8861C8E9F89006EE41A /* TestHeaderView.m */,
 			);
 			name = SectionHeaderView;
 			sourceTree = "<group>";
@@ -6060,6 +6065,7 @@
 				4E3B26831C46497600A40FD7 /* AreaSecondModel.m in Sources */,
 				4EC493841C50860600D9430A /* NSArray+JSONModel.m in Sources */,
 				4E0606B81C50F16C00F230BC /* MovieDetailThreeCell.m in Sources */,
+				BBFAF8871C8E9F89006EE41A /* TestHeaderView.m in Sources */,
 				4ECEC4BF1C425F5000EF0113 /* ZQLBaseViewController.m in Sources */,
 				4ECDE1591C43B48D00813DBA /* DJRefresh.m in Sources */,
 				4ECDE1711C43B48D00813DBA /* NSManagedObject+MagicalRecord.m in Sources */,

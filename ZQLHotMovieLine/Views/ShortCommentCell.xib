@@ -117,6 +117,7 @@
                 <outlet property="headImageView" destination="c5r-oJ-9FI" id="nAL-Ig-kcd"/>
                 <outlet property="nickNameLabel" destination="mgO-2s-FaA" id="YFh-87-gYN"/>
                 <outlet property="ratingLabel" destination="lpv-35-R8u" id="BMH-GS-oGA"/>
+                <outlet property="sectionHeaderView" destination="I4K-39-EoA" id="HZg-gw-Gjx"/>
                 <outlet property="totalCommentLabel" destination="tpk-K0-b3G" id="MzX-ii-zoP"/>
             </connections>
             <point key="canvasLocation" x="327.5" y="376"/>

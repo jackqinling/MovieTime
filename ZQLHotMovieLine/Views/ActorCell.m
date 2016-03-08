@@ -57,9 +57,11 @@
                     UIImage * image = [UIImage imageWithData:data];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         UIImageView * newImageView = [[UIImageView alloc] init];
-                        newImageView.frame = CGRectMake(0, 0, [imageViewArray[i] frame].size.width, [imageViewArray[i] frame].size.width * image.size.height / image.size.width);
-                        newImageView.image = image;
-                        [imageViewArray[i] addSubview:newImageView];
+                        if (image) {
+                            newImageView.frame = CGRectMake(0, 0, [imageViewArray[i] frame].size.width, [imageViewArray[i] frame].size.width * image.size.height / image.size.width);
+                            newImageView.image = image;
+                            [imageViewArray[i] addSubview:newImageView];
+                        }
                     });
 
                 }

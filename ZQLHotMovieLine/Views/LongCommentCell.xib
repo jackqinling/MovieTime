@@ -75,7 +75,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="看过 - 评分 7.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYN-9w-xWg">
-                        <rect key="frame" x="172" y="152.5" width="74" height="13.5"/>
+                        <rect key="frame" x="172" y="151" width="74" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -96,7 +96,7 @@
                     <constraint firstAttribute="trailing" secondItem="L4W-ZR-QWu" secondAttribute="trailing" constant="15" id="lxs-yw-68N"/>
                     <constraint firstItem="5Vi-eJ-fxC" firstAttribute="top" secondItem="L4W-ZR-QWu" secondAttribute="bottom" constant="14" id="mra-ty-xXx"/>
                     <constraint firstItem="WWi-hC-c7k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="nCY-oD-bDU"/>
-                    <constraint firstItem="MYN-9w-xWg" firstAttribute="centerY" secondItem="Vlt-iR-3iQ" secondAttribute="centerY" id="naD-fF-GSB"/>
+                    <constraint firstItem="MYN-9w-xWg" firstAttribute="centerY" secondItem="Vlt-iR-3iQ" secondAttribute="centerY" constant="-1" id="naD-fF-GSB"/>
                     <constraint firstItem="WWi-hC-c7k" firstAttribute="top" secondItem="RPK-hk-agv" secondAttribute="bottom" id="tw2-s1-FHy"/>
                     <constraint firstItem="RPK-hk-agv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xiB-fK-X1Y"/>
                     <constraint firstItem="5Vi-eJ-fxC" firstAttribute="leading" secondItem="L4W-ZR-QWu" secondAttribute="leading" id="yri-fQ-jzI"/>

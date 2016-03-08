@@ -132,6 +132,14 @@
     
 }
 
+//注册cell
+- (void)registerTableViewWithCellNibNameArray:(NSArray *)CellNibName withIdentfierArray:(NSArray *)IdentifierStr{
+    int i = 0;
+    for (NSString * nibName in CellNibName) {
+        [self.baseTableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:IdentifierStr[i]];
+        i++;
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

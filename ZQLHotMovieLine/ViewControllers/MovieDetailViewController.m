@@ -28,16 +28,16 @@ typedef enum {
     BoxOffice,
     Actor,
     Images,
-    LongCom,
-    ShortCom,
+    LongComment,
+    ShortComment,
 }Section;
 
 static NSString * actorCellID = @"actorCell";
 static NSString * awardCellID = @"officeCell";
 static NSString * imageCellID = @"imgageCell";
 static NSString * goodsCellID = @"goodsCell";
-static NSString * lComCellID = @"lComCell";
-static NSString * sComCellID = @"sComCell";
+static NSString * longCommentCellID = @"lComCell";
+static NSString * shortCommentCellID = @"sComCell";
 
 @interface MovieDetailViewController ()<UIScrollViewDelegate>
 
@@ -52,7 +52,8 @@ static NSString * sComCellID = @"sComCell";
     MovieHeaderView * _header;
     MovieDetailModel * _movieModel;
     MovieGoodModel * _goodModel;
-    LongCommentModel * _lComModel;
+    LongCommentModel * _longCommentModel;
+    CommentDetailModel * _longCommentDetailModel;
 
 }
 - (void)viewDidLoad {
@@ -134,19 +135,12 @@ static NSString * sComCellID = @"sComCell";
     
     //注册cell
     NSArray * nibName = @[@"ActorCell", @"MovieAwardCell", @"ImagesCell", @"MovieGoodsCell", @"LongCommentCell"];
-    NSArray * idArray = @[actorCellID, awardCellID, imageCellID, goodsCellID, lComCellID];
+    NSArray * idArray = @[actorCellID, awardCellID, imageCellID, goodsCellID, longCommentCellID];
     [self registerTableViewWithCellNibNameArray:nibName withIdentfierArray:idArray];
     
     [self.view addSubview:self.baseTableView];
 }
 
-- (void)registerTableViewWithCellNibNameArray:(NSArray *)CellNibName withIdentfierArray:(NSArray *)IdentifierStr{
-    int i = 0;
-    for (NSString * nibName in CellNibName) {
-        [self.baseTableView registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:IdentifierStr[i]];
-        i++;
-    }
-}
 - (void)settingNaviBarItem{
     
     NSMutableArray * itemsArray = [NSMutableArray array];
@@ -202,7 +196,7 @@ static NSString * sComCellID = @"sComCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 4;
+    return 5;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -217,6 +211,14 @@ static NSString * sComCellID = @"sComCell";
         return ((ZScreenWidth - 54) / 4.0f + 46 + 15);
     }else if (indexPath.section == 3 && _goodModel.goodsList.count != 0){
         return 240;
+    }else if (indexPath.section == 4){
+        CGRect rect = [_longCommentDetailModel.content boundingRectWithSize:CGSizeMake(ZScreenWidth - 30, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} context:nil];
+        if (rect.size.height > 43) {
+            return 180;
+        }else{
+            return 140 + rect.size.height;
+        }
+        
     }
         return 0;
 }
@@ -255,10 +257,29 @@ static NSString * sComCellID = @"sComCell";
                     cell.model = _goodModel;
                     if (_goodModel.goodsList.count == 0) {
                         cell.hidden = YES;
+                        return;
                     }
-                    [self.baseTableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationLeft];
+                    
+                    [self.baseTableView reloadData];
                 }
             } modelClassNameArray:@[@"MovieGoodModel"]];
+        }
+        if (_goodModel.goodsList.count == 0) {
+            cell.hidden = YES;
+        }
+        return cell;
+    }
+    if (indexPath.section == 4) {
+        LongCommentCell * cell = [self.baseTableView dequeueReusableCellWithIdentifier:longCommentCellID forIndexPath:indexPath];
+        if (_longCommentModel.comments.count == 0) {
+            [self.manager requestWithGetMethod:LongCommentUrl parameters:@{@"movieId":_model.movieId, @"pageId":@"1"} complicate:^(BOOL success, id object) {
+                if (success) {
+                    _longCommentModel = object[0][0];
+                    cell.model = _longCommentModel;
+                    _longCommentDetailModel = _longCommentModel.comments[0];
+                    [self.baseTableView reloadData];
+                }
+            } modelClassNameArray:@[@"LongCommentModel"]];
         }
         return cell;
     }

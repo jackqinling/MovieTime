@@ -10,7 +10,7 @@
 
 @interface ShortCommentCell ()
 
-
+@property (weak, nonatomic) IBOutlet UIView *sectionHeaderView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;

@@ -7,6 +7,7 @@
 //
 
 #import "SectionHeaderView.h"
+#import "ZQLScreenMacro.h"
 
 @interface SectionHeaderView ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -14,10 +15,25 @@
 @end
 @implementation SectionHeaderView
 
-- (instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        self.frame = frame;
+//- (instancetype)initWithFrame:(CGRect)frame{
+//    if (self = [super initWithFrame:frame]) {
+//        self = [[[NSBundle mainBundle] loadNibNamed:@"SectionHeaderView" owner:nil options:nil] firstObject];
+//        self.frame = frame;
+//        [self.actionButton addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    return self;
+//}
+
+- (void)awakeFromNib{
+   
+}
+
+- (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier{
+    
+    if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
+        self = [[[NSBundle mainBundle] loadNibNamed:@"SectionHeaderView" owner:nil options:nil] firstObject];
         [self.actionButton addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+        self.frame = CGRectMake(0, 0, ZScreenWidth, 60);
     }
     return self;
 }
@@ -28,6 +44,7 @@
 
 - (void)onClick:(UIButton *)button{
     if ([self.delegate respondsToSelector:@selector(didSelectHeaderView:)]) {
+        //这句话就是简单的对象调用语句,调用或者执行了哪个方法
         [self.delegate didSelectHeaderView:self];
     }
 }
