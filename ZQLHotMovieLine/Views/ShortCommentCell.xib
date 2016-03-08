@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="351" height="211.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4K-39-EoA" userLabel="ActorBtn">
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4K-39-EoA" userLabel="ActorBtn">
                         <rect key="frame" x="0.0" y="0.0" width="351" height="46"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网友短评(270)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpk-K0-b3G">
@@ -44,6 +44,11 @@
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="pqs-Yw-jrV"/>
                             <constraint firstAttribute="height" constant="46" id="tyc-sK-WGY"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="u8l-1W-ZOX"/>
+                            </mask>
+                        </variation>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c5r-oJ-9FI">
                         <rect key="frame" x="15" y="50" width="45" height="45"/>
@@ -67,7 +72,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这部片子在刷票房大家拉风的京东方;奢望后;艾弗森就阿瑟会;啊额厉害;为哈我一护额阿富汗就会收到了空间卡升级啊发发发发发这部片子在刷票房大家拉风的京东方;奢望后;艾弗森就阿瑟会;啊额厉害;为哈我一护额阿富汗就会收到了空间卡升级" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ac-tp-6T4">
                         <rect key="frame" x="75" y="89.5" width="251" height="78"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpH-aY-TIK">
@@ -115,6 +120,7 @@
             <connections>
                 <outlet property="contentLabel" destination="9Ac-tp-6T4" id="Vcw-ho-EGC"/>
                 <outlet property="headImageView" destination="c5r-oJ-9FI" id="nAL-Ig-kcd"/>
+                <outlet property="heightCon" destination="tyc-sK-WGY" id="Fmf-zd-Fdy"/>
                 <outlet property="nickNameLabel" destination="mgO-2s-FaA" id="YFh-87-gYN"/>
                 <outlet property="ratingLabel" destination="lpv-35-R8u" id="BMH-GS-oGA"/>
                 <outlet property="sectionHeaderView" destination="I4K-39-EoA" id="HZg-gw-Gjx"/>

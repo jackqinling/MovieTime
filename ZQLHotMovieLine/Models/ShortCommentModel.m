@@ -10,4 +10,9 @@
 
 @implementation ShortCommentModel
 
++ (NSArray *)arrayOfModelsFromJson:(id)object{
+    
+    ShortCommentModel * model = [[self alloc] initWithDictionary:object error:nil];
+    return @[model];
+}
 @end

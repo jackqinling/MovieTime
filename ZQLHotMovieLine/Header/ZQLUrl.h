@@ -35,8 +35,8 @@
 //评论
 #define LongCommentUrl @"http://api.m.mtime.cn/Movie/HotLongComments.api"
 //传入 movieId 164011 pageIndex
-//http://api.m.mtime.cn/Movie/HotLongComments.api?movieId=164011&pageIndex=1
-#define ShortCommentUrl @"http://api.m.mtime.cn/Showtime/MovieComments.api?movieId=164011&pageIndex=1"
+//http://api.m.mtime.cn/Movie/HotLongComments.api?movieId=164011&pageIndex=2
+#define ShortCommentUrl @"http://api.m.mtime.cn/Showtime/MovieComments.api"
 //http://api.m.mtime.cn/Showtime/MovieComments.api?movieId=164011&pageIndex=1
 /*******购票  第二页********/
 //上映的电影

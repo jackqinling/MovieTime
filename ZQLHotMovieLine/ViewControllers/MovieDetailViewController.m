@@ -52,8 +52,14 @@ static NSString * shortCommentCellID = @"sComCell";
     MovieHeaderView * _header;
     MovieDetailModel * _movieModel;
     MovieGoodModel * _goodModel;
+    //长评论
     LongCommentModel * _longCommentModel;
     CommentDetailModel * _longCommentDetailModel;
+    //短评论
+    ShortCommentModel * _shortCommentModel;
+    SCommentModel * _shortCommentDetailModel;
+    
+    int _page[2];
 
 }
 - (void)viewDidLoad {
@@ -62,6 +68,7 @@ static NSString * shortCommentCellID = @"sComCell";
     [self settingNaviBarItem];
     [self settingTableView];
     [self loadData];
+    [self loadDataWithRefresh:NO];
 
   }
 
@@ -134,8 +141,8 @@ static NSString * shortCommentCellID = @"sComCell";
     self.baseTableView.showsHorizontalScrollIndicator = NO;
     
     //注册cell
-    NSArray * nibName = @[@"ActorCell", @"MovieAwardCell", @"ImagesCell", @"MovieGoodsCell", @"LongCommentCell"];
-    NSArray * idArray = @[actorCellID, awardCellID, imageCellID, goodsCellID, longCommentCellID];
+    NSArray * nibName = @[@"ActorCell", @"MovieAwardCell", @"ImagesCell", @"MovieGoodsCell", @"LongCommentCell", @"ShortCommentCell"];
+    NSArray * idArray = @[actorCellID, awardCellID, imageCellID, goodsCellID, longCommentCellID, shortCommentCellID];
     [self registerTableViewWithCellNibNameArray:nibName withIdentfierArray:idArray];
     
     [self.view addSubview:self.baseTableView];
@@ -173,8 +180,26 @@ static NSString * shortCommentCellID = @"sComCell";
         [self.baseTableView reloadData];
         
     } modelClassNameArray:@[@"MovieDetailModel"]];
-    
 
+}
+
+- (void)loadDataWithRefresh:(BOOL)refresh{
+    if (refresh) {
+        _page[0] = 0;
+        [self.baseDataSource removeAllObjects];
+    }else{
+        _page[0]++;
+    }
+    [self.manager requestWithGetMethod:ShortCommentUrl parameters:@{@"movieId":self.model.movieId,@"pageIndex":@(_page[0])} complicate:^(BOOL success, id object) {
+        if (success) {
+            _shortCommentModel = object[0][0];
+            for (SCommentModel * model in _shortCommentModel.cts) {
+                [self.baseDataSource addObject:model];
+            }
+            
+            [self.baseTableView reloadData];
+        }
+    } modelClassNameArray:@[@"ShortCommentModel"]];
 }
 
 //开头的视图
@@ -196,22 +221,22 @@ static NSString * shortCommentCellID = @"sComCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 5;
+    return 6;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section == 1) {
+    if (indexPath.section == Actor) {
         return 320;
-    }else if (indexPath.section == 0){
+    }else if (indexPath.section == BoxOffice){
         if ([_movieModel.weekBoxOffice isEqualToString:@""] && _movieModel.awards.count == 0) {
             return 0;
         }
         return 115;
-    }else if(indexPath.section == 2){
+    }else if(indexPath.section == Images){
         return ((ZScreenWidth - 54) / 4.0f + 46 + 15);
-    }else if (indexPath.section == 3 && _goodModel.goodsList.count != 0){
+    }else if (indexPath.section == Goods && _goodModel.goodsList.count != 0){
         return 240;
-    }else if (indexPath.section == 4){
+    }else if (indexPath.section == LongComment){
         CGRect rect = [_longCommentDetailModel.content boundingRectWithSize:CGSizeMake(ZScreenWidth - 30, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} context:nil];
         if (rect.size.height > 43) {
             return 180;
@@ -219,23 +244,38 @@ static NSString * shortCommentCellID = @"sComCell";
             return 140 + rect.size.height;
         }
         
+    }else if (indexPath.section == ShortComment && self.baseDataSource.count != 0){
+        CGRect rect = [[self.baseDataSource[indexPath.row] ce] boundingRectWithSize:CGSizeMake(ZScreenWidth - 77, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil];
+        if (rect.size.height > 78) {
+            if (indexPath.row == 0) {
+                return 205;
+            }
+            return 175;
+        }else{
+            if (indexPath.row == 0) {
+                return (135 + rect.size.height);
+            }
+            return (100 + rect.size.height);
+        }
     }
         return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
+    if (section == ShortComment) {
+        return self.baseDataSource.count;
+    }
     return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section == 1) {
+    if (indexPath.section == Actor) {
         ActorCell * cell = [tableView dequeueReusableCellWithIdentifier:actorCellID forIndexPath:indexPath];
         cell.model = _movieModel;
         return cell;
     }
-    if (indexPath.section == 0) {
+    if (indexPath.section == BoxOffice) {
         MovieAwardCell * cell = [tableView dequeueReusableCellWithIdentifier:awardCellID forIndexPath:indexPath];
         cell.model = _movieModel;
         if ([_movieModel.weekBoxOffice isEqualToString:@""] && _movieModel.awards.count == 0) {
@@ -243,34 +283,36 @@ static NSString * shortCommentCellID = @"sComCell";
         }
         return cell;
     }
-    if (indexPath.section == 2) {
+    if (indexPath.section == Images) {
         ImagesCell * cell = [tableView dequeueReusableCellWithIdentifier:imageCellID forIndexPath:indexPath];
         cell.model = _movieModel;
         return cell;
     }
-    if (indexPath.section == 3) {
+    if (indexPath.section == Goods) {
         MovieGoodsCell * cell = [tableView dequeueReusableCellWithIdentifier:goodsCellID forIndexPath:indexPath];
         if (_goodModel == nil) {
             [self.manager requestWithGetMethod:RelatedGoodsUrl parameters:@{@"relatedId":self.model.movieId} complicate:^(BOOL success, id object) {
                 if (success) {
                     _goodModel = object[0][0];
                     cell.model = _goodModel;
-                    if (_goodModel.goodsList.count == 0) {
-                        cell.hidden = YES;
-                        return;
-                    }
+                    //在block里写不生效
+//                    if (_goodModel.goodsList.count == 0) {
+//                        cell.hidden = YES;
+//                        return;
+//                    }
                     
                     [self.baseTableView reloadData];
                 }
             } modelClassNameArray:@[@"MovieGoodModel"]];
         }
+        //在block外写生效
         if (_goodModel.goodsList.count == 0) {
             cell.hidden = YES;
         }
         return cell;
     }
-    if (indexPath.section == 4) {
-        LongCommentCell * cell = [self.baseTableView dequeueReusableCellWithIdentifier:longCommentCellID forIndexPath:indexPath];
+    if (indexPath.section == LongComment) {
+        LongCommentCell * cell = [tableView dequeueReusableCellWithIdentifier:longCommentCellID forIndexPath:indexPath];
         if (_longCommentModel.comments.count == 0) {
             [self.manager requestWithGetMethod:LongCommentUrl parameters:@{@"movieId":_model.movieId, @"pageId":@"1"} complicate:^(BOOL success, id object) {
                 if (success) {
@@ -283,6 +325,21 @@ static NSString * shortCommentCellID = @"sComCell";
         }
         return cell;
     }
+    if (indexPath.section == ShortComment) {
+        ShortCommentCell * cell = [tableView dequeueReusableCellWithIdentifier:shortCommentCellID forIndexPath:indexPath];
+            cell.totalCommentLabel.text = [NSString stringWithFormat:@"网友短评(%@)", _shortCommentModel.totalCount];
+            SCommentModel * model = self.baseDataSource[indexPath.row];
+            
+            cell.model = model;
+            if (indexPath.row == 0) {
+                cell.sectionHeaderView.hidden = NO;
+                cell.heightCon.constant = 46;
+            }else{
+                cell.sectionHeaderView.hidden = YES;
+                cell.heightCon.constant = 15;
+            }
+        return cell;
+    }
     return nil;
 }
 
@@ -292,10 +349,10 @@ static NSString * shortCommentCellID = @"sComCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0 && ([_movieModel.weekBoxOffice isEqualToString:@""] && _movieModel.awards.count == 0)) {
+    if (section == BoxOffice && ([_movieModel.weekBoxOffice isEqualToString:@""] && _movieModel.awards.count == 0)) {
             return 0.1;
     }
-    if (section == 3 && _goodModel.goodsList.count == 0) {
+    if (section == Goods && _goodModel.goodsList.count == 0) {
         return 0.1;
     }
     return 20;

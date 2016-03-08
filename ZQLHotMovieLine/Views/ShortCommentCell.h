@@ -11,6 +11,9 @@
 
 @interface ShortCommentCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCon;
+@property (weak, nonatomic) IBOutlet UIView *sectionHeaderView;
+
 @property (weak, nonatomic) IBOutlet UILabel *totalCommentLabel;
 
 @property (nonatomic, strong) SCommentModel * model;

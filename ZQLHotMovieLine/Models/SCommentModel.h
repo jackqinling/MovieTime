@@ -12,7 +12,7 @@
 
 @property (nonatomic, copy) NSString * tweetId;
 @property (nonatomic, copy) NSString * ce;
-@property (nonatomic, copy) NSString * ceiming;
+@property (nonatomic, copy) NSString * ceimg;
 @property (nonatomic, copy) NSString * ca;
 @property (nonatomic, copy) NSString * cd;
 @property (nonatomic, copy) NSString * lcd;
