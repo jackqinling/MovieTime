@@ -1273,6 +1273,8 @@
 		BBD0535F1C62F99100C2BF2F /* ActorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD0535D1C62F99100C2BF2F /* ActorCell.xib */; };
 		BBD053641C630B5400C2BF2F /* ImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD053621C630B5400C2BF2F /* ImagesCell.m */; };
 		BBD053651C630B5400C2BF2F /* ImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD053631C630B5400C2BF2F /* ImagesCell.xib */; };
+		BBF1CAD41C8FF78700B5B047 /* ADImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF1CAD21C8FF78700B5B047 /* ADImageCell.m */; };
+		BBF1CAD51C8FF78700B5B047 /* ADImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF1CAD31C8FF78700B5B047 /* ADImageCell.xib */; };
 		BBFAF8821C8E74A2006EE41A /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFAF8811C8E74A2006EE41A /* SectionHeaderView.m */; };
 		BBFAF8841C8E74B5006EE41A /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFAF8831C8E74B5006EE41A /* SectionHeaderView.xib */; };
 		BBFAF8871C8E9F89006EE41A /* TestHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFAF8861C8E9F89006EE41A /* TestHeaderView.m */; };
@@ -2712,6 +2714,9 @@
 		BBD053611C630B5400C2BF2F /* ImagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesCell.h; sourceTree = "<group>"; };
 		BBD053621C630B5400C2BF2F /* ImagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesCell.m; sourceTree = "<group>"; };
 		BBD053631C630B5400C2BF2F /* ImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagesCell.xib; sourceTree = "<group>"; };
+		BBF1CAD11C8FF78700B5B047 /* ADImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADImageCell.h; sourceTree = "<group>"; };
+		BBF1CAD21C8FF78700B5B047 /* ADImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADImageCell.m; sourceTree = "<group>"; };
+		BBF1CAD31C8FF78700B5B047 /* ADImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADImageCell.xib; sourceTree = "<group>"; };
 		BBFAF8801C8E74A2006EE41A /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderView.h; sourceTree = "<group>"; };
 		BBFAF8811C8E74A2006EE41A /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderView.m; sourceTree = "<group>"; };
 		BBFAF8831C8E74B5006EE41A /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
@@ -4583,6 +4588,7 @@
 		BB0C446F1C5C5C9C00CB2C35 /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
+				BBF1CAD01C8FF74A00B5B047 /* ADImageCell */,
 				BBB8429B1C8D6CBB00C51F6F /* CommentCell */,
 				BBD053601C630B3800C2BF2F /* ImagesCell */,
 				BBD0535A1C62F97000C2BF2F /* ActorsCell */,
@@ -4828,6 +4834,16 @@
 			name = MovieDetailViewController;
 			sourceTree = "<group>";
 		};
+		BBF1CAD01C8FF74A00B5B047 /* ADImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				BBF1CAD11C8FF78700B5B047 /* ADImageCell.h */,
+				BBF1CAD21C8FF78700B5B047 /* ADImageCell.m */,
+				BBF1CAD31C8FF78700B5B047 /* ADImageCell.xib */,
+			);
+			name = ADImageCell;
+			sourceTree = "<group>";
+		};
 		BBFAF87F1C8E7445006EE41A /* SectionHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -4968,6 +4984,7 @@
 				4EC7D1BE1C452DD1009B5C11 /* icon_no_content@3x.png in Resources */,
 				4EC7D0401C452DD1009B5C11 /* loading0024@2x.png in Resources */,
 				4EC7D26B1C452DD1009B5C11 /* quizGame_number_copper@2x.png in Resources */,
+				BBF1CAD51C8FF78700B5B047 /* ADImageCell.xib in Resources */,
 				4EC7D4011C452DD1009B5C11 /* video_arrow_up@2x.png in Resources */,
 				4EC7D1A31C452DD1009B5C11 /* icon_my_coupon@2x.png in Resources */,
 				4EC7D2711C452DD1009B5C11 /* rate_addPhoto@2x.png in Resources */,
@@ -6120,6 +6137,7 @@
 				4ECDE1781C43B48D00813DBA /* NSManagedObjectModel+MagicalRecord.m in Sources */,
 				4ECDE1721C43B48D00813DBA /* NSManagedObject+MagicalRequests.m in Sources */,
 				BB7092291C618581007C6918 /* GoodItemModel.m in Sources */,
+				BBF1CAD41C8FF78700B5B047 /* ADImageCell.m in Sources */,
 				4EC493631C5085E400D9430A /* UIProgressView+AFNetworking.m in Sources */,
 				4EC493821C50860600D9430A /* JSONModelClassProperty.m in Sources */,
 				4ECDE15B1C43B48D00813DBA /* DJRefreshTopView.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "ShortCommentCell.h"
 #import "ZQLDefinedImageView.h"
+#import "UIColor+categoryColor.h"
 @interface ShortCommentCell ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *commentImageHeigthCon;
@@ -43,6 +44,31 @@
         self.commentImageHeigthCon.constant = 70;
         [self.commentImageView setImageWithURL:[NSURL URLWithString:_model.ceimg] placeholderImage:PlaceHolder];
     }
+    NSUInteger interval = [[NSDate date] timeIntervalSinceDate:[NSDate dateWithTimeIntervalSince1970:_model.lcd.integerValue]];
+    NSLog(@"%ld", interval);
+    interval = interval + 3600 * 8;
+    NSUInteger time = 0;
+    NSMutableString * str = [NSMutableString string];
+    if (interval / 60 == 0) {
+        time = interval;
+        [str appendString:@"秒前"];
+    }else if (interval / 60 / 60 == 0){
+        [str appendString:@"分钟前"];
+        time = interval / 60;
+    }else if (interval / 60 / 60 / 60 == 0){
+        [str appendString:@"小时前"];
+        time = interval / 60 / 60;
+    }else {
+        [str appendString:@"天前"];
+        time = interval / 60 / 60 / 60 / 24;
+    }
+    NSLog(@"%ld", time);
+    [str insertString:[NSString stringWithFormat:@"%ld", time] atIndex:0];
+    [str appendString:[NSString stringWithFormat:@" - 评 %.1f", _model.cr.floatValue]];
+    
+    NSMutableAttributedString * atrStr = [[NSMutableAttributedString alloc] initWithString:str];
+    [atrStr setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13], NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor greenBack]} range:NSMakeRange(str.length - 3, 3)];
+    self.ratingLabel.attributedText = atrStr;
 }
 
 - (void)onClick:(ZQLDefinedImageView *)imageView{
