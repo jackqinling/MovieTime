@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SCommentModel.h"
 
-@interface ShortCommentCell : UITableViewCell
+@protocol ShortCommentCellDelegate <NSObject>
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCon;
-@property (weak, nonatomic) IBOutlet UIView *sectionHeaderView;
+
+
+@end
+@interface ShortCommentCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *totalCommentLabel;
 

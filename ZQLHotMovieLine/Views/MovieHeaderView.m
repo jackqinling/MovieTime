@@ -12,6 +12,7 @@
 @interface MovieHeaderView ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *moviePosterCon;
 
 @property (weak, nonatomic) IBOutlet UIButton *wantSeeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *wantComment;
@@ -44,9 +45,7 @@
     
     MovieHeaderView * header = [[[NSBundle mainBundle] loadNibNamed:@"MovieHeaderView" owner:nil options:nil] firstObject];
     header.frame = frame;
-    
     header.model = model;
-    
     return header;
 }
 
@@ -74,9 +73,8 @@
     [self.backGroundImageView setImageWithURL:[NSURL URLWithString:_model.image] placeholderImage:PlaceHolder];
     
     UIImage * image = [UIImage imageNamed:@"v10_bt_green.png"];
-    [image stretchableImageWithLeftCapWidth:80 topCapHeight:32];
     
-    [self.wantSeeBtn setBackgroundImage:image forState:UIControlStateNormal];
+//    [self.wantSeeBtn setBackgroundImage:image forState:UIControlStateNormal];
     [self.wantComment setBackgroundImage:image forState:UIControlStateNormal];
 }
 - (IBAction)buyTicket:(UIButton *)sender {

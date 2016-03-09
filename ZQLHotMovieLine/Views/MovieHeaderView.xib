@@ -233,6 +233,7 @@
                 <outlet property="commentLabel" destination="FT3-HH-dsk" id="2Yw-bv-fm0"/>
                 <outlet property="doubleMarkImageView" destination="AG3-Sk-gXW" id="BfW-QG-frN"/>
                 <outlet property="movieLengthLabel" destination="x3U-2K-RH1" id="abj-OZ-Yb9"/>
+                <outlet property="moviePosterCon" destination="1G5-FZ-X50" id="Ueh-vm-z6b"/>
                 <outlet property="movieStyleLabel" destination="hoZ-dK-kn5" id="0P0-NX-Zan"/>
                 <outlet property="nameChLabel" destination="ED5-Z1-aF1" id="oq3-OW-vUu"/>
                 <outlet property="nameEnLabel" destination="Ovq-5P-AGs" id="863-pg-WhU"/>

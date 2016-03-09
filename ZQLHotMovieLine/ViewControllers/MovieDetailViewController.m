@@ -245,18 +245,22 @@ static NSString * shortCommentCellID = @"sComCell";
         }
         
     }else if (indexPath.section == ShortComment && self.baseDataSource.count != 0){
-        CGRect rect = [[self.baseDataSource[indexPath.row] ce] boundingRectWithSize:CGSizeMake(ZScreenWidth - 77, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil];
-        if (rect.size.height > 78) {
-            if (indexPath.row == 0) {
-                return 205;
+        SCommentModel * model = self.baseDataSource[indexPath.row];
+        CGRect rect = [model.ce boundingRectWithSize:CGSizeMake(ZScreenWidth - 77, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil];
+        if ([model.ceimg isEqualToString:@""]) {
+            if (rect.size.height > 70) {
+                return 180;
+            }else{
+                return (110 + rect.size.height);
             }
-            return 175;
         }else{
-            if (indexPath.row == 0) {
-                return (135 + rect.size.height);
+            if (rect.size.height > 70) {
+                return 240;
+            }else{
+                return (170 + rect.size.height);
             }
-            return (100 + rect.size.height);
         }
+        
     }
         return 0;
 }
@@ -331,13 +335,7 @@ static NSString * shortCommentCellID = @"sComCell";
             SCommentModel * model = self.baseDataSource[indexPath.row];
             
             cell.model = model;
-            if (indexPath.row == 0) {
-                cell.sectionHeaderView.hidden = NO;
-                cell.heightCon.constant = 46;
-            }else{
-                cell.sectionHeaderView.hidden = YES;
-                cell.heightCon.constant = 15;
-            }
+  
         return cell;
     }
     return nil;
