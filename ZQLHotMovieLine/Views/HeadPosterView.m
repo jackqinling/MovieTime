@@ -273,7 +273,7 @@
     float scale = (scrollView.contentOffset.x - currentIndex * PageWidth) / PageWidth * Scale;
 
     
-    if (scrollView.contentOffset.x > self.preContentOffsetX) {
+    if (scrollView.contentOffset.x >= self.preContentOffsetX) {
         [self showModelAtIndex:pageIndex];
         //开始往右边滑动
         if (currentIndex < _movies.count - 1) {
