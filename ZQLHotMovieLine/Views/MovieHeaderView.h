@@ -9,7 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "MovieDetailModel.h"
 
+@protocol MovieHeaderViewDelegate <NSObject>
+
+- (void)didClickHeaderViewPlayButtonWithModel:(MovieDetailModel *)model;
+
+@end
 @interface MovieHeaderView : UIView
+
+@property (nonatomic, weak) id<MovieHeaderViewDelegate>delegate;
 
 @property (nonatomic, strong) MovieDetailModel * model;
 

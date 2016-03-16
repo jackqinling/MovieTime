@@ -22,7 +22,7 @@
 //对应长评论
 #import "CommentDetailModel.h"
 #import "ShortCommentModel.h"
-
+#import "PreviewVideoViewController.h"
 typedef enum {
     Goods = 0,
     BoxOffice,
@@ -39,7 +39,7 @@ static NSString * goodsCellID = @"goodsCell";
 static NSString * longCommentCellID = @"lComCell";
 static NSString * shortCommentCellID = @"sComCell";
 
-@interface MovieDetailViewController ()<UIScrollViewDelegate>
+@interface MovieDetailViewController ()<UIScrollViewDelegate, MovieHeaderViewDelegate>
 
 @end
 
@@ -69,12 +69,18 @@ static NSString * shortCommentCellID = @"sComCell";
     [self settingTableView];
     [self loadData];
     [self loadDataWithRefresh:NO];
-
   }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.view bringSubviewToFront:self.statusBar];
+    self.tabBarController.tabBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
 - (void)onClickImage:(ZQLDefinedImageView *)imageView{
     NSLog(@"image");
@@ -127,7 +133,7 @@ static NSString * shortCommentCellID = @"sComCell";
 }
 - (void)settingTableView{
     
-    self.baseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, ZScreenWidth, ZScreenHeight - 80 - NaviBarHeight) style:UITableViewStyleGrouped];
+    self.baseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, ZScreenWidth, ZScreenHeight - 80) style:UITableViewStyleGrouped];
     
     self.baseTableView.delegate = self;
     self.baseTableView.dataSource = self;
@@ -206,6 +212,8 @@ static NSString * shortCommentCellID = @"sComCell";
 - (void)settingHeadViewWithModel:(MovieDetailModel *)model{
     
     _header = [MovieHeaderView viewWithModel:model frame:CGRectMake(0, StatusBarHeight, ZScreenWidth, 320)];
+    
+    _header.delegate = self;
     [self.view addSubview:_header];
     [self.view bringSubviewToFront:self.statusBar];
     [self.view  bringSubviewToFront:self.naviBarHiddenView];
@@ -373,6 +381,16 @@ static NSString * shortCommentCellID = @"sComCell";
         self.naviBarHiddenView.alpha = 0;
     }
     
+}
+
+#pragma mark - headerViewDelegate
+
+- (void)didClickHeaderViewPlayButtonWithModel:(MovieDetailModel *)model{
+    
+    PreviewVideoViewController * pvc = [[PreviewVideoViewController alloc] init];
+    pvc.model = _movieModel;
+    pvc.title = @"预告片&拍摄花絮";
+    [self.navigationController pushViewController:pvc animated:YES];
 }
 /*
 #pragma mark - Navigation

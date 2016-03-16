@@ -1232,6 +1232,7 @@
 		4ED691341C49DFB5004E7CE3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED691331C49DFB5004E7CE3 /* UIKit.framework */; };
 		4ED691361C49DFBD004E7CE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED691351C49DFBD004E7CE3 /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		4ED691381C49DFC4004E7CE3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED691371C49DFC4004E7CE3 /* CoreGraphics.framework */; };
+		BB034F3E1C9909CF00414D83 /* PreviewVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB034F3D1C9909CF00414D83 /* PreviewVideoViewController.m */; };
 		BB0C44721C5C5CE000CB2C35 /* MovieHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0C44711C5C5CE000CB2C35 /* MovieHeaderView.m */; };
 		BB0C44741C5C5D0300CB2C35 /* MovieHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0C44731C5C5D0300CB2C35 /* MovieHeaderView.xib */; };
 		BB0C44771C5DFE6A00CB2C35 /* FestivalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0C44761C5DFE6A00CB2C35 /* FestivalModel.m */; };
@@ -2642,6 +2643,8 @@
 		4ED691331C49DFB5004E7CE3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4ED691351C49DFBD004E7CE3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4ED691371C49DFC4004E7CE3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BB034F3C1C9909CF00414D83 /* PreviewVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewVideoViewController.h; sourceTree = "<group>"; };
+		BB034F3D1C9909CF00414D83 /* PreviewVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewVideoViewController.m; sourceTree = "<group>"; };
 		BB0C44701C5C5CE000CB2C35 /* MovieHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieHeaderView.h; sourceTree = "<group>"; };
 		BB0C44711C5C5CE000CB2C35 /* MovieHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieHeaderView.m; sourceTree = "<group>"; };
 		BB0C44731C5C5D0300CB2C35 /* MovieHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieHeaderView.xib; sourceTree = "<group>"; };
@@ -2813,7 +2816,7 @@
 			name = HeadPosterView;
 			sourceTree = "<group>";
 		};
-		4EBC7ADD1C55A98C0050FE74 /* TicketViewController */ = {
+		4EBC7ADD1C55A98C0050FE74 /* Ticket */ = {
 			isa = PBXGroup;
 			children = (
 				4EC7CBAF1C45256B009B5C11 /* TicketViewController.h */,
@@ -2826,7 +2829,7 @@
 				4EBC7AE51C55ABA30050FE74 /* CinemaViewController.m */,
 				4EBC7AE61C55ABA30050FE74 /* CinemaViewController.xib */,
 			);
-			name = TicketViewController;
+			name = Ticket;
 			sourceTree = "<group>";
 		};
 		4EBC7ADE1C55A9B70050FE74 /* HomeViewController */ = {
@@ -4545,13 +4548,11 @@
 		4ED0DDB01C40F8AF00E1AFB0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				BBCC1AFC1C5A0EC2003ECE6E /* New Group */,
-				BBDE47381C567C4B00E33DA8 /* MovieDetailViewController */,
-				BBDE47371C567C2A00E33DA8 /* MeViewController */,
-				BBDE47361C567C0200E33DA8 /* DiscoveryViewController */,
-				4EBC7ADE1C55A9B70050FE74 /* HomeViewController */,
-				BBDE47351C567BD500E33DA8 /* StoreViewController */,
-				4EBC7ADD1C55A98C0050FE74 /* TicketViewController */,
+				BBCC1AFC1C5A0EC2003ECE6E /* Home */,
+				BBDE47361C567C0200E33DA8 /* Discovery */,
+				BBDE47371C567C2A00E33DA8 /* Me */,
+				BBDE47351C567BD500E33DA8 /* Store */,
+				4EBC7ADD1C55A98C0050FE74 /* Ticket */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -4733,11 +4734,13 @@
 			name = MovieDetailModels;
 			sourceTree = "<group>";
 		};
-		BBCC1AFC1C5A0EC2003ECE6E /* New Group */ = {
+		BBCC1AFC1C5A0EC2003ECE6E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4EBC7ADE1C55A9B70050FE74 /* HomeViewController */,
+				BBDE47381C567C4B00E33DA8 /* MovieDetailViewController */,
 			);
-			name = "New Group";
+			name = Home;
 			sourceTree = "<group>";
 		};
 		BBCC1B101C5A4BA7003ECE6E /* City */ = {
@@ -4794,34 +4797,34 @@
 			name = ImagesCell;
 			sourceTree = "<group>";
 		};
-		BBDE47351C567BD500E33DA8 /* StoreViewController */ = {
+		BBDE47351C567BD500E33DA8 /* Store */ = {
 			isa = PBXGroup;
 			children = (
 				4EC7CBB41C4525BC009B5C11 /* StoreViewController.h */,
 				4EC7CBB51C4525BC009B5C11 /* StoreViewController.m */,
 				4EC7CBB61C4525BC009B5C11 /* StoreViewController.xib */,
 			);
-			name = StoreViewController;
+			name = Store;
 			sourceTree = "<group>";
 		};
-		BBDE47361C567C0200E33DA8 /* DiscoveryViewController */ = {
+		BBDE47361C567C0200E33DA8 /* Discovery */ = {
 			isa = PBXGroup;
 			children = (
 				4EC7CBB91C4525D5009B5C11 /* DiscoveryViewController.h */,
 				4EC7CBBA1C4525D5009B5C11 /* DiscoveryViewController.m */,
 				4EC7CBBB1C4525D5009B5C11 /* DiscoveryViewController.xib */,
 			);
-			name = DiscoveryViewController;
+			name = Discovery;
 			sourceTree = "<group>";
 		};
-		BBDE47371C567C2A00E33DA8 /* MeViewController */ = {
+		BBDE47371C567C2A00E33DA8 /* Me */ = {
 			isa = PBXGroup;
 			children = (
 				4EC7CBBE1C4525F0009B5C11 /* MeViewController.h */,
 				4EC7CBBF1C4525F0009B5C11 /* MeViewController.m */,
 				4EC7CBC01C4525F0009B5C11 /* MeViewController.xib */,
 			);
-			name = MeViewController;
+			name = Me;
 			sourceTree = "<group>";
 		};
 		BBDE47381C567C4B00E33DA8 /* MovieDetailViewController */ = {
@@ -4830,6 +4833,8 @@
 				4EC6092C1C54D490007B6149 /* MovieDetailViewController.h */,
 				4EC6092D1C54D490007B6149 /* MovieDetailViewController.m */,
 				4EC6092F1C54D4B3007B6149 /* MovieDetailViewController.xib */,
+				BB034F3C1C9909CF00414D83 /* PreviewVideoViewController.h */,
+				BB034F3D1C9909CF00414D83 /* PreviewVideoViewController.m */,
 			);
 			name = MovieDetailViewController;
 			sourceTree = "<group>";
@@ -6220,6 +6225,7 @@
 				4EC4935E1C5085E400D9430A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				4EC730FF1C45FFA5009D0C6D /* adverGotoModel.m in Sources */,
 				4EC493571C5085E400D9430A /* AFHTTPSessionManager.m in Sources */,
+				BB034F3E1C9909CF00414D83 /* PreviewVideoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

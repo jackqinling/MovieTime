@@ -59,10 +59,31 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self settingNaviBar];
+}
+
+- (void)settingNaviBarWithTitle:(NSString *)title{
+    
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, NaviBarHeight)];
+    label.text = title;
+    label.textColor = [UIColor whiteColor];
+    self.navigationItem.titleView = label;
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"path"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack:)];
+    self.navigationItem.leftBarButtonItem = item;
+    
+}
+
+- (void)goBack:(UIBarButtonItem *)itme{
+    [self.tabBarController.view setTransitionAnimation:ZQLTransitionAnimationTypeFade toward:ZQLTransitionAnimationTowardTypesFromRight duration:0.5];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)settingNaviBar{
     // Do any additional setup after loading the view from its nib.
     //把原来的tabBar变透明  设置新的背景颜色view 并设置statusBar的背景色
     self.view.backgroundColor = [UIColor blackColor];
     self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     UIView * view = [[self.navigationController.navigationBar subviews][0] subviews][0];
     view.hidden = YES;
     _naviBarHiddenView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, ZScreenWidth, 44)];
@@ -75,7 +96,6 @@
     _statusBar.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_statusBar];
 }
-
 - (void)changeNaviBarAlpha:(float)alhpa{
     
     UIView * view = [[self.navigationController.navigationBar subviews][0] subviews][0];

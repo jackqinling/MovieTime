@@ -82,6 +82,7 @@
 }
 - (IBAction)onClickPoster:(UIButton *)sender {
     NSLog(@"我是poster");
+    [self.delegate didClickHeaderViewPlayButtonWithModel:self.model];
 }
 - (IBAction)wantToSee:(id)sender {
     NSLog(@"想看");

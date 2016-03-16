@@ -50,7 +50,7 @@ static NSString * tableCellID = @"tableCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
    
-    [self settingNavi];
+    [self settingNaviBarWithTitle:@"选择城市"];
     [self settingCollectionView];
     [self settingTableView];
     [self customSearchBar];
@@ -152,17 +152,6 @@ static NSString * tableCellID = @"tableCell";
     [self.baseCollectionView reloadData];
 }
 
-- (void)settingNavi{
-    
-    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, NaviBarHeight)];
-    label.text = @"选择城市";
-    label.textColor = [UIColor whiteColor];
-    self.navigationItem.titleView = label;
-    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"path"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack:)];
-    self.navigationItem.leftBarButtonItem = item;
-    
-}
-
 - (void)customSearchBar{
     
     self.searchBar.tintColor = [UIColor redColor];
@@ -175,10 +164,7 @@ static NSString * tableCellID = @"tableCell";
     [self.searchBar resignFirstResponder];
 
 }
-- (void)goBack:(UIBarButtonItem *)itme{
-    [self.tabBarController.view setTransitionAnimation:ZQLTransitionAnimationTypeFade toward:ZQLTransitionAnimationTowardTypesFromRight duration:0.5];
-    [self.navigationController popToRootViewControllerAnimated:NO];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

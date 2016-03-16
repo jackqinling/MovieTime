@@ -37,4 +37,5 @@
 
 - (void)registerTableViewWithCellNibNameArray:(NSArray *)CellNibName withIdentfierArray:(NSArray *)IdentifierStr;
 
+- (void)settingNaviBarWithTitle:(NSString *)title;
 @end
