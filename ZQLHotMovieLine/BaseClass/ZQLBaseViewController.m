@@ -113,17 +113,17 @@
         UIImageView * imageView = cityButton.subviews[1];
         
         label.text = title;
-        CGRect rect = [title boundingRectWithSize:CGSizeMake(ZScreenWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
+        CGRect rect = [title boundingRectWithSize:CGSizeMake(ZScreenWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont screenFontOfSize:15]} context:nil];
         [cityButton setFrame:CGRectMake(0, 0, rect.size.width + imageSize.width, rect.size.height)];
         [label setFrame:CGRectMake(0, 0, rect.size.width, rect.size.height)];
         [imageView setFrame:CGRectMake(rect.size.width + 2, (rect.size.height - imageSize.height) / 2.0f + 1, imageSize.width, imageSize.height)];
         
         return;
     }
-    CGRect rect = [title boundingRectWithSize:CGSizeMake(ZScreenWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
+    CGRect rect = [title boundingRectWithSize:CGSizeMake(ZScreenWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont screenFontOfSize:15]} context:nil];
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height)];
     label.text = title;
-    label.font = [UIFont systemFontOfSize:15];
+    label.font = [UIFont screenFontOfSize:15];
     label.textColor = [UIColor whiteColor];
     label.userInteractionEnabled = NO;
     

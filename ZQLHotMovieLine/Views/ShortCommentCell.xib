@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -71,13 +71,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1小时前评 - 7.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpv-35-R8u">
-                        <rect key="frame" x="254" y="23" width="76" height="13.5"/>
+                        <rect key="frame" x="254" y="22" width="76" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="07t-3Y-PiV"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这部片子在刷票房大家拉风的京东方;奢望后;艾弗森就阿瑟会;啊额厉害;为哈我一护额阿富汗就会收到了空间卡升级啊发发发发发这部片子在刷票房大家拉风的京东方;奢望后;艾弗森就阿瑟会;啊额厉害;为哈我一护额阿富汗就会收到了空间卡升级" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ac-tp-6T4">
-                        <rect key="frame" x="75" y="58" width="245" height="78"/>
+                        <rect key="frame" x="75" y="59.5" width="245" height="78"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -139,7 +142,7 @@
                         </state>
                     </button>
                     <imageView hidden="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d7b-Xx-Nll" customClass="ZQLDefinedImageView">
-                        <rect key="frame" x="75" y="144" width="120" height="70"/>
+                        <rect key="frame" x="75" y="145.5" width="120" height="70"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="J4m-5v-hZO"/>
                             <constraint firstAttribute="width" constant="120" id="JQv-ro-vcU"/>

@@ -52,9 +52,9 @@
             self.ratingLabel.text = @"";
         }else{
             NSString * str = [NSString stringWithFormat:@"看过 - 评分 %0.1f", (float)dModel.rating.integerValue];
-            NSMutableAttributedString * atrStr = [[NSMutableAttributedString alloc] initWithString:str attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11], NSForegroundColorAttributeName:[UIColor blackColor]}];
+            NSMutableAttributedString * atrStr = [[NSMutableAttributedString alloc] initWithString:str attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:[UIColor blackColor]}];
             
-            [atrStr setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor greenBack], NSFontAttributeName:[UIFont systemFontOfSize:14]} range:NSMakeRange(str.length - 3, 3)];
+            [atrStr setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor greenBack], NSFontAttributeName:[UIFont systemFontOfSize:12]} range:NSMakeRange(str.length - 3, 3)];
             
             self.ratingLabel.attributedText = atrStr;
         }

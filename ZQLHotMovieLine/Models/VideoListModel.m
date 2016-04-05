@@ -17,6 +17,6 @@
 + (NSArray *)arrayOfModelsFromJson:(id)object{
     
     NSArray * models = [VideoListModel arrayOfModelsFromDictionaries:object[@"videoList"]];
-    return @[models];
+    return models;
 }
 @end

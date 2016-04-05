@@ -23,6 +23,9 @@
 #import "CommentDetailModel.h"
 #import "ShortCommentModel.h"
 #import "PreviewVideoViewController.h"
+
+#define HeaderViewHeight (80 + 80 / 55.0f * ZScreenWidth * 105 / 320.0f + 92)
+
 typedef enum {
     Goods = 0,
     BoxOffice,
@@ -140,9 +143,9 @@ static NSString * shortCommentCellID = @"sComCell";
     self.baseTableView.backgroundColor = [UIColor randomColor];
     self.baseTableView.bounces = NO;
     self.baseTableView.tableFooterView = [[UIView alloc] init];
-    self.baseTableView.contentInset = UIEdgeInsetsMake(320 + StatusBarHeight - 60, 0, 0, 0);
+    self.baseTableView.contentInset = UIEdgeInsetsMake(HeaderViewHeight + StatusBarHeight - 60, 0, 0, 0);
     
-    self.baseTableView.contentOffset = CGPointMake(0, -(320 + StatusBarHeight - 60));
+    self.baseTableView.contentOffset = CGPointMake(0, -(HeaderViewHeight + StatusBarHeight - 60));
     self.baseTableView.showsVerticalScrollIndicator = NO;
     self.baseTableView.showsHorizontalScrollIndicator = NO;
     
@@ -211,7 +214,7 @@ static NSString * shortCommentCellID = @"sComCell";
 //开头的视图
 - (void)settingHeadViewWithModel:(MovieDetailModel *)model{
     
-    _header = [MovieHeaderView viewWithModel:model frame:CGRectMake(0, StatusBarHeight, ZScreenWidth, 320)];
+    _header = [MovieHeaderView viewWithModel:model frame:CGRectMake(0, StatusBarHeight, ZScreenWidth, HeaderViewHeight)];
     
     _header.delegate = self;
     [self.view addSubview:_header];
@@ -234,7 +237,7 @@ static NSString * shortCommentCellID = @"sComCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == Actor) {
-        return 320;
+        return ZScreenWidth * 0.84;
     }else if (indexPath.section == BoxOffice){
         if ([_movieModel.weekBoxOffice isEqualToString:@""] && _movieModel.awards.count == 0) {
             return 0;
@@ -375,9 +378,9 @@ static NSString * shortCommentCellID = @"sComCell";
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //头视图随着tableview滚动联动
     if (scrollView.contentOffset.y >= -68) {
-        [_header setFrame:CGRectMake(0, -191, ZScreenWidth, 320)];
+        [_header setFrame:CGRectMake(0, 128 - HeaderViewHeight, ZScreenWidth, HeaderViewHeight)];
     }else if (scrollView.contentOffset.y < -68){
-        [_header setFrame:CGRectMake(0, (StatusBarHeight - (scrollView.contentOffset.y - (-(320 + StatusBarHeight - 60)))), self.view.bounds.size.width, 320)];
+        [_header setFrame:CGRectMake(0, (StatusBarHeight - (scrollView.contentOffset.y - (-(HeaderViewHeight + StatusBarHeight - 60)))), self.view.bounds.size.width, HeaderViewHeight)];
     }
     if (scrollView.contentOffset.y > -240) {
         self.naviBarHiddenView.alpha = (240 + scrollView.contentOffset.y) / 172.0f;
@@ -392,7 +395,7 @@ static NSString * shortCommentCellID = @"sComCell";
 - (void)didClickHeaderViewPlayButtonWithModel:(MovieDetailModel *)model{
     
     PreviewVideoViewController * pvc = [[PreviewVideoViewController alloc] init];
-    pvc.model = _movieModel;
+    pvc.movieID = self.model.movieId;
     pvc.title = @"预告片&拍摄花絮";
     [self.navigationController pushViewController:pvc animated:YES];
 }

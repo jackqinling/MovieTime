@@ -10,6 +10,6 @@
 #import "MovieDetailModel.h"
 @interface PreviewVideoViewController : ZQLBaseViewController
 
-@property (nonatomic, strong) MovieDetailModel * model;
+@property (nonatomic, copy) NSString * movieID;
 
 @end

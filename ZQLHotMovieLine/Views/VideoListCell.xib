@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -15,44 +16,82 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v10_over_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="MiT-sr-RCL">
-                        <rect key="frame" x="120" y="66" width="30" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="FWW-P4-fqq"/>
-                            <constraint firstAttribute="width" constant="30" id="VeU-xB-bYB"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="荒野猎人 中文版终极预告片" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giF-E5-OGb">
-                        <rect key="frame" x="178" y="20" width="134" height="31.5"/>
+                        <rect key="frame" x="184.5" y="20" width="121" height="31.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rs3-8g-p9g">
-                        <rect key="frame" x="8" y="14" width="152.5" height="90.5"/>
+                        <rect key="frame" x="15" y="15" width="151.5" height="85"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Rs3-8g-p9g" secondAttribute="height" multiplier="27:16" id="qhe-Ee-mvN"/>
+                            <constraint firstAttribute="width" secondItem="Rs3-8g-p9g" secondAttribute="height" multiplier="235:132" id="REc-3h-RIx"/>
+                            <constraint firstAttribute="width" constant="110" id="X2J-Zx-dNC"/>
+                            <constraint firstAttribute="width" secondItem="Rs3-8g-p9g" secondAttribute="height" multiplier="24:16" id="qhe-Ee-mvN"/>
+                            <constraint firstAttribute="height" constant="85" id="sYS-zD-vYL"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="X2J-Zx-dNC"/>
+                                <exclude reference="qhe-Ee-mvN"/>
+                            </mask>
+                        </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="片长:59秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNy-g7-MXe">
-                        <rect key="frame" x="178" y="59" width="55" height="14.5"/>
+                        <rect key="frame" x="184.5" y="59.5" width="55" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14.5" id="8gM-3p-FG6"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8gM-3p-FG6"/>
+                            </mask>
+                        </variation>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v10_over_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="MiT-sr-RCL">
+                        <rect key="frame" x="126.5" y="61" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="FWW-P4-fqq"/>
+                            <constraint firstAttribute="width" constant="30" id="VeU-xB-bYB"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="MiT-sr-RCL" firstAttribute="top" secondItem="Rs3-8g-p9g" secondAttribute="bottom" constant="-38.5" id="95X-jc-FV2"/>
                     <constraint firstItem="PNy-g7-MXe" firstAttribute="leading" secondItem="giF-E5-OGb" secondAttribute="leading" id="GAP-B2-epg"/>
                     <constraint firstAttribute="bottom" secondItem="Rs3-8g-p9g" secondAttribute="bottom" constant="15" id="IoI-aH-8lg"/>
                     <constraint firstItem="giF-E5-OGb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="J8v-JX-jPS"/>
+                    <constraint firstItem="giF-E5-OGb" firstAttribute="leading" secondItem="Rs3-8g-p9g" secondAttribute="trailing" constant="18" id="QbJ-XN-Fcq"/>
+                    <constraint firstItem="Rs3-8g-p9g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Wca-kx-phg"/>
+                    <constraint firstItem="MiT-sr-RCL" firstAttribute="leading" secondItem="Rs3-8g-p9g" secondAttribute="trailing" constant="-40" id="XJy-UW-sJi"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="giF-E5-OGb" secondAttribute="trailing" constant="6" id="aKR-Om-us7"/>
-                    <constraint firstItem="Rs3-8g-p9g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="gWy-t6-1VM"/>
+                    <constraint firstItem="PNy-g7-MXe" firstAttribute="leading" secondItem="MiT-sr-RCL" secondAttribute="trailing" constant="28" id="cMA-9u-JWG"/>
+                    <constraint firstItem="Rs3-8g-p9g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="e9L-Uh-eXG"/>
+                    <constraint firstItem="Rs3-8g-p9g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="gWy-t6-1VM"/>
                     <constraint firstItem="Rs3-8g-p9g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="iYv-Yg-SLw"/>
                     <constraint firstItem="PNy-g7-MXe" firstAttribute="top" secondItem="giF-E5-OGb" secondAttribute="bottom" constant="8" id="l1K-Jb-Xna"/>
                     <constraint firstItem="giF-E5-OGb" firstAttribute="leading" secondItem="Rs3-8g-p9g" secondAttribute="trailing" constant="17.5" id="nOY-7t-W9E"/>
+                    <constraint firstItem="MiT-sr-RCL" firstAttribute="top" secondItem="Rs3-8g-p9g" secondAttribute="bottom" constant="-39" id="qs5-Fo-dDU"/>
+                    <constraint firstItem="Rs3-8g-p9g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="rbI-BE-52z"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="Rs3-8g-p9g" secondAttribute="leading" constant="15" id="xwL-2q-dy5"/>
                     <constraint firstItem="MiT-sr-RCL" firstAttribute="leading" secondItem="Rs3-8g-p9g" secondAttribute="trailing" constant="-40" id="yld-FZ-vsT"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="IoI-aH-8lg"/>
+                        <exclude reference="gWy-t6-1VM"/>
+                        <exclude reference="iYv-Yg-SLw"/>
+                        <exclude reference="rbI-BE-52z"/>
+                        <exclude reference="xwL-2q-dy5"/>
+                        <exclude reference="95X-jc-FV2"/>
+                        <exclude reference="yld-FZ-vsT"/>
+                        <exclude reference="nOY-7t-W9E"/>
+                        <exclude reference="cMA-9u-JWG"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="PosterImageView" destination="Rs3-8g-p9g" id="PKg-u5-g6U"/>

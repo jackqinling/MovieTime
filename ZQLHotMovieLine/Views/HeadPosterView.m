@@ -18,8 +18,8 @@
 
 #define WindowWidth (ZScreenWidth - 40)
 #define HeadSubViewHeight 170.0f
-#define HeadImageSpace 50.0f
-#define Scale 0.3f
+#define HeadImageSpace 58.0f
+#define Scale 0.38f
 
 #define PreGap ((ZScreenWidth - WindowWidth) / 2.0f)
 #define ImageWidth (WindowWidth / 2.0f - HeadImageSpace)
@@ -113,7 +113,7 @@
     
     for (MovieModel * model in _movies) {
         
-        ZQLDefinedImageView * button = [[ZQLDefinedImageView alloc] initWithFrame:CGRectMake(PreGap + ImageWidth * (0.5 + i) + (i + 1) * HeadImageSpace, ImageWidth * 0.25 + NaviBarHeight, ImageWidth, ImageWidth * 1.4)];
+        ZQLDefinedImageView * button = [[ZQLDefinedImageView alloc] initWithFrame:CGRectMake(PreGap + ImageWidth * (0.5 + i) + (i + 1) * HeadImageSpace, ImageWidth * 0.38 + NaviBarHeight, ImageWidth, ImageWidth * 1.4)];
         
         [button setImageWithURL:[NSURL URLWithString:model.img]];
         [button addTarget:self action:@selector(onClickImage:)];

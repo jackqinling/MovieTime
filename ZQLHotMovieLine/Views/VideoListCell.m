@@ -30,9 +30,9 @@
     NSInteger minute = [_model.length integerValue] / 60;
     NSInteger sec = [_model.length integerValue] % 60;
     if (minute) {
-        self.TimeLabel.text = [NSString stringWithFormat:@"时长:%ld分%ld秒", minute, sec];
+        self.TimeLabel.text = [NSString stringWithFormat:@"片长:%ld分%ld秒", minute, sec];
     }else{
-        self.TimeLabel.text = [NSString stringWithFormat:@"时长:%ld秒", sec];
+        self.TimeLabel.text = [NSString stringWithFormat:@"片长:%ld秒", sec];
     }
     
 }

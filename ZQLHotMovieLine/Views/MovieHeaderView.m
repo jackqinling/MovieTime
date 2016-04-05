@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *doubleMarkImageView;
 @property (weak, nonatomic) IBOutlet UIButton *buyTickeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthCon;
 
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundImageView;
 @end
@@ -46,6 +47,7 @@
     MovieHeaderView * header = [[[NSBundle mainBundle] loadNibNamed:@"MovieHeaderView" owner:nil options:nil] firstObject];
     header.frame = frame;
     header.model = model;
+    header.widthCon.constant = frame.size.width * 0.33;
     return header;
 }
 

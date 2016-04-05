@@ -1241,6 +1241,7 @@
 		BB0C44831C5E08D600CB2C35 /* AwardPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0C44821C5E08D600CB2C35 /* AwardPersonModel.m */; };
 		BB0C44861C5E0D9300CB2C35 /* ActorSimpleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0C44851C5E0D9300CB2C35 /* ActorSimpleModel.m */; };
 		BB0C44891C5E0E7B00CB2C35 /* MovieImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0C44881C5E0E7B00CB2C35 /* MovieImageModel.m */; };
+		BB1639951CB3C471004D77C8 /* UIFont+ScreenFont.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1639941CB3C471004D77C8 /* UIFont+ScreenFont.m */; };
 		BB1C55E41C84768F0074DA4F /* UILabel+CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1C55E31C84768F0074DA4F /* UILabel+CustomLabel.m */; };
 		BB7092261C6184CA007C6918 /* MovieGoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7092251C6184CA007C6918 /* MovieGoodModel.m */; };
 		BB7092291C618581007C6918 /* GoodItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7092281C618581007C6918 /* GoodItemModel.m */; };
@@ -2663,6 +2664,8 @@
 		BB0C44851C5E0D9300CB2C35 /* ActorSimpleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorSimpleModel.m; sourceTree = "<group>"; };
 		BB0C44871C5E0E7B00CB2C35 /* MovieImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieImageModel.h; sourceTree = "<group>"; };
 		BB0C44881C5E0E7B00CB2C35 /* MovieImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieImageModel.m; sourceTree = "<group>"; };
+		BB1639931CB3C471004D77C8 /* UIFont+ScreenFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+ScreenFont.h"; sourceTree = "<group>"; };
+		BB1639941CB3C471004D77C8 /* UIFont+ScreenFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ScreenFont.m"; sourceTree = "<group>"; };
 		BB1C55E21C84768F0074DA4F /* UILabel+CustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CustomLabel.h"; sourceTree = "<group>"; };
 		BB1C55E31C84768F0074DA4F /* UILabel+CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CustomLabel.m"; sourceTree = "<group>"; };
 		BB7092241C6184CA007C6918 /* MovieGoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieGoodModel.h; sourceTree = "<group>"; };
@@ -3017,6 +3020,8 @@
 				4E9A0CE61C49220B001AB75E /* UIImageView+LBBlurredImage.m */,
 				4EC730EF1C45DD9E009D0C6D /* UIColor+categoryColor.h */,
 				4EC730F01C45DD9E009D0C6D /* UIColor+categoryColor.m */,
+				BB1639931CB3C471004D77C8 /* UIFont+ScreenFont.h */,
+				BB1639941CB3C471004D77C8 /* UIFont+ScreenFont.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -6248,6 +6253,7 @@
 				BBC5190D1C585387007BF606 /* MovieReleaseModel.m in Sources */,
 				4E0606B01C50F11400F230BC /* MovieDetailOneCell.m in Sources */,
 				4ECDE17A1C43B48D00813DBA /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
+				BB1639951CB3C471004D77C8 /* UIFont+ScreenFont.m in Sources */,
 				4ECDE1891C43B48D00813DBA /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				BBB842AF1C8D729800C51F6F /* CommentDetailModel.m in Sources */,
 				4EC7CBB71C4525BC009B5C11 /* StoreViewController.m in Sources */,

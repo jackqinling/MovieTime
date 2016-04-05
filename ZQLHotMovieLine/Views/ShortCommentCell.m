@@ -70,11 +70,11 @@
     if (_model.cr.floatValue == 10.0f) {
         [str appendString:[NSString stringWithFormat:@" - 评 %ld", _model.cr.integerValue]];
         atrStr = [[NSMutableAttributedString alloc] initWithString:str];
-        [atrStr setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13], NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor greenBack]} range:NSMakeRange(str.length - 2, 2)];
+        [atrStr setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor greenBack]} range:NSMakeRange(str.length - 2, 2)];
     }else{
         [str appendString:[NSString stringWithFormat:@" - 评 %.1f", _model.cr.floatValue]];
         atrStr = [[NSMutableAttributedString alloc] initWithString:str];
-        [atrStr setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13], NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor greenBack]} range:NSMakeRange(str.length - 3, 3)];
+        [atrStr setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor greenBack]} range:NSMakeRange(str.length - 3, 3)];
     }
     
     self.ratingLabel.attributedText = atrStr;

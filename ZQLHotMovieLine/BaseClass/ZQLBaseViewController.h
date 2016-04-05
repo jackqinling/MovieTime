@@ -13,6 +13,7 @@
 #import "ZQLRequestManager.h"
 #import "ZQLScreenMacro.h"
 #import "UIView+ZQLTransitonAnimation.h"
+#import "UIFont+ScreenFont.h"
 
 @interface ZQLBaseViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
