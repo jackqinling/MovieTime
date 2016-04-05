@@ -1247,6 +1247,9 @@
 		BB70922D1C6194E8007C6918 /* MovieGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB70922B1C6194E8007C6918 /* MovieGoodsCell.m */; };
 		BB70922E1C6194E8007C6918 /* MovieGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB70922C1C6194E8007C6918 /* MovieGoodsCell.xib */; };
 		BB8A24C81C6857D60064EE7D /* ActorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8A24C71C6857D60064EE7D /* ActorModel.m */; };
+		BBAEBC371C9D95060080BC72 /* VideoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAEBC361C9D95060080BC72 /* VideoListModel.m */; };
+		BBAEBC3E1C9D97650080BC72 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAEBC3C1C9D97650080BC72 /* VideoListCell.m */; };
+		BBAEBC3F1C9D97650080BC72 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBAEBC3D1C9D97650080BC72 /* VideoListCell.xib */; };
 		BBB66E661C61AD9100377A7A /* MovieAwardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB66E641C61AD9100377A7A /* MovieAwardCell.m */; };
 		BBB66E671C61AD9100377A7A /* MovieAwardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB66E651C61AD9100377A7A /* MovieAwardCell.xib */; };
 		BBB8429F1C8D6D0900C51F6F /* LongCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB8429D1C8D6D0900C51F6F /* LongCommentCell.m */; };
@@ -1261,7 +1264,6 @@
 		BBC519071C584C40007BF606 /* DirectorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC519061C584C40007BF606 /* DirectorModel.m */; };
 		BBC5190A1C584DC1007BF606 /* MovieStyleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC519091C584DC1007BF606 /* MovieStyleModel.m */; };
 		BBC5190D1C585387007BF606 /* MovieReleaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC5190C1C585387007BF606 /* MovieReleaseModel.m */; };
-		BBC519131C58630E007BF606 /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC519121C58630E007BF606 /* VideoModel.m */; };
 		BBCC1B081C5A139A003ECE6E /* CitiesChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCC1B061C5A139A003ECE6E /* CitiesChoiceViewController.m */; };
 		BBCC1B091C5A139A003ECE6E /* CitiesChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBCC1B071C5A139A003ECE6E /* CitiesChoiceViewController.xib */; };
 		BBCC1B0C1C5A18FB003ECE6E /* UIView+ZQLTransitonAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCC1B0B1C5A18FB003ECE6E /* UIView+ZQLTransitonAnimation.m */; };
@@ -1276,6 +1278,7 @@
 		BBD053651C630B5400C2BF2F /* ImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD053631C630B5400C2BF2F /* ImagesCell.xib */; };
 		BBF1CAD41C8FF78700B5B047 /* ADImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF1CAD21C8FF78700B5B047 /* ADImageCell.m */; };
 		BBF1CAD51C8FF78700B5B047 /* ADImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF1CAD31C8FF78700B5B047 /* ADImageCell.xib */; };
+		BBF6F3781CA03165007FC0E9 /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF6F3771CA03165007FC0E9 /* VideoModel.m */; };
 		BBFAF8821C8E74A2006EE41A /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFAF8811C8E74A2006EE41A /* SectionHeaderView.m */; };
 		BBFAF8841C8E74B5006EE41A /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFAF8831C8E74B5006EE41A /* SectionHeaderView.xib */; };
 		BBFAF8871C8E9F89006EE41A /* TestHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFAF8861C8E9F89006EE41A /* TestHeaderView.m */; };
@@ -2671,6 +2674,11 @@
 		BB70922C1C6194E8007C6918 /* MovieGoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieGoodsCell.xib; sourceTree = "<group>"; };
 		BB8A24C61C6857D60064EE7D /* ActorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorModel.h; sourceTree = "<group>"; };
 		BB8A24C71C6857D60064EE7D /* ActorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorModel.m; sourceTree = "<group>"; };
+		BBAEBC351C9D95060080BC72 /* VideoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListModel.h; sourceTree = "<group>"; };
+		BBAEBC361C9D95060080BC72 /* VideoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListModel.m; sourceTree = "<group>"; };
+		BBAEBC3B1C9D97650080BC72 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
+		BBAEBC3C1C9D97650080BC72 /* VideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListCell.m; sourceTree = "<group>"; };
+		BBAEBC3D1C9D97650080BC72 /* VideoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
 		BBB66E631C61AD9100377A7A /* MovieAwardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieAwardCell.h; sourceTree = "<group>"; };
 		BBB66E641C61AD9100377A7A /* MovieAwardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieAwardCell.m; sourceTree = "<group>"; };
 		BBB66E651C61AD9100377A7A /* MovieAwardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieAwardCell.xib; sourceTree = "<group>"; };
@@ -2696,8 +2704,6 @@
 		BBC519091C584DC1007BF606 /* MovieStyleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieStyleModel.m; sourceTree = "<group>"; };
 		BBC5190B1C585387007BF606 /* MovieReleaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieReleaseModel.h; sourceTree = "<group>"; };
 		BBC5190C1C585387007BF606 /* MovieReleaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieReleaseModel.m; sourceTree = "<group>"; };
-		BBC519111C58630E007BF606 /* VideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoModel.h; sourceTree = "<group>"; };
-		BBC519121C58630E007BF606 /* VideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoModel.m; sourceTree = "<group>"; };
 		BBCC1B051C5A139A003ECE6E /* CitiesChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitiesChoiceViewController.h; sourceTree = "<group>"; };
 		BBCC1B061C5A139A003ECE6E /* CitiesChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitiesChoiceViewController.m; sourceTree = "<group>"; };
 		BBCC1B071C5A139A003ECE6E /* CitiesChoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CitiesChoiceViewController.xib; sourceTree = "<group>"; };
@@ -2720,6 +2726,8 @@
 		BBF1CAD11C8FF78700B5B047 /* ADImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADImageCell.h; sourceTree = "<group>"; };
 		BBF1CAD21C8FF78700B5B047 /* ADImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADImageCell.m; sourceTree = "<group>"; };
 		BBF1CAD31C8FF78700B5B047 /* ADImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADImageCell.xib; sourceTree = "<group>"; };
+		BBF6F3761CA03165007FC0E9 /* VideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoModel.h; sourceTree = "<group>"; };
+		BBF6F3771CA03165007FC0E9 /* VideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoModel.m; sourceTree = "<group>"; };
 		BBFAF8801C8E74A2006EE41A /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderView.h; sourceTree = "<group>"; };
 		BBFAF8811C8E74A2006EE41A /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderView.m; sourceTree = "<group>"; };
 		BBFAF8831C8E74B5006EE41A /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
@@ -4596,8 +4604,19 @@
 				BBB66E621C61AD5600377A7A /* BoxOfficeAwardBoxCell */,
 				BB70922F1C6194EE007C6918 /* RelatedGoodCell */,
 				BB6F06101C5F361500056A01 /* MovieHeaderView */,
+				BB34AA3E1C9E458E0067F8EF /* VideoListCell */,
 			);
 			name = MovieDetail;
+			sourceTree = "<group>";
+		};
+		BB34AA3E1C9E458E0067F8EF /* VideoListCell */ = {
+			isa = PBXGroup;
+			children = (
+				BBAEBC3B1C9D97650080BC72 /* VideoListCell.h */,
+				BBAEBC3C1C9D97650080BC72 /* VideoListCell.m */,
+				BBAEBC3D1C9D97650080BC72 /* VideoListCell.xib */,
+			);
+			name = VideoListCell;
 			sourceTree = "<group>";
 		};
 		BB6F060F1C5F35FA00056A01 /* CitySectionHeaderView */ = {
@@ -4623,6 +4642,8 @@
 		BB7092221C618486007C6918 /* MovieDetailModel */ = {
 			isa = PBXGroup;
 			children = (
+				BBF6F3761CA03165007FC0E9 /* VideoModel.h */,
+				BBF6F3771CA03165007FC0E9 /* VideoModel.m */,
 				BBC519021C584962007BF606 /* MovieDetailModel.h */,
 				BBC519031C584962007BF606 /* MovieDetailModel.m */,
 				BBC519051C584C40007BF606 /* DirectorModel.h */,
@@ -4635,8 +4656,6 @@
 				BB0C44761C5DFE6A00CB2C35 /* FestivalModel.m */,
 				BBC5190B1C585387007BF606 /* MovieReleaseModel.h */,
 				BBC5190C1C585387007BF606 /* MovieReleaseModel.m */,
-				BBC519111C58630E007BF606 /* VideoModel.h */,
-				BBC519121C58630E007BF606 /* VideoModel.m */,
 				BB0C44781C5E028600CB2C35 /* AwardModel.h */,
 				BB0C44791C5E028600CB2C35 /* AwardModel.m */,
 				BB0C447B1C5E07B200CB2C35 /* WinAwardModel.h */,
@@ -4670,6 +4689,15 @@
 				BB70922C1C6194E8007C6918 /* MovieGoodsCell.xib */,
 			);
 			name = RelatedGoodCell;
+			sourceTree = "<group>";
+		};
+		BBAEBC341C9D94D50080BC72 /* MovieVideoModel */ = {
+			isa = PBXGroup;
+			children = (
+				BBAEBC351C9D95060080BC72 /* VideoListModel.h */,
+				BBAEBC361C9D95060080BC72 /* VideoListModel.m */,
+			);
+			name = MovieVideoModel;
 			sourceTree = "<group>";
 		};
 		BBB66E621C61AD5600377A7A /* BoxOfficeAwardBoxCell */ = {
@@ -4727,6 +4755,7 @@
 		BBC519011C584917007BF606 /* MovieDetailModels */ = {
 			isa = PBXGroup;
 			children = (
+				BBAEBC341C9D94D50080BC72 /* MovieVideoModel */,
 				BBB842A61C8D716000C51F6F /* MovieCommentModel */,
 				BB7092231C61849C007C6918 /* MovieGoodModel */,
 				BB7092221C618486007C6918 /* MovieDetailModel */,
@@ -5987,6 +6016,7 @@
 				4EC7D1E31C452DD1009B5C11 /* icon_search_buy@3x.png in Resources */,
 				4EC7D2451C452DD1009B5C11 /* pic_share_weibosina.png in Resources */,
 				4EC7D1871C452DD1009B5C11 /* icon_hotshow_new_movie@3x.png in Resources */,
+				BBAEBC3F1C9D97650080BC72 /* VideoListCell.xib in Resources */,
 				4EC7D4481C452DD1009B5C11 /* girl@3x.png in Resources */,
 				4EC7CBBD1C4525D5009B5C11 /* DiscoveryViewController.xib in Resources */,
 				4EC7D2D21C452DD1009B5C11 /* themore_feedback@3x.png in Resources */,
@@ -6089,6 +6119,7 @@
 				4E0606B81C50F16C00F230BC /* MovieDetailThreeCell.m in Sources */,
 				BBFAF8871C8E9F89006EE41A /* TestHeaderView.m in Sources */,
 				4ECEC4BF1C425F5000EF0113 /* ZQLBaseViewController.m in Sources */,
+				BBF6F3781CA03165007FC0E9 /* VideoModel.m in Sources */,
 				4ECDE1591C43B48D00813DBA /* DJRefresh.m in Sources */,
 				4ECDE1711C43B48D00813DBA /* NSManagedObject+MagicalRecord.m in Sources */,
 				BB0C44721C5C5CE000CB2C35 /* MovieHeaderView.m in Sources */,
@@ -6121,11 +6152,13 @@
 				BB1C55E41C84768F0074DA4F /* UILabel+CustomLabel.m in Sources */,
 				4ED0DD851C40F71600E1AFB0 /* AppDelegate.m in Sources */,
 				4ECDE1731C43B48D00813DBA /* NSManagedObjectContext+MagicalChainSave.m in Sources */,
+				BBAEBC371C9D95060080BC72 /* VideoListModel.m in Sources */,
 				BBC519041C584962007BF606 /* MovieDetailModel.m in Sources */,
 				4ECDE16B1C43B48D00813DBA /* NSObject+MagicalDataImport.m in Sources */,
 				4E9A0CE81C49220B001AB75E /* UIImageView+LBBlurredImage.m in Sources */,
 				4ECDE1A01C43E15800813DBA /* ZQLBaseModel.m in Sources */,
 				4E3B26801C46459D00A40FD7 /* SubGoodModel.m in Sources */,
+				BBAEBC3E1C9D97650080BC72 /* VideoListCell.m in Sources */,
 				4EC4935B1C5085E400D9430A /* AFURLRequestSerialization.m in Sources */,
 				4EC2D06A1C51C1F700E882DF /* ImageModel.m in Sources */,
 				4ECDE17B1C43B48D00813DBA /* MagicalRecord+Actions.m in Sources */,
@@ -6138,7 +6171,6 @@
 				4ECDE17D1C43B48D00813DBA /* MagicalRecord+iCloud.m in Sources */,
 				4ECDE1691C43B48D00813DBA /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				BB7092261C6184CA007C6918 /* MovieGoodModel.m in Sources */,
-				BBC519131C58630E007BF606 /* VideoModel.m in Sources */,
 				4ECDE1781C43B48D00813DBA /* NSManagedObjectModel+MagicalRecord.m in Sources */,
 				4ECDE1721C43B48D00813DBA /* NSManagedObject+MagicalRequests.m in Sources */,
 				BB7092291C618581007C6918 /* GoodItemModel.m in Sources */,

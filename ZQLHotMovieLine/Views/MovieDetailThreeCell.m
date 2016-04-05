@@ -48,6 +48,7 @@
                 
                 newImageView.image = image;
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    //如何在下载完刷新tableView
                     [imageView addSubview:newImageView];
                     imageView.clipsToBounds = YES;
                 });

@@ -53,6 +53,7 @@ static NSString * const sectionViewID = @"sectionHeaderView";
 {
     UIButton * cityButton;
     CGSize imageSize;
+    HotMovieModel * _hotMovieModel;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -294,6 +295,7 @@ static NSString * const sectionViewID = @"sectionHeaderView";
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
     if (section == HotPoint) {
         return [self settingTableViewFooterView];
     }
@@ -345,14 +347,14 @@ static NSString * const sectionViewID = @"sectionHeaderView";
             case PerfectMovie:{
                 PerfectMovieCell * cell = [tableView dequeueReusableCellWithIdentifier:perfectMovieCellID forIndexPath:indexPath];
                 //容错
-                HotMovieModel * model = self.baseDataSource[PerfectMovie][indexPath.row];
+                _hotMovieModel = self.baseDataSource[PerfectMovie][indexPath.row];
                 
-                if (!model.newsId) {
+                if (!_hotMovieModel.movie) {
                     return cell;
                 }
 
                 
-                cell.model = model;
+                cell.model = _hotMovieModel;
                 
                 return cell;
             }
@@ -389,9 +391,13 @@ static NSString * const sectionViewID = @"sectionHeaderView";
 
         }
             break;
-        case PerfectMovie:
+        case PerfectMovie:{
+            if (!_hotMovieModel.movie) {
+                return 0;
+            }
             return 260;
             break;
+        }
         default:
             return 0;
             break;
@@ -399,16 +405,14 @@ static NSString * const sectionViewID = @"sectionHeaderView";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     switch (section) {
-        case Market:
-            return 40;
-            break;
+            
         case Adver:
             return 10;
-            break;
-        case HotPoint:
-            return 40;
-            break;
-            
+        case PerfectMovie:{
+            if (!_hotMovieModel.movie) {
+                return 10;
+            }
+        }
         default:
             return 40;
             break;

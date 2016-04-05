@@ -240,10 +240,13 @@ static NSString * shortCommentCellID = @"sComCell";
             return 0;
         }
         return 115;
+        
     }else if(indexPath.section == Images){
         return ((ZScreenWidth - 54) / 4.0f + 46 + 15);
+        
     }else if (indexPath.section == Goods && _goodModel.goodsList.count != 0){
         return 240;
+        
     }else if (indexPath.section == LongComment){
         CGRect rect = [_longCommentDetailModel.content boundingRectWithSize:CGSizeMake(ZScreenWidth - 30, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} context:nil];
         if (rect.size.height > 43) {
@@ -255,6 +258,7 @@ static NSString * shortCommentCellID = @"sComCell";
     }else if (indexPath.section == ShortComment && self.baseDataSource.count != 0){
         SCommentModel * model = self.baseDataSource[indexPath.row];
         CGRect rect = [model.ce boundingRectWithSize:CGSizeMake(ZScreenWidth - 77, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil];
+        //包含图片和不包含图片的评论
         if ([model.ceimg isEqualToString:@""]) {
             if (rect.size.height > 70) {
                 return 180;

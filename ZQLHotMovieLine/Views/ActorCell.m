@@ -43,6 +43,8 @@
     self.directorNameCh.text = _model.director.directorName;
     self.directorNameEn.text = _model.director.directorNameEn;
     
+    
+    //-------容错还没做--------
     ActorModel * actor1 = _model.actorList[0];
     ActorModel * actor2 = _model.actorList[1];
     

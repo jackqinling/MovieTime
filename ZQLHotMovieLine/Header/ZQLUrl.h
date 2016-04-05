@@ -38,6 +38,12 @@
 //http://api.m.mtime.cn/Movie/HotLongComments.api?movieId=164011&pageIndex=2
 #define ShortCommentUrl @"http://api.m.mtime.cn/Showtime/MovieComments.api"
 //http://api.m.mtime.cn/Showtime/MovieComments.api?movieId=205222&pageIndex=1
+
+//电影预告片&拍摄花絮
+//传入movieId  和  pageIndex 对应videoList键 返回数组
+//http://api.m.mtime.cn/Movie/Video.api?movieId=205222&pageIndex=1
+#define VideoListUrl @"http://api.m.mtime.cn/Movie/Video.api"
+
 /*******购票  第二页********/
 //上映的电影
 #define ShowingUrl @"http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=290"

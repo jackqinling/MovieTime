@@ -63,11 +63,20 @@
         time = interval / 60 / 60 / 60 / 24;
     }
     NSLog(@"%ld", time);
-    [str insertString:[NSString stringWithFormat:@"%ld", time] atIndex:0];
-    [str appendString:[NSString stringWithFormat:@" - 评 %.1f", _model.cr.floatValue]];
     
-    NSMutableAttributedString * atrStr = [[NSMutableAttributedString alloc] initWithString:str];
-    [atrStr setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13], NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor greenBack]} range:NSMakeRange(str.length - 3, 3)];
+    
+    NSMutableAttributedString * atrStr;
+    [str insertString:[NSString stringWithFormat:@"%ld", time] atIndex:0];
+    if (_model.cr.floatValue == 10.0f) {
+        [str appendString:[NSString stringWithFormat:@" - 评 %ld", _model.cr.integerValue]];
+        atrStr = [[NSMutableAttributedString alloc] initWithString:str];
+        [atrStr setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13], NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor greenBack]} range:NSMakeRange(str.length - 2, 2)];
+    }else{
+        [str appendString:[NSString stringWithFormat:@" - 评 %.1f", _model.cr.floatValue]];
+        atrStr = [[NSMutableAttributedString alloc] initWithString:str];
+        [atrStr setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13], NSForegroundColorAttributeName:[UIColor whiteColor], NSBackgroundColorAttributeName:[UIColor greenBack]} range:NSMakeRange(str.length - 3, 3)];
+    }
+    
     self.ratingLabel.attributedText = atrStr;
 }
 
