@@ -29,7 +29,9 @@
 }
 
 - (void)setModel:(LongCommentModel *)model{
-    
+    if (model.totalCount == 0) {
+        return;
+    }
     _model = model;
     if (_model.comments.count != 0) {
         self.totalLabel.text = [NSString stringWithFormat:@"精选影评(%@)", _model.totalCount];

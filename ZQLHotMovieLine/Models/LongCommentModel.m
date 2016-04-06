@@ -12,7 +12,9 @@
 
 + (NSArray *)arrayOfModelsFromJson:(id)object{
     
+
     LongCommentModel * model = [[self alloc] initWithDictionary:object error:nil];
+  
     return @[model];
 }
 @end

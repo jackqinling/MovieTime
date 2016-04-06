@@ -79,8 +79,8 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这部片子在刷票房大家拉风的京东方;奢望后;艾弗森就阿瑟会;啊额厉害;为哈我一护额阿富汗就会收到了空间卡升级啊发发发发发这部片子在刷票房大家拉风的京东方;奢望后;艾弗森就阿瑟会;啊额厉害;为哈我一护额阿富汗就会收到了空间卡升级" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ac-tp-6T4">
-                        <rect key="frame" x="75" y="59.5" width="245" height="78"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="这部片子在刷票房大家拉风的京东方;奢望后;艾弗森就阿瑟会;啊额厉害;为哈我一护额阿富汗就会收到了空间卡升级啊发发发发发这部片子在刷票房大家拉风的京东方;奢望后;艾弗森就阿瑟会;啊额厉害;为哈我一护额阿富汗就会收到了空间卡升级" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ac-tp-6T4">
+                        <rect key="frame" x="75" y="59" width="245" height="78"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -141,13 +141,20 @@
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <imageView hidden="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d7b-Xx-Nll" customClass="ZQLDefinedImageView">
-                        <rect key="frame" x="75" y="145.5" width="120" height="70"/>
+                    <imageView hidden="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d7b-Xx-Nll" customClass="ZQLDefinedImageView">
+                        <rect key="frame" x="75" y="145" width="120" height="70"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="J4m-5v-hZO"/>
                             <constraint firstAttribute="width" constant="120" id="JQv-ro-vcU"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stt-Xd-8hA">
+                        <rect key="frame" x="0.0" y="332.5" width="345" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="UZP-vu-Zcm"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="LpH-aY-TIK" firstAttribute="top" secondItem="9Ac-tp-6T4" secondAttribute="bottom" constant="5" id="10U-r3-KL5"/>
@@ -155,10 +162,13 @@
                     <constraint firstItem="I4K-39-EoA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1o2-py-xsP"/>
                     <constraint firstItem="d7b-Xx-Nll" firstAttribute="top" secondItem="9Ac-tp-6T4" secondAttribute="bottom" constant="8" id="7lv-9u-D9y"/>
                     <constraint firstItem="fOI-jA-oma" firstAttribute="leading" secondItem="2Vp-wg-3aQ" secondAttribute="trailing" constant="3" id="8FU-4g-CIg"/>
+                    <constraint firstAttribute="trailing" secondItem="stt-Xd-8hA" secondAttribute="trailing" id="AhW-zW-UVj"/>
                     <constraint firstItem="pYb-S4-vpW" firstAttribute="centerY" secondItem="LZj-h1-6BU" secondAttribute="centerY" id="B8M-VO-W3o"/>
                     <constraint firstItem="c5r-oJ-9FI" firstAttribute="top" secondItem="I4K-39-EoA" secondAttribute="bottom" constant="4" id="CD5-dj-iPA"/>
                     <constraint firstItem="mgO-2s-FaA" firstAttribute="top" secondItem="c5r-oJ-9FI" secondAttribute="top" id="Esx-y6-aMT"/>
                     <constraint firstItem="fOI-jA-oma" firstAttribute="centerY" secondItem="2Vp-wg-3aQ" secondAttribute="centerY" id="G3o-6V-dLF"/>
+                    <constraint firstAttribute="bottom" secondItem="stt-Xd-8hA" secondAttribute="bottom" constant="1" id="G68-IM-MbL"/>
+                    <constraint firstItem="stt-Xd-8hA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Mib-Kh-S3W"/>
                     <constraint firstItem="2Vp-wg-3aQ" firstAttribute="centerY" secondItem="9p6-mi-N7R" secondAttribute="centerY" id="RFH-aQ-drI"/>
                     <constraint firstAttribute="trailing" secondItem="LpH-aY-TIK" secondAttribute="trailing" constant="26" id="RbE-ZA-IHe"/>
                     <constraint firstItem="LpH-aY-TIK" firstAttribute="bottom" secondItem="9p6-mi-N7R" secondAttribute="bottom" id="TCc-gI-pZg"/>

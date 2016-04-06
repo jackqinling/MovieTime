@@ -45,6 +45,9 @@
     
     
     //-------容错还没做--------
+    if (!_model.actorList.count) {
+        return;
+    }
     ActorModel * actor1 = _model.actorList[0];
     ActorModel * actor2 = _model.actorList[1];
     

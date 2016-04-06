@@ -26,7 +26,7 @@
 //http://api.m.mtime.cn/Search/RelatedGoodsById.api?relatedId=177861&relatedObjType=1
 //传入movieId
 #define ActorsUrl @"http://m.mtime.cn/Service/callback.mi/Movie/MovieCreditsWithTypes.api"
-//http://m.mtime.cn/Service/callback.mi/movie/Detail.api?locationId=290&movieId=192895
+//http://m.mtime.cn/Service/callback.mi/movie/Detail.api?locationId=290&movieId=229451
 //http://api.m.mtime.cn/Advertisement/MovieDetailAdvertisement.api?locationId=290&movieId=209410
 #define CityUrl @"http://m.mtime.cn/Service/callback.mi/Showtime/HotCitiesByCinema.api"
 
@@ -35,7 +35,7 @@
 //评论
 #define LongCommentUrl @"http://api.m.mtime.cn/Movie/HotLongComments.api"
 //传入 movieId 164011 pageIndex
-//http://api.m.mtime.cn/Movie/HotLongComments.api?movieId=164011&pageIndex=2
+//http://api.m.mtime.cn/Movie/HotLongComments.api?movieId=229451&pageIndex=1
 #define ShortCommentUrl @"http://api.m.mtime.cn/Showtime/MovieComments.api"
 //http://api.m.mtime.cn/Showtime/MovieComments.api?movieId=205222&pageIndex=1
 

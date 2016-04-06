@@ -57,10 +57,10 @@ static NSString * shortCommentCellID = @"sComCell";
     MovieGoodModel * _goodModel;
     //长评论
     LongCommentModel * _longCommentModel;
-    CommentDetailModel * _longCommentDetailModel;
+    CommentDetailModel * _longCommentDetailModel;//算行高用
     //短评论
     ShortCommentModel * _shortCommentModel;
-    SCommentModel * _shortCommentDetailModel;
+    SCommentModel * _shortCommentDetailModel;//算行高用
     
     int _page[2];
 
@@ -141,6 +141,7 @@ static NSString * shortCommentCellID = @"sComCell";
     self.baseTableView.delegate = self;
     self.baseTableView.dataSource = self;
     self.baseTableView.backgroundColor = [UIColor randomColor];
+    self.baseTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.baseTableView.bounces = NO;
     self.baseTableView.tableFooterView = [[UIView alloc] init];
     self.baseTableView.contentInset = UIEdgeInsetsMake(HeaderViewHeight + StatusBarHeight - 60, 0, 0, 0);
@@ -251,6 +252,10 @@ static NSString * shortCommentCellID = @"sComCell";
         return 240;
         
     }else if (indexPath.section == LongComment){
+        //若无长评论
+        if (_longCommentDetailModel == nil) {
+            return 0.1;
+        }
         CGRect rect = [_longCommentDetailModel.content boundingRectWithSize:CGSizeMake(ZScreenWidth - 30, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} context:nil];
         if (rect.size.height > 43) {
             return 180;
@@ -266,13 +271,13 @@ static NSString * shortCommentCellID = @"sComCell";
             if (rect.size.height > 70) {
                 return 180;
             }else{
-                return (110 + rect.size.height);
+                return (105 + rect.size.height);
             }
         }else{
             if (rect.size.height > 70) {
-                return 240;
+                return 250;
             }else{
-                return (170 + rect.size.height);
+                return (190 + rect.size.height);
             }
         }
         
@@ -287,6 +292,33 @@ static NSString * shortCommentCellID = @"sComCell";
     return 1;
 }
 
+- (UIView *)sectionHeaderView{
+    
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth, 47)];
+    view.backgroundColor = [UIColor whiteColor];
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, ZScreenWidth, 46)];
+    label.font = [UIFont systemFontOfSize:13];
+    label.text = [NSString stringWithFormat:@"网友短评(%@)", _shortCommentModel.totalCount];
+    UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth, 46)];
+    button.backgroundColor = [UIColor clearColor];
+    [button addTarget:self action:@selector(onClickShortComment) forControlEvents:UIControlEventTouchUpInside];
+    
+    [view addSubview:button];
+    
+    [view addSubview:label];
+    return view;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    if (section == ShortComment) {
+        return [self sectionHeaderView];
+    }
+    return nil;
+}
+
+- (void)onClickShortComment{
+    NSLog(@"短评");
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == Actor) {
@@ -337,10 +369,22 @@ static NSString * shortCommentCellID = @"sComCell";
                 if (success) {
                     _longCommentModel = object[0][0];
                     cell.model = _longCommentModel;
-                    _longCommentDetailModel = _longCommentModel.comments[0];
+                    if (_longCommentModel.comments.count == 0) {
+                        _longCommentDetailModel = nil;
+                        return;
+
+                    }else{
+                        _longCommentDetailModel = _longCommentModel.comments[0];
+                    }
+
                     [self.baseTableView reloadData];
                 }
             } modelClassNameArray:@[@"LongCommentModel"]];
+        }
+        if (_longCommentDetailModel == nil) {
+            cell.contentView.hidden = YES;
+        }else{
+            cell.contentView.hidden = NO;
         }
         return cell;
     }
@@ -357,7 +401,9 @@ static NSString * shortCommentCellID = @"sComCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    
+    if (section == LongComment) {
+        return 20;
+    }
     return 0.1;
 }
 
@@ -367,6 +413,12 @@ static NSString * shortCommentCellID = @"sComCell";
     }
     if (section == Goods && _goodModel.goodsList.count == 0) {
         return 0.1;
+    }
+    if (section == LongComment && _longCommentDetailModel == nil) {
+        return 0.1;
+    }
+    if (section == ShortComment) {
+        return 46;
     }
     return 20;
 

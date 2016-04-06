@@ -73,7 +73,8 @@ static NSString * const videoCellID = @"videoCell";
     self.baseTableView.dataSource = self;
     //注册
     [self registerTableViewWithCellNibNameArray:@[@"VideoListCell"] withIdentfierArray:@[videoCellID]];
-    
+    //去多空白cell
+    self.baseTableView.tableFooterView = [[UIView alloc] init];
     //刷新插件
     DJRefresh * refresh = [[DJRefresh alloc] initWithScrollView:self.baseTableView delegate:self];
     refresh.topEnabled = YES;
