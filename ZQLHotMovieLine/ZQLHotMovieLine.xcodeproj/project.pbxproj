@@ -1243,6 +1243,9 @@
 		BB0C44891C5E0E7B00CB2C35 /* MovieImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0C44881C5E0E7B00CB2C35 /* MovieImageModel.m */; };
 		BB1639951CB3C471004D77C8 /* UIFont+ScreenFont.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1639941CB3C471004D77C8 /* UIFont+ScreenFont.m */; };
 		BB1C55E41C84768F0074DA4F /* UILabel+CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1C55E31C84768F0074DA4F /* UILabel+CustomLabel.m */; };
+		BB36F5691CB7941E00300B90 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB36F5681CB7941E00300B90 /* SearchViewController.m */; };
+		BB36F56F1CB7B22400300B90 /* BaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB36F56E1CB7B22400300B90 /* BaseManager.m */; };
+		BB36F5751CB7B2AF00300B90 /* DataCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB36F5741CB7B2AF00300B90 /* DataCacheManager.m */; };
 		BB7092261C6184CA007C6918 /* MovieGoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7092251C6184CA007C6918 /* MovieGoodModel.m */; };
 		BB7092291C618581007C6918 /* GoodItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7092281C618581007C6918 /* GoodItemModel.m */; };
 		BB70922D1C6194E8007C6918 /* MovieGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB70922B1C6194E8007C6918 /* MovieGoodsCell.m */; };
@@ -1417,7 +1420,7 @@
 		4EC730FE1C45FFA5009D0C6D /* adverGotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = adverGotoModel.m; sourceTree = "<group>"; };
 		4EC731041C4609CD009D0C6D /* hotPointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hotPointModel.h; sourceTree = "<group>"; };
 		4EC731051C4609CD009D0C6D /* hotPointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hotPointModel.m; sourceTree = "<group>"; };
-		4EC7CAAD1C44D316009B5C11 /* ZQLScreenMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQLScreenMacro.h; sourceTree = "<group>"; };
+		4EC7CAAD1C44D316009B5C11 /* ZQLScreenMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZQLScreenMacro.h; path = ../Header/ZQLScreenMacro.h; sourceTree = "<group>"; };
 		4EC7CBA71C452522009B5C11 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		4EC7CBA81C452522009B5C11 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		4EC7CBA91C452522009B5C11 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -2668,6 +2671,12 @@
 		BB1639941CB3C471004D77C8 /* UIFont+ScreenFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ScreenFont.m"; sourceTree = "<group>"; };
 		BB1C55E21C84768F0074DA4F /* UILabel+CustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CustomLabel.h"; sourceTree = "<group>"; };
 		BB1C55E31C84768F0074DA4F /* UILabel+CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CustomLabel.m"; sourceTree = "<group>"; };
+		BB36F5671CB7941E00300B90 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		BB36F5681CB7941E00300B90 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		BB36F56D1CB7B22400300B90 /* BaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseManager.h; sourceTree = "<group>"; };
+		BB36F56E1CB7B22400300B90 /* BaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseManager.m; sourceTree = "<group>"; };
+		BB36F5731CB7B2AF00300B90 /* DataCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCacheManager.h; sourceTree = "<group>"; };
+		BB36F5741CB7B2AF00300B90 /* DataCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCacheManager.m; sourceTree = "<group>"; };
 		BB7092241C6184CA007C6918 /* MovieGoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieGoodModel.h; sourceTree = "<group>"; };
 		BB7092251C6184CA007C6918 /* MovieGoodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieGoodModel.m; sourceTree = "<group>"; };
 		BB7092271C618581007C6918 /* GoodItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodItemModel.h; sourceTree = "<group>"; };
@@ -4409,11 +4418,11 @@
 		4ED0DD731C40F71600E1AFB0 = {
 			isa = PBXGroup;
 			children = (
+				BB36F56B1CB7B16800300B90 /* Service */,
 				4ED691391C49DFD1004E7CE3 /* FrameWorks */,
 				4EC730EB1C45DB3D009D0C6D /* Category */,
 				4ED0DDA91C40F8AF00E1AFB0 /* CoreData */,
 				4ED0DDAA1C40F8AF00E1AFB0 /* Header */,
-				4ED0DDAB1C40F8AF00E1AFB0 /* Manager */,
 				4ED0DDAC1C40F8AF00E1AFB0 /* Marco */,
 				4ED0DDAD1C40F8AF00E1AFB0 /* Models */,
 				4ED0DDAE1C40F8AF00E1AFB0 /* Other */,
@@ -4479,6 +4488,8 @@
 		4ED0DDA81C40F8AF00E1AFB0 /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
+				BB36F56D1CB7B22400300B90 /* BaseManager.h */,
+				BB36F56E1CB7B22400300B90 /* BaseManager.m */,
 				4ECEC4BC1C425F5000EF0113 /* ZQLBaseViewController.h */,
 				4ECEC4BD1C425F5000EF0113 /* ZQLBaseViewController.m */,
 				4ECEC4BE1C425F5000EF0113 /* ZQLBaseViewController.xib */,
@@ -4503,7 +4514,6 @@
 			isa = PBXGroup;
 			children = (
 				4ED0DDB21C40F9C300E1AFB0 /* ZQLUrl.h */,
-				4EC7CAAD1C44D316009B5C11 /* ZQLScreenMacro.h */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -4524,6 +4534,7 @@
 		4ED0DDAC1C40F8AF00E1AFB0 /* Marco */ = {
 			isa = PBXGroup;
 			children = (
+				4EC7CAAD1C44D316009B5C11 /* ZQLScreenMacro.h */,
 			);
 			path = Marco;
 			sourceTree = "<group>";
@@ -4561,6 +4572,7 @@
 		4ED0DDB01C40F8AF00E1AFB0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB36F5661CB793FB00300B90 /* Search */,
 				BBCC1AFC1C5A0EC2003ECE6E /* Home */,
 				BBDE47361C567C0200E33DA8 /* Discovery */,
 				BBDE47371C567C2A00E33DA8 /* Me */,
@@ -4622,6 +4634,33 @@
 				BBAEBC3D1C9D97650080BC72 /* VideoListCell.xib */,
 			);
 			name = VideoListCell;
+			sourceTree = "<group>";
+		};
+		BB36F5661CB793FB00300B90 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				BB36F5671CB7941E00300B90 /* SearchViewController.h */,
+				BB36F5681CB7941E00300B90 /* SearchViewController.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		BB36F56B1CB7B16800300B90 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BB36F56C1CB7B19200300B90 /* DataCacheManager */,
+				4ED0DDAB1C40F8AF00E1AFB0 /* Manager */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		BB36F56C1CB7B19200300B90 /* DataCacheManager */ = {
+			isa = PBXGroup;
+			children = (
+				BB36F5731CB7B2AF00300B90 /* DataCacheManager.h */,
+				BB36F5741CB7B2AF00300B90 /* DataCacheManager.m */,
+			);
+			name = DataCacheManager;
 			sourceTree = "<group>";
 		};
 		BB6F060F1C5F35FA00056A01 /* CitySectionHeaderView */ = {
@@ -6131,6 +6170,7 @@
 				4E3B26941C46748200A40FD7 /* NeareastModel.m in Sources */,
 				BBC519071C584C40007BF606 /* DirectorModel.m in Sources */,
 				4ECDE16D1C43B48D00813DBA /* NSString+MagicalDataImport.m in Sources */,
+				BB36F5691CB7941E00300B90 /* SearchViewController.m in Sources */,
 				4EC730FC1C45FEEF009D0C6D /* adverParaModel.m in Sources */,
 				BBB842B21C8DAC8100C51F6F /* SCommentModel.m in Sources */,
 				4ECDE18A1C43B48D00813DBA /* View+MASAdditions.m in Sources */,
@@ -6139,6 +6179,7 @@
 				BB0C447A1C5E028600CB2C35 /* AwardModel.m in Sources */,
 				BB0C44891C5E0E7B00CB2C35 /* MovieImageModel.m in Sources */,
 				BBFAF8821C8E74A2006EE41A /* SectionHeaderView.m in Sources */,
+				BB36F56F1CB7B22400300B90 /* BaseManager.m in Sources */,
 				4ECDE17C1C43B48D00813DBA /* MagicalRecord+ErrorHandling.m in Sources */,
 				4EC7CBB21C45256B009B5C11 /* TicketViewController.m in Sources */,
 				BBD0535E1C62F99100C2BF2F /* ActorCell.m in Sources */,
@@ -6187,6 +6228,7 @@
 				4E9EA5BC1C4A182A00B196A9 /* ZQLDefinedImageView.m in Sources */,
 				4ECDE19D1C43B4BD00813DBA /* ZQLRootVCManager.m in Sources */,
 				BBB842A91C8D718800C51F6F /* LongCommentModel.m in Sources */,
+				BB36F5751CB7B2AF00300B90 /* DataCacheManager.m in Sources */,
 				BBCC1B0C1C5A18FB003ECE6E /* UIView+ZQLTransitonAnimation.m in Sources */,
 				4E3B26911C466F1700A40FD7 /* MovieModel.m in Sources */,
 				4ECDE16E1C43B48D00813DBA /* NSManagedObject+MagicalAggregation.m in Sources */,

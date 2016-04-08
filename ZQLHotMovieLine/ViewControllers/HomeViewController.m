@@ -19,6 +19,7 @@
 #import "CitiesChoiceViewController.h"
 #import "HotMovieModel.h"
 #import "SectionHeaderView.h"
+#import "SearchViewController.h"
 
 #define HeaderHeight 200
 
@@ -156,13 +157,15 @@ static NSString * const sectionViewID = @"sectionHeaderView";
     titlView.image = titleImage;
     self.navigationItem.titleView = titlView;
     
-
-
 }
 
 #pragma mark NaviItem点击方法
 - (void)onClickItem:(UIBarButtonItem *)button{
-    NSLog(@"right");
+    
+    if (self.navigationItem.rightBarButtonItems[0] == button) {
+        SearchViewController * svc = [[SearchViewController alloc] init];
+        [self.navigationController pushViewController:svc animated:YES];
+    }
 }
 - (void)onClickDiscover:(UIButton *)button{
     NSLog(@"find");

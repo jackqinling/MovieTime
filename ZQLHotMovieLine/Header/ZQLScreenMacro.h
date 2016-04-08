@@ -16,5 +16,8 @@
 #define TabBarHeight 49.0
 #define StatusBarHeight 20.0
 #define PlaceHolder [UIImage imageNamed:@"img_120x120"]
+
+#define USER_DEFAULT [NSUserDefaults standardUserDefaults]
+
 #endif
 
