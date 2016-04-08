@@ -371,7 +371,6 @@ static NSString * shortCommentCellID = @"sComCell";
                     cell.model = _longCommentModel;
                     if (_longCommentModel.comments.count == 0) {
                         _longCommentDetailModel = nil;
-                        return;
 
                     }else{
                         _longCommentDetailModel = _longCommentModel.comments[0];

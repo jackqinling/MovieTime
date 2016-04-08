@@ -376,7 +376,7 @@ static NSString * const sectionViewID = @"sectionHeaderView";
     
     switch (indexPath.section) {
         case Market:
-            return ZScreenWidth * 1.10;
+            return ZScreenWidth * 1.08;
             break;
         case Adver:
             return ZScreenWidth / 4.0f;

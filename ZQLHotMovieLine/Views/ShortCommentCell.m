@@ -45,7 +45,7 @@
         [self.commentImageView setImageWithURL:[NSURL URLWithString:_model.ceimg] placeholderImage:PlaceHolder];
     }
     NSUInteger interval = [[NSDate date] timeIntervalSinceDate:[NSDate dateWithTimeIntervalSince1970:_model.lcd.integerValue]];
-    NSLog(@"%ld", interval);
+    
     interval = interval + 3600 * 8;
     NSUInteger time = 0;
     NSMutableString * str = [NSMutableString string];
@@ -62,7 +62,6 @@
         [str appendString:@"天前"];
         time = interval / 60 / 60 / 60 / 24;
     }
-    NSLog(@"%ld", time);
     
     
     NSMutableAttributedString * atrStr;

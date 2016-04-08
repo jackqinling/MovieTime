@@ -47,6 +47,7 @@
 
 @property (nonatomic, strong) NSArray * movies;
 
+
 + (instancetype)viewWithModel:(MovieInfoModel *)model frame:(CGRect)frame;
 
 @end

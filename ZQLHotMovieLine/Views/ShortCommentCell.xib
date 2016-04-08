@@ -150,7 +150,7 @@
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stt-Xd-8hA">
                         <rect key="frame" x="0.0" y="332.5" width="345" height="1"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="UZP-vu-Zcm"/>
                         </constraints>
