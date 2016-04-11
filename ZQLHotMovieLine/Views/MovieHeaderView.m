@@ -74,10 +74,12 @@
     
     [self.backGroundImageView setImageWithURL:[NSURL URLWithString:_model.image] placeholderImage:PlaceHolder];
     
-    UIImage * image = [UIImage imageNamed:@"v10_bt_green.png"];
-    
-//    [self.wantSeeBtn setBackgroundImage:image forState:UIControlStateNormal];
+    UIImage * image = [[UIImage imageNamed:@"v10_bt_green.png"] stretchableImageWithLeftCapWidth:40 topCapHeight:0];
+    UIImage * image2 = [[UIImage imageNamed:@"v10_bt_gray.png"] stretchableImageWithLeftCapWidth:30 topCapHeight:0];
+    UIImage * image3 = [[UIImage imageNamed:@"v10_bt_big_orange.png"] stretchableImageWithLeftCapWidth:40 topCapHeight:0];
+    [self.wantSeeBtn setBackgroundImage:image2 forState:UIControlStateNormal];
     [self.wantComment setBackgroundImage:image forState:UIControlStateNormal];
+    [self.buyTickeBtn setBackgroundImage:image3 forState:UIControlStateNormal];
 }
 - (IBAction)buyTicket:(UIButton *)sender {
     NSLog(@"我是买票");

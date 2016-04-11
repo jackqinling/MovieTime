@@ -9,11 +9,13 @@
 #import "SearchViewController.h"
 #import "SearchKeyWordsModel.h"
 
-#define KeyWordHeight 40
-#define RowGapHeight 20
-#define ColumnGapWidth 40
-#define LabelHeight 40
-#define ButBlankWidth 20
+#define KeyWordHeight 35
+#define RowGapHeight 15
+#define ColumnGapWidth 15
+#define LabelHeight 35
+#define ButBlankWidth 30
+#define PreGap 20
+
 @interface SearchViewController ()<UITextFieldDelegate>
 
 @end
@@ -50,7 +52,7 @@
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth, LabelHeight)];
     label.font = [UIFont systemFontOfSize:13];
     label.textColor = [UIColor grayColor];
-    label.backgroundColor = [UIColor lightGrayColor];
+    label.backgroundColor = [UIColor groupTableViewBackgroundColor];
     label.text = title;
     
     return label;
@@ -58,32 +60,32 @@
 - (void)settingTableHeaderView{
     
     UIView * view = [[UIView alloc] init];
-    float width = 15;
+    float width = PreGap;
     int row = 1;
     int i = 0;
     for (NSString * keyWord in _keyWordsModel.keywords) {
-        CGRect rect = [keyWord boundingRectWithSize:CGSizeMake(ZScreenWidth - 30, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
+        CGRect rect = [keyWord boundingRectWithSize:CGSizeMake(ZScreenWidth - 2 * PreGap, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
         
         width += rect.size.width + ButBlankWidth;
         
-        if (width > (ZScreenWidth - 15) * row) {
+        if (width > (ZScreenWidth - PreGap) * row) {
             row++;
-            width = rect.size.width + ButBlankWidth;
+            width = rect.size.width + ButBlankWidth + PreGap;
         }
         
-        UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(width - rect.size.width - ButBlankWidth, (row - 1) * KeyWordHeight + RowGapHeight * row + LabelHeight, rect.size.width + 10, KeyWordHeight)];
+        UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(width - rect.size.width - ButBlankWidth, (row - 1) * KeyWordHeight + RowGapHeight * row + LabelHeight, rect.size.width + 10 + ButBlankWidth / 2.0, KeyWordHeight)];
         [button addTarget:self action:@selector(onClickKeyWordButton:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:keyWord forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont systemFontOfSize:14];
+        button.titleLabel.font = [UIFont systemFontOfSize:15];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"icon_change_subway"] forState:UIControlStateNormal];
+        [button setBackgroundImage:[[UIImage imageNamed:@"icon_change_subway"] stretchableImageWithLeftCapWidth:30 topCapHeight:0] forState:UIControlStateNormal];
         [view addSubview:button];
         i++;
         
         width += ColumnGapWidth;
     }
     
-    [view addSubview:[self labelWithTitle:@"热门搜索"]];
+    [view addSubview:[self labelWithTitle:@"   热门搜索"]];
     
     [view setFrame:CGRectMake(0, 0, ZScreenWidth, LabelHeight + RowGapHeight * (row - 1) + row * KeyWordHeight)];
     
@@ -100,7 +102,7 @@
     self.navigationItem.rightBarButtonItem = item;
     
     //textField定制
-    _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth - 90, 38)];
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth - 90, 34)];
     _textField.returnKeyType = UIReturnKeySearch;
     _textField.tintColor = [UIColor blackColor];
     _textField.borderStyle = UITextBorderStyleRoundedRect;

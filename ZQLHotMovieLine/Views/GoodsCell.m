@@ -12,6 +12,9 @@
 @interface GoodsCell ()
 
 @property (strong, nonatomic) IBOutletCollection(ZQLDefinedImageView) NSArray *goodButtons;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *titleLabelArray;
+
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *desLabelArray;
 
 @end
 
@@ -23,7 +26,13 @@
     int i = 0;
     for (SubGoodModel * good in models) {
 
-        [self.goodButtons[i] setImageWithURL:[NSURL URLWithString:good.image] placeholderImage:[UIImage imageNamed:@"mtime_default_image_146x146"]];
+        [self.goodButtons[i] setImageWithURL:[NSURL URLWithString:good.image2] placeholderImage:[UIImage imageNamed:@"mtime_default_image_146x146"]];
+        UILabel * title = self.titleLabelArray[i];
+        UILabel * des = self.desLabelArray[i];
+        
+        title.text = good.title;
+        des.text = good.titleSmall;
+        
         i++;
     }
     for (ZQLDefinedImageView * button in self.goodButtons) {

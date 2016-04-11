@@ -156,10 +156,9 @@
         self.commonSpecialLabel.text = movie.commonSpecial;
         [self.detailButton setTitle:@"选座购票" forState:UIControlStateNormal];
         self.detailButton.titleLabel.font = [UIFont systemFontOfSize:18];
+        
         UIImage * image = [UIImage imageNamed:@"bt_solid_orange_50"];
-        
-        UIImage * strtch = [image stretchableImageWithLeftCapWidth:40 topCapHeight:0];
-        
+        UIImage * strtch = [image stretchableImageWithLeftCapWidth:50 topCapHeight:0];
         [self.detailButton setBackgroundImage:strtch forState:UIControlStateNormal];
         
         if ([movie.commonSpecial isEqualToString:@""]) {
