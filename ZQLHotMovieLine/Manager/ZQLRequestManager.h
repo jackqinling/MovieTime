@@ -16,4 +16,7 @@ typedef void(^Complicate)(BOOL success, id object);
 - (void)requestWithGetMethod:(NSString *)urlStr parameters:(NSDictionary *)dic complicate:(Complicate)complicate modelClassNameArray:(NSArray *)modelClassNameArray;
 
 - (void)requestWithPostMethod:(NSString *)urlStr parameters:(NSDictionary *)dic complicate:(Complicate)complicate modelClassNameArray:(NSArray *)modelClassNameArray;
+
+- (void)getWithUrl:(NSString *)urlStr parameters:(NSDictionary *)dic complicate:(Complicate)complicate modelClass:(Class)class;
+
 @end

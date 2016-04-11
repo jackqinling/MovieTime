@@ -16,6 +16,9 @@
 //首页头视图 GET
 #define HeadUrl @"http://api.m.mtime.cn/PageSubArea/HotPlayMovies.api"
 
+//搜索按钮
+#define SearchMovieUrl @"http://api.m.mtime.cn/Search/HotKeyWords.api"
+
 //电影详情页  拼locationId  movieId
 #define MovieDetailUrl @"http://m.mtime.cn/Service/callback.mi/movie/Detail.api"
 //评论详情页  传入 movieId 和 pageIndex

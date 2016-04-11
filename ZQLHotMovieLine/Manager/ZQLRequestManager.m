@@ -57,6 +57,20 @@
     
 }
 
+- (void)getWithUrl:(NSString *)urlStr parameters:(NSDictionary *)dic complicate:(Complicate)complicate modelClass:(Class)class{
+    
+    [self.manager GET:urlStr parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (complicate) {
+            NSArray * resultArray = [class arrayOfModelsFromJson:responseObject];
+            complicate(YES, resultArray);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (complicate) {
+            complicate(NO, error);
+        }
+    }];
+}
+
 - (void)requestWithPostMethod:(NSString *)urlStr parameters:(NSDictionary *)dic complicate:(Complicate)complicate modelClassNameArray:(NSArray *)modelClassNameArray{
     [self.manager POST:urlStr parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (complicate) {
