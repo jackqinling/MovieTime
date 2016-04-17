@@ -45,6 +45,22 @@
     return self;
 }
 
+- (void)setModel:(SearchMovieModel *)model{
+    
+    _model = model;
+    [self.postImageView setImageWithURL:[NSURL URLWithString:_model.img] placeholderImage:PlaceHolder];
+    
+    self.titleLabel.text = [NSString stringWithFormat:@"%@(%@)", _model.name, _model.rYear];
+    self.nameLabel.text = _model.nameEn;
+    if (_model.titleOthersCn.count != 0) {
+        self.aliasLabel.text = [NSString stringWithFormat:@"更多片名:%@", _model.titleOthersCn[0]];
+    }
+    
+    self.categoryLabel.text = _model.movieType;
+    self.nationLabel.text = _model.locationName;
+    self.scoreLabel.text = [NSString stringWithFormat:@"%.1f", [_model.rating floatValue]];
+}
+
 - (void)settingContentView{
     //初始化
     self.tableContentView = [[UIView alloc] init];
@@ -61,8 +77,10 @@
     
     //添加
     [self.contentView addSubview:_tableContentView];
+    
     [self.scoreView addSubview:_scoreLabel];
     [_tableContentView addSubview:_scoreView];
+    
     [_tableContentView addSubview:_titleLabel];
     [_tableContentView addSubview:_postImageView];
     [_tableContentView addSubview:_nameLabel];
@@ -73,17 +91,17 @@
     
     //设置属性
     self.scoreView.backgroundColor = [UIColor greenBack];
-    self.scoreLabel.font = [UIFont systemFontOfSize:10];
+    self.scoreLabel.font = [UIFont systemFontOfSize:13];
     self.scoreLabel.textColor = [UIColor whiteColor];
     
-    self.titleLabel.font = [UIFont systemFontOfSize:14];
+    self.titleLabel.font = [UIFont systemFontOfSize:15];
     self.titleLabel.numberOfLines = 0;
-    self.nameLabel.font = [UIFont systemFontOfSize:11];
-    self.nameLabel.textColor = [UIColor lightGrayColor];
-    self.aliasLabel.font = [UIFont systemFontOfSize:11];
-    self.aliasLabel.textColor = [UIColor lightGrayColor];
-    self.categoryLabel.font = [UIFont systemFontOfSize:12];
-    self.nationLabel.font = [UIFont systemFontOfSize:12];
+    self.nameLabel.font = [UIFont systemFontOfSize:13];
+    self.nameLabel.textColor = [UIColor grayColor];
+    self.aliasLabel.font = [UIFont systemFontOfSize:13];
+    self.aliasLabel.textColor = [UIColor grayColor];
+    self.categoryLabel.font = [UIFont systemFontOfSize:14];
+    self.nationLabel.font = [UIFont systemFontOfSize:14];
     
     //设置约束
     WS(weakSelf);
@@ -93,39 +111,40 @@
     [_postImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(weakSelf.tableContentView.mas_top).offset(15);
         make.left.mas_equalTo(weakSelf.tableContentView.mas_left).offset(15);
-        make.width.mas_equalTo(@(40));
-        make.height.mas_equalTo(@(80));
+        make.width.mas_equalTo(@(86));
+        make.height.mas_equalTo(@(120));
     }];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(weakSelf.postImageView.mas_top);
-        make.left.mas_equalTo(weakSelf.postImageView.mas_right).offset(10);
-        make.right.mas_greaterThanOrEqualTo(weakSelf.tableContentView.mas_right).offset(-25);
+        make.left.mas_equalTo(weakSelf.postImageView.mas_right).offset(20);
+        make.width.mas_lessThanOrEqualTo(@(ZScreenWidth - 146));
     }];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.titleLabel.mas_left);
-        make.top.mas_equalTo(weakSelf.titleLabel.mas_bottom).offset(-10);
-        make.right.mas_greaterThanOrEqualTo(weakSelf.tableContentView.mas_right).offset(-10);
+        make.top.mas_equalTo(weakSelf.titleLabel.mas_bottom).offset(8);
+        make.width.mas_lessThanOrEqualTo(@(ZScreenWidth - 146));
     }];
     [_aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(weakSelf.titleLabel.mas_left);
-        make.top.mas_equalTo(weakSelf.nameLabel.mas_bottom).offset(-5);
-        make.right.mas_greaterThanOrEqualTo(weakSelf.tableContentView.mas_right).offset(-10);
+        make.left.mas_equalTo(weakSelf.nameLabel.mas_left);
+        make.top.mas_equalTo(weakSelf.nameLabel.mas_bottom).offset(8);
+        make.width.mas_lessThanOrEqualTo(@(ZScreenWidth - 146));
     }];
     [_categoryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.titleLabel.mas_left);
-        make.top.mas_equalTo(weakSelf.aliasLabel.mas_bottom).offset(-5);
+        make.top.mas_equalTo(weakSelf.aliasLabel.mas_bottom).offset(8);
         
     }];
-    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_nationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.titleLabel.mas_left);
-        make.top.mas_equalTo(weakSelf.categoryLabel.mas_bottom).offset(-5);
+        make.top.mas_equalTo(weakSelf.categoryLabel.mas_bottom).offset(8);
     }];
     
     
     [_scoreView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.titleLabel.mas_right).offset(8);
-        make.width.mas_equalTo(@(15));
-        make.height.mas_equalTo(@(12));
+        make.top.mas_equalTo(weakSelf.tableContentView.mas_top).offset(15);
+        make.width.mas_equalTo(@(20));
+        make.height.mas_equalTo(@(18));
     }];
     [_scoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(weakSelf.scoreView.center);

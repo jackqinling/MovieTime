@@ -15,11 +15,27 @@
 }
 
 + (NSArray *)arrayOfModelsFromJson:(id)object{
-    NSError * error = nil;
-    NSArray * models = [SearchCinemaModel arrayOfModelsFromDictionaries:object[@"cinemas"] error:&error];
-    if (error) {
-        NSLog(@"cinemaModel错误=====%@", error);
-    }
+   
+    NSArray * models = [self arrayOfModelsFromDictionaries:object[@"locationCinemas"] error:nil];
+//    NSArray * models = object[@"locationCinemas"];
+//    NSMutableArray * resultArray = [NSMutableArray array];
+//    for (NSDictionary * dic in models) {
+//        SearchCinemaModel * model = [[SearchCinemaModel alloc] init];
+//        [model setValuesForKeysWithDictionary:dic];
+//        [resultArray addObject:model];
+//    }
+//    if (error) {
+//        NSLog(@"cinemaModel错误=====%@", error);
+//    }
     return @[models];
+    
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+//    NSLog(@"%@", key);
+//    if ([key isEqualToString:@"id"]) {
+//        key = @"cid";
+//    }
+//    [super setValue:value forKey:key];
 }
 @end

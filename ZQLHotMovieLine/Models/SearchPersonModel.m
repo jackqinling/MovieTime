@@ -15,11 +15,23 @@
 }
 
 + (NSArray *)arrayOfModelsFromJson:(id)object{
-    NSError * error = nil;
-    NSArray * models = [SearchPersonModel arrayOfModelsFromDictionaries:object[@"persons"] error:&error];
-    if (error) {
-        NSLog(@"searchPerson错误======%@", error);
-    }
+    
+    NSArray * models = [self arrayOfModelsFromDictionaries:object[@"persons"] error:nil];
+//    NSArray * models = object[@"persons"];
+//    NSMutableArray * resultArray = [NSMutableArray array];
+//    for (NSDictionary * dic in models) {
+//        SearchPersonModel * model = [[SearchPersonModel alloc] init];
+//        [model setValuesForKeysWithDictionary:dic];
+//        [resultArray addObject:model];
+//    }
     return @[models];
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    NSLog(@"%@", key);
+    if ([key isEqualToString:@"id"]) {
+        key = @"pid";
+        [super setValue:value forKey:key];
+    }
 }
 @end

@@ -17,7 +17,7 @@
 + (NSArray *)arrayOfModelsFromJson:(id)object{
     
     NSError * error = nil;
-    NSArray * models = [SearchMovieModel arrayOfModelsFromDictionaries:object[@"movies"] error:&error];
+    NSArray * models = [SearchMovieModel arrayOfModelsFromDictionaries:object[@"movies"]];
     if (error) {
         NSLog(@"movieModel错误=======%@", error);
     }

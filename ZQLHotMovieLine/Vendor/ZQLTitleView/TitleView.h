@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#define FontSize 25
 
 @class TitleView;
 

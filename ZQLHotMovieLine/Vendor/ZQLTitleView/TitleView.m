@@ -8,9 +8,12 @@
 
 #import "TitleView.h"
 #import "ZQLScreenMacro.h"
+#import "UIColor+categoryColor.h"
 
 #define BTN_STA_WID (ZScreenWidth / 5.0)
 #define Space 20
+#define FontSize 18
+#define SelectedColor [UIColor barColor]
 
 @interface TitleView ()
 
@@ -30,7 +33,7 @@
     
     if (_lineView == nil) {
         _lineView = [[UIView alloc]initWithFrame:CGRectZero];
-        _lineView.backgroundColor = [UIColor blackColor];
+        _lineView.backgroundColor = [UIColor barColor];
 
         [self.scrollView addSubview:_lineView];
     }
@@ -70,8 +73,7 @@
         button.frame = CGRectMake(i * width, 0, width, self.frame.size.height);
         button.titleLabel.font = [UIFont systemFontOfSize:FontSize];
         [button setTitle:_titles[i] forState:UIControlStateNormal];
-        [button setBackgroundColor:[UIColor lightGrayColor]];
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+        [button setTitleColor:SelectedColor forState:UIControlStateSelected];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -105,8 +107,7 @@
                                       .height);
             button.titleLabel.font = [UIFont systemFontOfSize:FontSize];
             [button setTitle:title forState:UIControlStateNormal];
-            [button setBackgroundColor:[UIColor lightGrayColor]];
-            [button setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+            [button setTitleColor:SelectedColor forState:UIControlStateSelected];
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [button addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
             

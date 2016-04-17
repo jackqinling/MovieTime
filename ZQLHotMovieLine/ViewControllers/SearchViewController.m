@@ -9,7 +9,14 @@
 #import "SearchViewController.h"
 #import "SearchKeyWordsModel.h"
 #import "TitleView.h"
+
 #import "SearchResultModel.h"
+#import "SearchPersonModel.h"
+#import "SearchMovieModel.h"
+#import "SearchCinemaModel.h"
+#import "SearchGoodModel.h"
+
+#import "SearchMovieCell.h"
 
 #define KeyWordHeight 35
 #define RowGapHeight 15
@@ -17,72 +24,192 @@
 #define LabelHeight 35
 #define ButBlankWidth 30
 #define PreGap 20
+#define TableViewTag 111
+#define SearchType @[@"0", @"2", @"1", @"3"]
 
 typedef enum : NSUInteger {
-    Actor = 0,
-    Movie,
+    Movie = 0,
+    Actor,
     Cinema,
+    AllType,
 } ResultType;
 
-static NSString * cellID = @"cellID";
-@interface SearchViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+static NSString * const cellID = @"cellID";
+static NSString * const movieCellID = @"movieID";
+
+@interface SearchViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, TitleViewDelegate>
 
 @end
 
 @implementation SearchViewController
 {
-    NSInteger _pageIndex;
+    int _pageIndex[4];
     UITextField * _textField;
     
     SearchKeyWordsModel * _keyWordsModel;
-    NSArray * _keyWordsHisArray;
+    
+    NSMutableArray * _keyWordsHisArray;
+    SearchResultModel * _resultModel;//数据源
     
     UIScrollView * _searchResultScrollView;
-//    UITableView * _movieTableView;
-//    UITableView * _actorTableView;
-//    UITableView * _cinemaTableView;
+    //滑动按钮
+    TitleView * _titleView;
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _pageIndex = 0;
     [self settingNaviBarWithTitle:@""];
+    //设置数据源结构
+    [self resetDataSource];
     [self loadData];
     [self settingNaviItems];
     [self settingTableView];
-    [self loadResultDataWithRefresh:YES andKeyWord:@"万达"];
+    [self settingResultScrollView];
+    [self loadResultDataWithRefresh:YES searchType:AllType KeyWord:@"万达"];
+
+    
+}
+
+- (void)resetDataSource{
+    for (int i = 0; i < 3; i++) {
+        NSMutableArray * array = [NSMutableArray array];
+        [self.baseDataSource addObject:array];
+    }
+    //tableView起始页
+    for (int i = 0; i < 4; i++) {
+        _pageIndex[i] = 1;
+    }
+    _keyWordsHisArray = [NSMutableArray array];
 }
 
 - (void)loadData{
-    [self.manager getWithUrl:SearchMovieUrl parameters:nil complicate:^(BOOL success, id object) {
+    [self.manager getWithUrl:KeyWordButtonUrl parameters:nil complicate:^(BOOL success, id object) {
         _keyWordsModel = [object firstObject];
         [self settingTableHeaderView];
     } modelClass:[SearchKeyWordsModel class]];
 }
 
-- (void)loadResultDataWithRefresh:(BOOL)refresh andKeyWord:(NSString *)kewWord{
+- (UITableView *)tableViewWithType:(ResultType)type{
+    
+    return (UITableView *)[_searchResultScrollView viewWithTag:type + TableViewTag];
+}
+
+- (void)loadResultDataWithRefresh:(BOOL)refresh searchType:(ResultType)resultType KeyWord:(NSString *)kewWord{
+    
+    Class modelClass;
     if (refresh) {
-        _pageIndex = 1;
+        _pageIndex[resultType] = 1;
+        switch (resultType) {
+            case Movie:{
+                [self.baseDataSource[Movie] removeAllObjects];
+                modelClass = [SearchMovieModel class];
+            }
+                break;
+            case Actor:{
+                [self.baseDataSource[Actor] removeAllObjects];
+                modelClass = [SearchPersonModel class];
+            }
+                break;
+            case Cinema:{
+                [self.baseDataSource[Cinema] removeAllObjects];
+                modelClass = [SearchCinemaModel class];
+            }
+                break;
+            default:
+                break;
+        }
     }else{
-        _pageIndex++;
+        _pageIndex[resultType]++;
     }
-    NSDictionary * dic = @{@"locationId":@"290", @"KeyWord":kewWord};
-    [self.manager requestWithPostMethod:SearchKeyWordUrl parameters:dic complicate:^(BOOL success, id object) {
-        SearchResultModel * model = object[0][0];
-        
-        NSLog(@"%@", model);
-    } modelClassNameArray:@[@"SearchResultModel"]];
+    
+    NSDictionary * dic = @{@"locationId":@"290", @"KeyWord":kewWord, @"searchType":SearchType[resultType] ,@"pageIndex":@(_pageIndex[resultType])};
+    
+    switch (resultType) {
+        case Movie:
+        case Actor:
+        case Cinema:{
+            [self.manager postWithUrl:SearchKeyWordUrl parameters:dic complicate:^(BOOL success, id object) {
+                if (success) {
+                    //请求成功
+                    [self.baseDataSource[resultType] addObjectsFromArray:object[0]];
+                    [[self tableViewWithType:resultType] reloadData];
+                }else{
+                    //请求失败
+                }
+            } modelClass:modelClass];
+        }
+            break;
+        default:{
+            [self.manager requestWithPostMethod:SearchKeyWordUrl parameters:dic complicate:^(BOOL success, id object) {
+                if (success) {
+                    [self.baseDataSource[Movie] addObjectsFromArray:object[Movie][0]];
+                    [self.baseDataSource[Actor] addObjectsFromArray:object[Actor][0]];
+                    [self.baseDataSource[Cinema] addObjectsFromArray:object[Cinema][0]];
+   
+                    
+                    for (int i = 0; i < 3; i++) {
+                        [[self tableViewWithType:i] reloadData];
+                    }
+                }else{
+                    //请求失败  处理
+                }
+                
+                
+            } modelClassNameArray:@[@"SearchMovieModel", @"SearchPersonModel", @"SearchCinemaModel"]];
+        }
+            break;
+    }
+
+ 
 }
 
 
 - (void)settingResultScrollView{
+    //头按钮
+    _titleView = [[TitleView alloc] initWithFrame:CGRectMake(0, NaviBarHeight + StatusBarHeight, ZScreenWidth, 44)];
+    _titleView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [_titleView setTitles:@[@"影片(280)", @"影人(1282)", @"影院(0)"]];
+    _titleView.delegate = self;
+    [self.view addSubview:_titleView];
     
+    //显示搜索结果 tableview
     _searchResultScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NaviBarHeight + StatusBarHeight + 44, ZScreenWidth, ZScreenHeight - NaviBarHeight - StatusBarHeight - 44)];
+    _searchResultScrollView.backgroundColor = [UIColor blackColor];
     _searchResultScrollView.pagingEnabled = YES;
+    _searchResultScrollView.bounces = NO;
+    _searchResultScrollView.autoresizesSubviews = NO;
     _searchResultScrollView.contentSize = CGSizeMake(ZScreenWidth * 3, ZScreenHeight - NaviBarHeight - StatusBarHeight - 44);
     _searchResultScrollView.delegate = self;
-    [_searchResultScrollView setHidden:YES];//默认设置为隐藏
+    [_searchResultScrollView setHidden:NO];//默认设置为隐藏
     [self.view addSubview:_searchResultScrollView];
+    
+    //创建tableView
+    
+    for (int i = 0; i < 3; i++) {
+        UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(i * ZScreenWidth, 0, ZScreenWidth, ZScreenHeight - NaviBarHeight - StatusBarHeight - 44) style:UITableViewStyleGrouped];
+//        tableView.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
+        tableView.backgroundColor = [UIColor greenColor];
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        tableView.bounces = NO;
+        tableView.tag = TableViewTag + i;
+        [_searchResultScrollView addSubview:tableView];
+        switch (i) {
+            case Movie:
+                [tableView registerClass:[SearchMovieCell class] forCellReuseIdentifier:movieCellID];
+                break;
+            case Actor:
+            
+                break;
+            case Cinema:
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
 }
 - (void)settingTableView{
     
@@ -189,17 +316,59 @@ static NSString * cellID = @"cellID";
 #pragma mark - tableView代理方法
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.baseDataSource.count;
+    switch (tableView.tag - TableViewTag) {
+        case Movie:
+            return [self.baseDataSource[Movie] count];
+            break;
+        case Actor:
+            return 0;
+            return [self.baseDataSource[Actor] count];
+            break;
+        case Cinema:
+            return 0;
+            return [self.baseDataSource[Cinema] count];
+            break;
+        default:
+            return 0;
+            break;
+    }
+//    return self.baseDataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    switch (tableView.tag - TableViewTag) {
+        case Movie:{
+            SearchMovieCell * cell = [tableView dequeueReusableCellWithIdentifier:movieCellID forIndexPath:indexPath];
+            cell.model = self.baseDataSource[Movie][indexPath.row];
+            return cell;
+        }
+            break;
+        case Actor:{
+        }
+            break;
+        case Cinema:{
+        }
+            break;
+        default:
+            break;
+    }
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
-    cell.textLabel.text = self.baseDataSource[indexPath.row];
+    cell.textLabel.text = _keyWordsHisArray[indexPath.row];
     return cell;
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (tableView.tag - TableViewTag) {
+        case Movie:
+            return 150;
+            break;
+            
+        default:
+            return 0;
+            break;
+    }
     return 35;
 }
 
@@ -208,12 +377,15 @@ static NSString * cellID = @"cellID";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return 0.1;
+    }
     return 40;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
-    if (self.baseDataSource.count != 0) {
+    if (_keyWordsHisArray.count != 0) {
         UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth, 40)];
         [button setTitle:@"点击清空历史记录" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor barColor] forState:UIControlStateNormal];
@@ -227,7 +399,7 @@ static NSString * cellID = @"cellID";
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (self.baseDataSource.count != 0) {
+    if (_keyWordsHisArray.count != 0) {
         return [self labelWithTitle:@"   搜索历史"];
     }else{
         return [[UIView alloc]init];
@@ -236,6 +408,12 @@ static NSString * cellID = @"cellID";
 }
 - (void)onClickClearHis:(UIButton *)button{
     NSLog(@"clear");
+}
+
+#pragma mark titleView代理方法
+
+- (void)titleView:(TitleView *)view selectIndex:(NSInteger)index{
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

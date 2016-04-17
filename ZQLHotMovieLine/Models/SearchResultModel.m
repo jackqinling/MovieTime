@@ -12,7 +12,7 @@
 
 + (NSArray *)arrayOfModelsFromJson:(id)object{
     NSError * error = nil;
-    SearchResultModel * model = [[SearchResultModel alloc] initWithDictionary:object error:&error];
+    SearchResultModel * model = [[self alloc] initWithDictionary:object error:&error];
     if (error) {
         NSLog(@"result错误========%@", error);
     }

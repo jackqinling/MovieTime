@@ -71,12 +71,30 @@
     }];
 }
 
+- (void)postWithUrl:(NSString *)urlStr parameters:(NSDictionary *)dic complicate:(Complicate)complicate modelClass:(Class)class{
+    
+    [self.manager POST:urlStr parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (complicate) {
+            NSArray * resultArray = [class arrayOfModelsFromJson:responseObject];
+            complicate(YES, resultArray);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (complicate) {
+            complicate(NO, error);
+        }
+    }];
+}
+
 - (void)requestWithPostMethod:(NSString *)urlStr parameters:(NSDictionary *)dic complicate:(Complicate)complicate modelClassNameArray:(NSArray *)modelClassNameArray{
     [self.manager POST:urlStr parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (complicate) {
             NSMutableArray * arrayOfModelsArray = [NSMutableArray array];
             
             for (NSString * modelClassName in modelClassNameArray) {
+                if ([modelClassName isEqualToString:@""] || ![modelClassName hasSuffix:@"Model"]) {
+                    NSLog(@"传入model名有误,请检查!!!!!!!!!");
+                    return;
+                }
                 NSArray * models = [NSClassFromString(modelClassName) arrayOfModelsFromJson:responseObject];
                 [arrayOfModelsArray addObject:models];
             }

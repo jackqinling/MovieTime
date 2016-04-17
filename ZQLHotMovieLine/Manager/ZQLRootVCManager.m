@@ -52,6 +52,7 @@
         nc.navigationBar.barTintColor = [UIColor naviBarColor];
         nc.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
         nc.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -2);
+        nc.automaticallyAdjustsScrollViewInsets = NO;
         [viewContorllers addObject:nc];
         
         i++;
@@ -59,7 +60,7 @@
     
   
     ZQLBaseTabBarController * tbc = [[ZQLBaseTabBarController alloc] init];
-    
+    tbc.automaticallyAdjustsScrollViewInsets = NO;
     tbc.tabBar.tintColor = [UIColor blackColor];
     tbc.viewControllers = viewContorllers;
     
@@ -75,7 +76,7 @@
     vc.automaticallyAdjustsScrollViewInsets = NO;
     UINavigationController * nc = [[UINavigationController alloc] initWithRootViewController:vc];
     nc.navigationBar.tintColor = [UIColor whiteColor];
-    
+    nc.automaticallyAdjustsScrollViewInsets = NO;
     return nc;
 }
 
