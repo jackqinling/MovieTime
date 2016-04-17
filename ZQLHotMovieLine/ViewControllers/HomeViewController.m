@@ -118,10 +118,10 @@ static NSString * const sectionViewID = @"sectionHeaderView";
         
         UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(i * ZScreenWidth / 4.0f, 0, ZScreenWidth / 4.0f, 50)];
         [button setTitle:title forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont screenFontOfSize:15];
+        button.titleLabel.font = [UIFont systemFontOfSize:15];
         button.backgroundColor = [UIColor whiteColor];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        CGRect rect = [title boundingRectWithSize:CGSizeMake(ZScreenWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont screenFontOfSize:15]} context:nil];
+        CGRect rect = [title boundingRectWithSize:CGSizeMake(ZScreenWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
         UIImage * image = [UIImage imageNamed:@"icon_right_arrow"];
         UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(ZScreenWidth / 8.0f + rect.size.width / 2.0 + 3, 25 - image.size.height / 2.0f, image.size.width, image.size.height)];
         imageView.image = image;
@@ -164,7 +164,8 @@ static NSString * const sectionViewID = @"sectionHeaderView";
     
     if (self.navigationItem.rightBarButtonItems[0] == button) {
         SearchViewController * svc = [[SearchViewController alloc] init];
-        [self.navigationController pushViewController:svc animated:YES];
+        [self.navigationController.view setTransitionAnimation:ZQLTransitionAnimationTypeFade toward:ZQLTransitionAnimationTowardTypesFromTop duration:0.3];
+        [self.navigationController pushViewController:svc animated:NO];
     }
 }
 - (void)onClickDiscover:(UIButton *)button{
@@ -275,14 +276,14 @@ static NSString * const sectionViewID = @"sectionHeaderView";
     view.backgroundColor = [UIColor whiteColor];
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 20)];
     label.text = titles[section];
-    label.font = [UIFont screenFontOfSize:15];
+    label.font = [UIFont systemFontOfSize:15];
     label.textColor = [UIColor blackColor];
-    CGRect rect = [buttonTitles[section] boundingRectWithSize:CGSizeMake(ZScreenWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont screenFontOfSize:13]} context:nil];
+    CGRect rect = [buttonTitles[section] boundingRectWithSize:CGSizeMake(ZScreenWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil];
     UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(ZScreenWidth - rect.size.width - 23, 10, rect.size.width, 20)];
     [button setTitle:buttonTitles[section] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(onClickMore:) forControlEvents:UIControlEventTouchUpInside];
     [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont screenFontOfSize:13];
+    button.titleLabel.font = [UIFont systemFontOfSize:13];
     UIImage * image = [UIImage imageNamed:@"arrowRight"];
     UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(ZScreenWidth - 20, 13, image.size.width, image.size.height)];
     imageView.userInteractionEnabled = YES;

@@ -8,6 +8,8 @@
 
 #import "SearchViewController.h"
 #import "SearchKeyWordsModel.h"
+#import "TitleView.h"
+#import "SearchResultModel.h"
 
 #define KeyWordHeight 35
 #define RowGapHeight 15
@@ -16,24 +18,39 @@
 #define ButBlankWidth 30
 #define PreGap 20
 
-@interface SearchViewController ()<UITextFieldDelegate>
+typedef enum : NSUInteger {
+    Actor = 0,
+    Movie,
+    Cinema,
+} ResultType;
+
+static NSString * cellID = @"cellID";
+@interface SearchViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @end
 
 @implementation SearchViewController
 {
+    NSInteger _pageIndex;
     UITextField * _textField;
     
     SearchKeyWordsModel * _keyWordsModel;
+    NSArray * _keyWordsHisArray;
+    
+    UIScrollView * _searchResultScrollView;
+//    UITableView * _movieTableView;
+//    UITableView * _actorTableView;
+//    UITableView * _cinemaTableView;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    _pageIndex = 0;
     [self settingNaviBarWithTitle:@""];
     [self loadData];
     [self settingNaviItems];
     [self settingTableView];
+    [self loadResultDataWithRefresh:YES andKeyWord:@"万达"];
 }
 
 - (void)loadData{
@@ -42,9 +59,39 @@
         [self settingTableHeaderView];
     } modelClass:[SearchKeyWordsModel class]];
 }
+
+- (void)loadResultDataWithRefresh:(BOOL)refresh andKeyWord:(NSString *)kewWord{
+    if (refresh) {
+        _pageIndex = 1;
+    }else{
+        _pageIndex++;
+    }
+    NSDictionary * dic = @{@"locationId":@"290", @"KeyWord":kewWord};
+    [self.manager requestWithPostMethod:SearchKeyWordUrl parameters:dic complicate:^(BOOL success, id object) {
+        SearchResultModel * model = object[0][0];
+        
+        NSLog(@"%@", model);
+    } modelClassNameArray:@[@"SearchResultModel"]];
+}
+
+
+- (void)settingResultScrollView{
+    
+    _searchResultScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NaviBarHeight + StatusBarHeight + 44, ZScreenWidth, ZScreenHeight - NaviBarHeight - StatusBarHeight - 44)];
+    _searchResultScrollView.pagingEnabled = YES;
+    _searchResultScrollView.contentSize = CGSizeMake(ZScreenWidth * 3, ZScreenHeight - NaviBarHeight - StatusBarHeight - 44);
+    _searchResultScrollView.delegate = self;
+    [_searchResultScrollView setHidden:YES];//默认设置为隐藏
+    [self.view addSubview:_searchResultScrollView];
+}
 - (void)settingTableView{
     
-    self.baseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NaviBarHeight + StatusBarHeight, ZScreenWidth, ZScreenHeight - StatusBarHeight - NaviBarHeight)];
+    self.baseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NaviBarHeight + StatusBarHeight, ZScreenWidth, ZScreenHeight - StatusBarHeight - NaviBarHeight) style:UITableViewStyleGrouped];
+    
+    self.baseTableView.delegate = self;
+    self.baseTableView.dataSource = self;
+    self.baseTableView.backgroundColor = [UIColor whiteColor];
+    [self.baseTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
     [self.view addSubview:self.baseTableView];
 }
 
@@ -60,6 +107,7 @@
 - (void)settingTableHeaderView{
     
     UIView * view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor whiteColor];
     float width = PreGap;
     int row = 1;
     int i = 0;
@@ -86,8 +134,8 @@
     }
     
     [view addSubview:[self labelWithTitle:@"   热门搜索"]];
-    
-    [view setFrame:CGRectMake(0, 0, ZScreenWidth, LabelHeight + RowGapHeight * (row - 1) + row * KeyWordHeight)];
+    NSLog(@"%d行", row);
+    [view setFrame:CGRectMake(0, 0, ZScreenWidth, LabelHeight + RowGapHeight * (row + 1) + row * KeyWordHeight) ];
     
     self.baseTableView.tableHeaderView = view;
 }
@@ -136,6 +184,58 @@
 
 - (void)onClickScan:(UIButton *)button{
     NSLog(@"二维码");
+}
+
+#pragma mark - tableView代理方法
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.baseDataSource.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    cell.textLabel.text = self.baseDataSource[indexPath.row];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 35;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 40;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 40;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    if (self.baseDataSource.count != 0) {
+        UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth, 40)];
+        [button setTitle:@"点击清空历史记录" forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor barColor] forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:15];
+        [button addTarget:self action:@selector(onClickClearHis:) forControlEvents:UIControlEventTouchUpInside];
+        return button;
+    }else{
+        return [[UIView alloc]init];
+    }
+   
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (self.baseDataSource.count != 0) {
+        return [self labelWithTitle:@"   搜索历史"];
+    }else{
+        return [[UIView alloc]init];
+    }
+    
+}
+- (void)onClickClearHis:(UIButton *)button{
+    NSLog(@"clear");
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

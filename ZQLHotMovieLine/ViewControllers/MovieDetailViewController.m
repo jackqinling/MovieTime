@@ -191,6 +191,14 @@ static NSString * shortCommentCellID = @"sComCell";
         
     } modelClassNameArray:@[@"MovieDetailModel"]];
 
+    [self.manager requestWithGetMethod:RelatedGoodsUrl parameters:@{@"relatedId":self.model.movieId} complicate:^(BOOL success, id object) {
+        if (success) {
+            _goodModel = object[0][0];
+            
+            [self.baseTableView reloadData];
+        }
+    } modelClassNameArray:@[@"MovieGoodModel"]];
+
 }
 
 - (void)loadDataWithRefresh:(BOOL)refresh{
@@ -341,22 +349,8 @@ static NSString * shortCommentCellID = @"sComCell";
     }
     if (indexPath.section == Goods) {
         MovieGoodsCell * cell = [tableView dequeueReusableCellWithIdentifier:goodsCellID forIndexPath:indexPath];
-        if (_goodModel == nil) {
-            [self.manager requestWithGetMethod:RelatedGoodsUrl parameters:@{@"relatedId":self.model.movieId} complicate:^(BOOL success, id object) {
-                if (success) {
-                    _goodModel = object[0][0];
-                    cell.model = _goodModel;
-                    //在block里写不生效
-//                    if (_goodModel.goodsList.count == 0) {
-//                        cell.hidden = YES;
-//                        return;
-//                    }
-                    
-                    [self.baseTableView reloadData];
-                }
-            } modelClassNameArray:@[@"MovieGoodModel"]];
-        }
-        //在block外写生效
+        
+        cell.model = _goodModel;
         if (_goodModel.goodsList.count == 0) {
             cell.hidden = YES;
         }

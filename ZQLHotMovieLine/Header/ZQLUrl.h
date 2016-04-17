@@ -47,6 +47,10 @@
 //http://api.m.mtime.cn/Movie/Video.api?movieId=205222&pageIndex=1
 #define VideoListUrl @"http://api.m.mtime.cn/Movie/Video.api"
 
+//http://api.m.mtime.cn/Showtime/SearchVoice.api?locationId=290&searchType=3&pageIndex=1&Keyword=%u4e07%u8fbe
+//seach按钮和关键字按钮跳转 url POST 传入二进制keyword
+#define SearchKeyWordUrl @"http://api.m.mtime.cn/Showtime/SearchVoice.api"
+
 /*******购票  第二页********/
 //上映的电影
 #define ShowingUrl @"http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=290"

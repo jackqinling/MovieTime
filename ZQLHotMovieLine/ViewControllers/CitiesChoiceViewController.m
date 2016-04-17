@@ -51,7 +51,9 @@ static NSString * tableCellID = @"tableCell";
     // Do any additional setup after loading the view from its nib.
    
     [self settingNaviBarWithTitle:@"选择城市"];
+    //collection 在下面
     [self settingCollectionView];
+    //tableView在上面
     [self settingTableView];
     [self customSearchBar];
     [self loadCities];
