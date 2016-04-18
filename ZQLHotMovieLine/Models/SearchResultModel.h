@@ -21,13 +21,13 @@
 
 @interface SearchResultModel : ZQLBaseModel
 @property (nonatomic, copy) NSString * fullMatchType;
-@property (nonatomic, strong) NSArray <Optional, ConvertOnDemand, SearchMovieModel> * movies;
+//@property (nonatomic, strong) NSArray <Optional, ConvertOnDemand, SearchMovieModel> * movies;
 @property (nonatomic, copy) NSString * moviesCount;
 //@property (nonatomic, strong) NSArray <Optional, ConvertOnDemand, SearchCinemaModel> * cinemas;
 @property (nonatomic, strong) NSString * cinemasCount;
 //@property (nonatomic, strong) NSArray <Optional, ConvertOnDemand, SearchCinemaModel> * locationCinemas;
 @property (nonatomic, copy) NSString * locationCinemasCount;
-@property (nonatomic, strong) NSArray <Optional, ConvertOnDemand, PersonModel> * persons;
+//@property (nonatomic, strong) NSArray <Optional, ConvertOnDemand, PersonModel> * persons;
 @property (nonatomic, copy) NSString * personsCount;
 @property (nonatomic, strong) TotalGoodsModel * goods;
 

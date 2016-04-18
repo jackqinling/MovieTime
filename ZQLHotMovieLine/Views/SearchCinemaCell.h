@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchCinemaModel.h"
 
 @interface SearchCinemaCell : UITableViewCell
-
+@property (nonatomic, strong) SearchCinemaModel * model;
 @end

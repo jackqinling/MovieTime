@@ -27,6 +27,8 @@
 
 @property (nonatomic, weak) id<TitleViewDelegate>delegate;
 
+@property (nonatomic, strong) UIView * lineView;
+
 @property (nonatomic, strong) NSMutableArray * buttons;
 
 /**
@@ -39,4 +41,5 @@
 //点击了第几个按钮
 - (void)clickButton:(UIButton *)button;
 
+- (void)setLineViewPositon:(CGFloat)x;
 @end

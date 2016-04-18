@@ -20,7 +20,7 @@
 @property (nonatomic, strong) UIScrollView * scrollView;
 
 
-@property (nonatomic, strong) UIView * lineView;//线
+//线
 
 
 @end
@@ -191,6 +191,10 @@
     self.lineView.frame = CGRectMake(button.frame.origin.x, self.frame.size.height - 3, button.frame.size.width, 3);
 }
 
+- (void)setLineViewPositon:(CGFloat)x{
+    
+    self.lineView.frame = CGRectMake(x, self.frame.size.height - 3, ZScreenWidth / _titles.count, 3);
+}
 - (CGFloat)buttonCenterAtIndex:(NSUInteger)index{
     
     CGFloat width = 0;
