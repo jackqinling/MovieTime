@@ -12,14 +12,14 @@
 
 @property (nonatomic, copy) NSString * movieId;
 
-@property (nonatomic, copy) NSString * titleCn;
+@property (nonatomic, copy) NSString <Optional>* titleCn;
 
-@property (nonatomic, copy) NSString * titleEn;
+@property (nonatomic, copy) NSString <Optional>* titleEn;
 
-@property (nonatomic, copy) NSString * year;
+@property (nonatomic, copy) NSString <Optional>* year;
 
-@property (nonatomic, copy) NSString * desc;
+@property (nonatomic, copy) NSString <Optional>* desc;
 
-@property (nonatomic, copy) NSString * image;
+@property (nonatomic, copy) NSString <Optional>* image;
 
 @end

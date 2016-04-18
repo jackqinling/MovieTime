@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchPersonModel.h"
 
 @interface SearchActorCell : UITableViewCell
+
+@property (nonatomic, strong) SearchPersonModel * model;
 
 @end

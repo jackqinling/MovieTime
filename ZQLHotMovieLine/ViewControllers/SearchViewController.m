@@ -15,10 +15,12 @@
 #import "SearchMovieModel.h"
 #import "SearchCinemaModel.h"
 #import "SearchGoodModel.h"
+#import "SearchPersonModel.h"
 
+#import "SearchActorCell.h"
 #import "SearchMovieCell.h"
 
-#define KeyWordHeight 35
+#define KeyWordHeight 28
 #define RowGapHeight 15
 #define ColumnGapWidth 15
 #define LabelHeight 35
@@ -36,8 +38,9 @@ typedef enum : NSUInteger {
 
 static NSString * const cellID = @"cellID";
 static NSString * const movieCellID = @"movieID";
+static NSString * const personCellID = @"personID";
 
-@interface SearchViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, TitleViewDelegate>
+@interface SearchViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, TitleViewDelegate, UIScrollViewDelegate>
 
 @end
 
@@ -188,7 +191,6 @@ static NSString * const movieCellID = @"movieID";
     
     for (int i = 0; i < 3; i++) {
         UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(i * ZScreenWidth, 0, ZScreenWidth, ZScreenHeight - NaviBarHeight - StatusBarHeight - 44) style:UITableViewStyleGrouped];
-//        tableView.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
         tableView.backgroundColor = [UIColor greenColor];
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -200,7 +202,7 @@ static NSString * const movieCellID = @"movieID";
                 [tableView registerClass:[SearchMovieCell class] forCellReuseIdentifier:movieCellID];
                 break;
             case Actor:
-            
+                [tableView registerClass:[SearchActorCell class] forCellReuseIdentifier:personCellID];
                 break;
             case Cinema:
                 
@@ -239,7 +241,7 @@ static NSString * const movieCellID = @"movieID";
     int row = 1;
     int i = 0;
     for (NSString * keyWord in _keyWordsModel.keywords) {
-        CGRect rect = [keyWord boundingRectWithSize:CGSizeMake(ZScreenWidth - 2 * PreGap, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
+        CGRect rect = [keyWord boundingRectWithSize:CGSizeMake(ZScreenWidth - 2 * PreGap, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
         
         width += rect.size.width + ButBlankWidth;
         
@@ -251,7 +253,7 @@ static NSString * const movieCellID = @"movieID";
         UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(width - rect.size.width - ButBlankWidth, (row - 1) * KeyWordHeight + RowGapHeight * row + LabelHeight, rect.size.width + 10 + ButBlankWidth / 2.0, KeyWordHeight)];
         [button addTarget:self action:@selector(onClickKeyWordButton:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:keyWord forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont systemFontOfSize:15];
+        button.titleLabel.font = [UIFont systemFontOfSize:14];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button setBackgroundImage:[[UIImage imageNamed:@"icon_change_subway"] stretchableImageWithLeftCapWidth:30 topCapHeight:0] forState:UIControlStateNormal];
         [view addSubview:button];
@@ -277,7 +279,7 @@ static NSString * const movieCellID = @"movieID";
     self.navigationItem.rightBarButtonItem = item;
     
     //textField定制
-    _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth - 90, 34)];
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth - 90, 32)];
     _textField.returnKeyType = UIReturnKeySearch;
     _textField.tintColor = [UIColor blackColor];
     _textField.borderStyle = UITextBorderStyleRoundedRect;
@@ -316,20 +318,21 @@ static NSString * const movieCellID = @"movieID";
 #pragma mark - tableView代理方法
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    //判断是哪个tableView
     switch (tableView.tag - TableViewTag) {
         case Movie:
             return [self.baseDataSource[Movie] count];
             break;
         case Actor:
-            return 0;
             return [self.baseDataSource[Actor] count];
             break;
         case Cinema:
             return 0;
             return [self.baseDataSource[Cinema] count];
             break;
+            //查找历史
         default:
-            return 0;
+            return _keyWordsHisArray.count;
             break;
     }
 //    return self.baseDataSource.count;
@@ -345,6 +348,10 @@ static NSString * const movieCellID = @"movieID";
         }
             break;
         case Actor:{
+            SearchPersonModel * model = self.baseDataSource[Actor][indexPath.row];
+            SearchActorCell * cell = [tableView dequeueReusableCellWithIdentifier:personCellID forIndexPath:indexPath];
+            cell.model = model;
+            return cell;
         }
             break;
         case Cinema:{
@@ -362,6 +369,7 @@ static NSString * const movieCellID = @"movieID";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (tableView.tag - TableViewTag) {
         case Movie:
+        case Actor:
             return 150;
             break;
             
@@ -377,10 +385,10 @@ static NSString * const movieCellID = @"movieID";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return 0.1;
+    if (tableView == self.baseTableView) {
+        return 40;
     }
-    return 40;
+    return 0.1;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -410,15 +418,31 @@ static NSString * const movieCellID = @"movieID";
     NSLog(@"clear");
 }
 
-#pragma mark titleView代理方法
+#pragma makr - scrollView代理方法
+//无限循环调用
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    if (scrollView == _searchResultScrollView) {
+//        int index = (int)(scrollView.contentOffset.x / ZScreenWidth + 0.6);
+//        [_titleView clickButton:_titleView.buttons[index]];
+//
+//    }
+//}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    if (scrollView == _searchResultScrollView) {
+        int index = (int)(scrollView.contentOffset.x / ZScreenWidth);
+        [_titleView clickButton:_titleView.buttons[index]];
 
+    }
+}
+#pragma mark - titleView代理方法
 - (void)titleView:(TitleView *)view selectIndex:(NSInteger)index{
-    
+    [_searchResultScrollView setContentOffset:CGPointMake(index * ZScreenWidth, 0) animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

@@ -34,7 +34,7 @@
  *
  *  @param index 选中的位置
  */
-- (void)selectIndex:(NSInteger)index;
+//- (void)selectIndex:(NSInteger)index;
 
 //点击了第几个按钮
 - (void)clickButton:(UIButton *)button;

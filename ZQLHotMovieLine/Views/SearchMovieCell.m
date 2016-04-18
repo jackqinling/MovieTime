@@ -11,7 +11,6 @@
 #import "UIColor+categoryColor.h"
 
 #define POSTHEIGHT
-#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self
 
 @interface SearchMovieCell ()
 
@@ -48,10 +47,11 @@
 - (void)setModel:(SearchMovieModel *)model{
     
     _model = model;
-    [self.postImageView setImageWithURL:[NSURL URLWithString:_model.img] placeholderImage:PlaceHolder];
+    [self.postImageView setImageWithURL:[NSURL URLWithString:_model.img] placeholderImage:VRectangleHolder];
     
     self.titleLabel.text = [NSString stringWithFormat:@"%@(%@)", _model.name, _model.rYear];
     self.nameLabel.text = _model.nameEn;
+    //他妈的记得做容错,都快疯了
     if (_model.titleOthersCn.count != 0) {
         self.aliasLabel.text = [NSString stringWithFormat:@"更多片名:%@", _model.titleOthersCn[0]];
     }
@@ -90,6 +90,7 @@
     [_tableContentView addSubview:_nationLabel];
     
     //设置属性
+    self.postImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.scoreView.backgroundColor = [UIColor greenBack];
     self.scoreLabel.font = [UIFont systemFontOfSize:13];
     self.scoreLabel.textColor = [UIColor whiteColor];
