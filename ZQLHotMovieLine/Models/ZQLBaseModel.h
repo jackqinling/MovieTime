@@ -11,6 +11,7 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "ZQLScreenMacro.h"
+#import "Masonry.h"
 
 @interface ZQLBaseModel : JSONModel
 

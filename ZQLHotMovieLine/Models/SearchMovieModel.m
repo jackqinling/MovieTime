@@ -21,6 +21,6 @@
     if (error) {
         NSLog(@"movieModel错误=======%@", error);
     }
-    return @[models];
+    return models;
 }
 @end

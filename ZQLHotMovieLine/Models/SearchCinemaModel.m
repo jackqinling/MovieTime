@@ -27,7 +27,7 @@
 //    if (error) {
 //        NSLog(@"cinemaModel错误=====%@", error);
 //    }
-    return @[models];
+    return models;
     
 }
 

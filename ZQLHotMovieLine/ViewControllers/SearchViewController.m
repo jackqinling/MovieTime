@@ -18,7 +18,9 @@
 #import "SearchGoodModel.h"
 #import "SearchPersonModel.h"
 #import "SearchCinemaModel.h"
+#import "SearchHintModel.h"
 
+#import "SearchHintCell.h"
 #import "SearchCinemaCell.h"
 #import "SearchActorCell.h"
 #import "SearchMovieCell.h"
@@ -37,12 +39,14 @@ typedef enum : NSUInteger {
     Actor,
     Cinema,
     AllType,
+    Hint = 8,
 } ResultType;
 
 static NSString * const cellID = @"cellID";
 static NSString * const movieCellID = @"movieID";
 static NSString * const personCellID = @"personID";
 static NSString * const cinemaCellID = @"cinemaID";
+static NSString * const hintCellID = @"hintID";
 
 @interface SearchViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, TitleViewDelegate, UIScrollViewDelegate, DJRefreshDelegate>
 
@@ -52,18 +56,23 @@ static NSString * const cinemaCellID = @"cinemaID";
 
 @implementation SearchViewController
 {
-    int _pageIndex[4];
+    int _pageIndex[4];//刷新标签
     UITextField * _textField;
     
-    SearchKeyWordsModel * _keyWordsModel;
+    SearchKeyWordsModel * _keyWordsModel;//四个文字搜索按钮
+    NSMutableArray * _keyWordsHisArray;//存储搜索过得关键词  退出 返回时 放到本地
+    SearchResultModel * _resultModel;//数据源 头按钮(个数)
     
-    NSMutableArray * _keyWordsHisArray;
-    SearchResultModel * _resultModel;//数据源
+    UIScrollView * _searchResultScrollView;//三个结果tableView
+    UITableView * _hintTableView;//搜索关键字 提示列表
     
-    UIScrollView * _searchResultScrollView;
-    //滑动按钮
-    TitleView * _titleView;
+    TitleView * _titleView;//滑动按钮
     BOOL isDragging;//拖动 和 点击按钮
+    
+    UIView * _hintHeaderView;//判断是否已经创建,创建的话直接复用
+    UILabel * _hintLabel;
+    NSMutableArray * _hintArray;
+    NSString * _text;
 }
 
 //保存插件 防止意外释放
@@ -88,10 +97,11 @@ static NSString * const cinemaCellID = @"cinemaID";
      */
     [self settingResultScrollView];
     [self loadResultDataWithRefresh:YES searchType:AllType KeyWord:@"万达"];
-
-    
+    //搜索提示列表
+    [self settingHintTableView];
 }
 
+//初始化 数据源
 - (void)resetDataSource{
     for (int i = 0; i < 4; i++) {
         NSMutableArray * array = [NSMutableArray array];
@@ -102,8 +112,15 @@ static NSString * const cinemaCellID = @"cinemaID";
         _pageIndex[i] = 1;
     }
     _keyWordsHisArray = [NSMutableArray array];
+    _text = [NSString string];
+    _hintArray = [NSMutableArray array];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    [_textField resignFirstResponder];
+}
+//关键字按钮 加载
 - (void)loadData{
     [self.manager getWithUrl:KeyWordButtonUrl parameters:nil complicate:^(BOOL success, id object) {
         _keyWordsModel = [object firstObject];
@@ -153,10 +170,11 @@ static NSString * const cinemaCellID = @"cinemaID";
         case Cinema:{
             [self.manager postWithUrl:SearchKeyWordUrl parameters:dic complicate:^(BOOL success, id object) {
                 if (success) {
-                    //请求成功
-                    [self.baseDataSource[resultType] addObjectsFromArray:object[resultType]];
+                    //请求成功 返回一个数组 含有 一个元素  为数组  装models
+                 
+                    [self.baseDataSource[resultType] addObjectsFromArray:object];
                     [self.refreshArray[resultType] finishRefreshing];
-                    
+            
                     [[self tableViewWithType:resultType] reloadData];
                 }else{
                     //请求失败
@@ -167,9 +185,9 @@ static NSString * const cinemaCellID = @"cinemaID";
         default:{
             [self.manager requestWithPostMethod:SearchKeyWordUrl parameters:dic complicate:^(BOOL success, id object) {
                 if (success) {
-                    [self.baseDataSource[Movie] addObjectsFromArray:object[Movie][0]];
-                    [self.baseDataSource[Actor] addObjectsFromArray:object[Actor][0]];
-                    [self.baseDataSource[Cinema] addObjectsFromArray:object[Cinema][0]];
+                    [self.baseDataSource[Movie] addObjectsFromArray:object[Movie]];
+                    [self.baseDataSource[Actor] addObjectsFromArray:object[Actor]];
+                    [self.baseDataSource[Cinema] addObjectsFromArray:object[Cinema]];
    
                     
                     for (int i = 0; i < 3; i++) {
@@ -200,17 +218,17 @@ static NSString * const cinemaCellID = @"cinemaID";
     _titleView.delegate = self;
     [self.view addSubview:_titleView];
 }
+
 - (void)settingResultScrollView{
     //头按钮
 
-    
     //显示搜索结果 tableview
     _searchResultScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NaviBarHeight + StatusBarHeight + 44, ZScreenWidth, ZScreenHeight - NaviBarHeight - StatusBarHeight - 44)];
     _searchResultScrollView.backgroundColor = [UIColor blackColor];
     _searchResultScrollView.pagingEnabled = YES;
     _searchResultScrollView.bounces = NO;
     _searchResultScrollView.autoresizesSubviews = NO;
-    _searchResultScrollView.contentSize = CGSizeMake(ZScreenWidth * 3, ZScreenHeight - NaviBarHeight - StatusBarHeight - 44);
+    _searchResultScrollView.contentSize = CGSizeMake(ZScreenWidth * 3, ZScreenHeight - NaviBarHeight - StatusBarHeight - TabBarHeight);
     _searchResultScrollView.delegate = self;
     [_searchResultScrollView setHidden:NO];//默认设置为隐藏
     [self.view addSubview:_searchResultScrollView];
@@ -218,7 +236,7 @@ static NSString * const cinemaCellID = @"cinemaID";
     //创建tableView
     
     for (int i = 0; i < 3; i++) {
-        UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(i * ZScreenWidth, 0, ZScreenWidth, ZScreenHeight - NaviBarHeight - StatusBarHeight - 44 - 40) style:UITableViewStyleGrouped];
+        UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(i * ZScreenWidth, 0, ZScreenWidth, ZScreenHeight - NaviBarHeight - StatusBarHeight - 44 - TabBarHeight) style:UITableViewStyleGrouped];
         tableView.backgroundColor = [UIColor greenColor];
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -248,6 +266,8 @@ static NSString * const cinemaCellID = @"cinemaID";
         }
     }
 }
+
+//关键字列表
 - (void)settingTableView{
     
     self.baseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NaviBarHeight + StatusBarHeight, ZScreenWidth, ZScreenHeight - StatusBarHeight - NaviBarHeight) style:UITableViewStyleGrouped];
@@ -259,6 +279,106 @@ static NSString * const cinemaCellID = @"cinemaID";
     [self.view addSubview:self.baseTableView];
 }
 
+- (void)settingNaviItems{
+    
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:self action:@selector(onClickSearchBtn:)];
+    self.navigationItem.rightBarButtonItem = item;
+    
+    //textField定制
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth - 90, 32)];
+    _textField.returnKeyType = UIReturnKeySearch;
+    _textField.tintColor = [UIColor blackColor];
+    _textField.borderStyle = UITextBorderStyleRoundedRect;
+    
+    _textField.backgroundColor = [UIColor whiteColor];
+    _textField.delegate = self;
+    
+    _textField.placeholder = @"找影片/影院/影人";
+    _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _text = _textField.text;
+    [_textField addTarget:self action:@selector(textChaged:) forControlEvents:UIControlEventEditingChanged];
+    //左
+    _textField.leftViewMode = UITextFieldViewModeAlways;
+    UIImageView * leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 22)];
+    leftImageView.contentMode = UIViewContentModeScaleAspectFit;
+    leftImageView.image = [UIImage imageNamed:@"search"];
+    _textField.leftView = leftImageView;
+    //右
+    _textField.rightViewMode = UITextFieldViewModeUnlessEditing;
+    UIButton * rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, 0, 40, 30)];
+    [rightBtn setImage:[UIImage imageNamed:@"icon_scan_barcode"] forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(onClickScan:) forControlEvents:UIControlEventTouchUpInside];
+    _textField.rightView = rightBtn;
+    
+    
+    self.navigationItem.titleView = _textField;
+    
+}
+
+//搜索提示 列表
+- (void)settingHintTableView{
+    _hintTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NaviBarHeight, ZScreenWidth, ZScreenHeight - StatusBarHeight - NaviBarHeight - TabBarHeight) style:UITableViewStylePlain];
+    
+    _hintTableView.tag = TableViewTag + 8;
+    _hintTableView.delegate = self;
+    _hintTableView.dataSource = self;
+    _hintTableView.hidden = YES;
+    [_hintTableView registerClass:[SearchHintCell class] forCellReuseIdentifier:hintCellID];
+    [self.view addSubview:_hintTableView];
+    
+}
+
+- (void)settingHintHeaderViewWith:(NSString *)str{
+    
+    if (!_hintHeaderView) {
+        _hintHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth, 45)];
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 25, 25)];
+        imageView.image = [UIImage imageNamed:@"icon_search_suggestion_store"];
+        
+        //label
+        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(45, 13, ZScreenWidth - 65, 20)];
+        label.font = [UIFont systemFontOfSize:15];
+        label.textColor = [UIColor barColor];
+        NSMutableAttributedString * attStr = [self attributeStringWithString:str];
+        label.attributedText = attStr;
+        //记住将要复用的label
+        _hintLabel = label;
+        
+        //箭头
+        UIImageView * arrow = [[UIImageView alloc] initWithFrame:CGRectMake(ZScreenWidth - 20, 15, 10, 15)];
+        arrow.image = [UIImage imageNamed:@"icon_right_arrow"];
+        
+        //button
+        UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth, 45)];
+        [button addTarget:self action:@selector(onClickStoreBtn:) forControlEvents:UIControlEventTouchDown];
+        //底线
+        UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, 44, ZScreenWidth, 1)];
+        line.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        
+        [_hintHeaderView addSubview:imageView];
+        [_hintHeaderView addSubview:label];
+        [_hintHeaderView addSubview:arrow];
+        [_hintHeaderView addSubview:button];
+        [_hintTableView addSubview:line];
+
+    }else{
+        NSMutableAttributedString * attStr = [self attributeStringWithString:str];
+        _hintLabel.attributedText = attStr;
+    }
+    
+    _hintTableView.tableHeaderView = _hintHeaderView;
+}
+
+- (NSMutableAttributedString *)attributeStringWithString:(NSString *)str {
+    NSString * tex = [NSString stringWithFormat:@"在商城中搜索〝%@〞", str];
+    NSMutableAttributedString * attStr = [[NSMutableAttributedString alloc] initWithString:tex];
+    [attStr setAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:15]} range:NSMakeRange(tex.length - str.length - 2, str.length + 2)];
+    return attStr;
+}
+
+- (void)onClickStoreBtn:(UIButton *)button {
+    //点击跳转到 商城
+}
 - (UILabel *)labelWithTitle:(NSString *)title{
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth, LabelHeight)];
     label.font = [UIFont systemFontOfSize:13];
@@ -298,7 +418,7 @@ static NSString * const cinemaCellID = @"cinemaID";
     }
     
     [view addSubview:[self labelWithTitle:@"   热门搜索"]];
-    NSLog(@"%d行", row);
+//    NSLog(@"%d行", row);
     [view setFrame:CGRectMake(0, 0, ZScreenWidth, LabelHeight + RowGapHeight * (row + 1) + row * KeyWordHeight) ];
     
     self.baseTableView.tableHeaderView = view;
@@ -308,38 +428,27 @@ static NSString * const cinemaCellID = @"cinemaID";
 - (void)onClickKeyWordButton:(UIButton *)button{
     
 }
-- (void)settingNaviItems{
+
+//hintTableView 请求数据
+- (void)textChaged:(UITextField *)textField{
     
-    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:self action:@selector(onClickSearchBtn:)];
-    self.navigationItem.rightBarButtonItem = item;
+    //设置头
+    [self settingHintHeaderViewWith:textField.text];
+    NSLog(@"========%@", textField.text);
+    NSDictionary * dic = @{@"locationId":@"290", @"keyword":textField.text};
     
-    //textField定制
-    _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, ZScreenWidth - 90, 32)];
-    _textField.returnKeyType = UIReturnKeySearch;
-    _textField.tintColor = [UIColor blackColor];
-    _textField.borderStyle = UITextBorderStyleRoundedRect;
-    
-    _textField.backgroundColor = [UIColor whiteColor];
-    
-    _textField.placeholder = @"找影片/影院/影人";
-    _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    
-    //左
-    _textField.leftViewMode = UITextFieldViewModeAlways;
-    UIImageView * leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 22)];
-    leftImageView.contentMode = UIViewContentModeScaleAspectFit;
-    leftImageView.image = [UIImage imageNamed:@"search"];
-    _textField.leftView = leftImageView;
-    //右
-    _textField.rightViewMode = UITextFieldViewModeUnlessEditing;
-    UIButton * rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, 0, 40, 30)];
-    [rightBtn setImage:[UIImage imageNamed:@"icon_scan_barcode"] forState:UIControlStateNormal];
-    [rightBtn addTarget:self action:@selector(onClickScan:) forControlEvents:UIControlEventTouchUpInside];
-    _textField.rightView = rightBtn;
-    
-    
-    self.navigationItem.titleView = _textField;
-    
+    [self.manager postWithUrl:SearchHintUrl parameters:dic complicate:^(BOOL success, id object) {
+        if (success) {
+            [_hintArray removeAllObjects];//一进来就清空
+            //请求成功 装载数据源 重绘tableView
+            [_hintArray addObjectsFromArray:object];
+            [_hintTableView reloadData];
+            _hintTableView.hidden = NO;
+            [self.view bringSubviewToFront:_hintTableView];
+        } else {
+            //请求失败
+        }
+    } modelClass:[SearchHintModel class]];
 }
 //naivItem 点击方法
 - (void)onClickSearchBtn:(UIBarButtonItem *)item{
@@ -363,6 +472,9 @@ static NSString * const cinemaCellID = @"cinemaID";
             break;
         case Cinema:
             return [self.baseDataSource[Cinema] count];
+            break;
+        case Hint:
+            return [_hintArray count];
             break;
             //查找历史
         default:
@@ -394,6 +506,12 @@ static NSString * const cinemaCellID = @"cinemaID";
             cell.model = model;
             return cell;
         }
+        case Hint:{
+            SearchHintModel * model = _hintArray[indexPath.row];
+            SearchHintCell * cell = [tableView dequeueReusableCellWithIdentifier:hintCellID forIndexPath:indexPath];
+            cell.model = model;
+            return cell;
+        }
             break;
         default:
             break;
@@ -411,6 +529,7 @@ static NSString * const cinemaCellID = @"cinemaID";
             return 150;
             break;
         case Cinema:
+        case Hint:
             return 110;
             break;
         default:
@@ -462,12 +581,13 @@ static NSString * const cinemaCellID = @"cinemaID";
 }
 
 #pragma makr - scrollView代理方法
-//无限循环调用
+//无限循环调用  实时刷新  lineView 的位置
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView == _searchResultScrollView && isDragging) {
         [_titleView setLineViewPositon:scrollView.contentOffset.x / 3.0f];
     }
 }
+//滚动后  选择  titleView
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     if (scrollView == _searchResultScrollView) {
         int index = (int)(scrollView.contentOffset.x / ZScreenWidth);
@@ -505,6 +625,9 @@ static NSString * const cinemaCellID = @"cinemaID";
         [self loadResultDataWithRefresh:NO searchType:type KeyWord:@"万达"];
     }
 }
+
+#pragma mark - TextField代理方法
+
 /*
 #pragma mark - Navigation
 

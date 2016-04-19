@@ -1253,6 +1253,9 @@
 		BB8B9DA71CC3A729000C4CD4 /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8B9DA61CC3A729000C4CD4 /* PersonModel.m */; };
 		BB8B9DAA1CC3B6C2000C4CD4 /* PersonMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8B9DA91CC3B6C2000C4CD4 /* PersonMovieModel.m */; };
 		BB8B9DAD1CC3B8F7000C4CD4 /* CinemaFeatureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8B9DAC1CC3B8F7000C4CD4 /* CinemaFeatureModel.m */; };
+		BBA40EA21CC59BD900764CCA /* SearchHintModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA40EA11CC59BD900764CCA /* SearchHintModel.m */; };
+		BBA40EAA1CC5A0B000764CCA /* SearchHintCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA40EA91CC5A0B000764CCA /* SearchHintCell.m */; };
+		BBACE0931CC646FC00E266A0 /* UIScrollView+TouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BBACE0921CC646FC00E266A0 /* UIScrollView+TouchEvent.m */; };
 		BBAEBC371C9D95060080BC72 /* VideoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAEBC361C9D95060080BC72 /* VideoListModel.m */; };
 		BBAEBC3E1C9D97650080BC72 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAEBC3C1C9D97650080BC72 /* VideoListCell.m */; };
 		BBAEBC3F1C9D97650080BC72 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBAEBC3D1C9D97650080BC72 /* VideoListCell.xib */; };
@@ -2704,6 +2707,12 @@
 		BB8B9DA91CC3B6C2000C4CD4 /* PersonMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonMovieModel.m; sourceTree = "<group>"; };
 		BB8B9DAB1CC3B8F7000C4CD4 /* CinemaFeatureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaFeatureModel.h; sourceTree = "<group>"; };
 		BB8B9DAC1CC3B8F7000C4CD4 /* CinemaFeatureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CinemaFeatureModel.m; sourceTree = "<group>"; };
+		BBA40EA01CC59BD900764CCA /* SearchHintModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHintModel.h; sourceTree = "<group>"; };
+		BBA40EA11CC59BD900764CCA /* SearchHintModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHintModel.m; sourceTree = "<group>"; };
+		BBA40EA81CC5A0B000764CCA /* SearchHintCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHintCell.h; sourceTree = "<group>"; };
+		BBA40EA91CC5A0B000764CCA /* SearchHintCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHintCell.m; sourceTree = "<group>"; };
+		BBACE0911CC646FC00E266A0 /* UIScrollView+TouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TouchEvent.h"; sourceTree = "<group>"; };
+		BBACE0921CC646FC00E266A0 /* UIScrollView+TouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TouchEvent.m"; sourceTree = "<group>"; };
 		BBAEBC351C9D95060080BC72 /* VideoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListModel.h; sourceTree = "<group>"; };
 		BBAEBC361C9D95060080BC72 /* VideoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListModel.m; sourceTree = "<group>"; };
 		BBAEBC3B1C9D97650080BC72 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
@@ -3073,6 +3082,8 @@
 				4EC730F01C45DD9E009D0C6D /* UIColor+categoryColor.m */,
 				BB1639931CB3C471004D77C8 /* UIFont+ScreenFont.h */,
 				BB1639941CB3C471004D77C8 /* UIFont+ScreenFont.m */,
+				BBACE0911CC646FC00E266A0 /* UIScrollView+TouchEvent.h */,
+				BBACE0921CC646FC00E266A0 /* UIScrollView+TouchEvent.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -4772,6 +4783,64 @@
 			name = RelatedGoodCell;
 			sourceTree = "<group>";
 		};
+		BBA40E9E1CC59BA400764CCA /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
+				BBCA865F1CC2824500667FE7 /* SearchResultModel.h */,
+				BBCA86601CC2824500667FE7 /* SearchResultModel.m */,
+				BBBC5A821CB89C2400B071AA /* SearchKeyWordsModel.h */,
+				BBBC5A831CB89C2400B071AA /* SearchKeyWordsModel.m */,
+				BBAF60C21CC23ECC00167E28 /* SearchMovieModel.h */,
+				BBAF60C31CC23ECC00167E28 /* SearchMovieModel.m */,
+				BBAF60C51CC23EDE00167E28 /* SearchPersonModel.h */,
+				BBAF60C61CC23EDE00167E28 /* SearchPersonModel.m */,
+				BBAF60C81CC23EEB00167E28 /* SearchCinemaModel.h */,
+				BBAF60C91CC23EEB00167E28 /* SearchCinemaModel.m */,
+				BBCA86621CC282B100667FE7 /* SearchGoodModel.h */,
+				BBCA86631CC282B100667FE7 /* SearchGoodModel.m */,
+				BBCA86651CC283B800667FE7 /* TotalGoodsModel.h */,
+				BBCA86661CC283B800667FE7 /* TotalGoodsModel.m */,
+				BB8B9DA51CC3A729000C4CD4 /* PersonModel.h */,
+				BB8B9DA61CC3A729000C4CD4 /* PersonModel.m */,
+				BB8B9DA81CC3B6C2000C4CD4 /* PersonMovieModel.h */,
+				BB8B9DA91CC3B6C2000C4CD4 /* PersonMovieModel.m */,
+				BB8B9DAB1CC3B8F7000C4CD4 /* CinemaFeatureModel.h */,
+				BB8B9DAC1CC3B8F7000C4CD4 /* CinemaFeatureModel.m */,
+			);
+			name = SearchResult;
+			sourceTree = "<group>";
+		};
+		BBA40E9F1CC59BBB00764CCA /* SearchHint */ = {
+			isa = PBXGroup;
+			children = (
+				BBA40EA01CC59BD900764CCA /* SearchHintModel.h */,
+				BBA40EA11CC59BD900764CCA /* SearchHintModel.m */,
+			);
+			name = SearchHint;
+			sourceTree = "<group>";
+		};
+		BBA40EA31CC5A02800764CCA /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
+				BBB7BA961CC19D5B00747726 /* SearchMovieCell.h */,
+				BBB7BA971CC19D5B00747726 /* SearchMovieCell.m */,
+				BBB7BA991CC19D7E00747726 /* SearchActorCell.h */,
+				BBB7BA9A1CC19D7E00747726 /* SearchActorCell.m */,
+				BBB7BA9C1CC19DA800747726 /* SearchCinemaCell.h */,
+				BBB7BA9D1CC19DA800747726 /* SearchCinemaCell.m */,
+			);
+			name = SearchResult;
+			sourceTree = "<group>";
+		};
+		BBA40EA41CC5A03C00764CCA /* SearchHint */ = {
+			isa = PBXGroup;
+			children = (
+				BBA40EA81CC5A0B000764CCA /* SearchHintCell.h */,
+				BBA40EA91CC5A0B000764CCA /* SearchHintCell.m */,
+			);
+			name = SearchHint;
+			sourceTree = "<group>";
+		};
 		BBAEBC341C9D94D50080BC72 /* MovieVideoModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -4794,12 +4863,8 @@
 		BBB7BA8E1CC19AF000747726 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				BBB7BA961CC19D5B00747726 /* SearchMovieCell.h */,
-				BBB7BA971CC19D5B00747726 /* SearchMovieCell.m */,
-				BBB7BA991CC19D7E00747726 /* SearchActorCell.h */,
-				BBB7BA9A1CC19D7E00747726 /* SearchActorCell.m */,
-				BBB7BA9C1CC19DA800747726 /* SearchCinemaCell.h */,
-				BBB7BA9D1CC19DA800747726 /* SearchCinemaCell.m */,
+				BBA40EA41CC5A03C00764CCA /* SearchHint */,
+				BBA40EA31CC5A02800764CCA /* SearchResult */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -4853,26 +4918,8 @@
 		BBBC5A811CB89BE200B071AA /* SearchModels */ = {
 			isa = PBXGroup;
 			children = (
-				BBCA865F1CC2824500667FE7 /* SearchResultModel.h */,
-				BBCA86601CC2824500667FE7 /* SearchResultModel.m */,
-				BBBC5A821CB89C2400B071AA /* SearchKeyWordsModel.h */,
-				BBBC5A831CB89C2400B071AA /* SearchKeyWordsModel.m */,
-				BBAF60C21CC23ECC00167E28 /* SearchMovieModel.h */,
-				BBAF60C31CC23ECC00167E28 /* SearchMovieModel.m */,
-				BBAF60C51CC23EDE00167E28 /* SearchPersonModel.h */,
-				BBAF60C61CC23EDE00167E28 /* SearchPersonModel.m */,
-				BBAF60C81CC23EEB00167E28 /* SearchCinemaModel.h */,
-				BBAF60C91CC23EEB00167E28 /* SearchCinemaModel.m */,
-				BBCA86621CC282B100667FE7 /* SearchGoodModel.h */,
-				BBCA86631CC282B100667FE7 /* SearchGoodModel.m */,
-				BBCA86651CC283B800667FE7 /* TotalGoodsModel.h */,
-				BBCA86661CC283B800667FE7 /* TotalGoodsModel.m */,
-				BB8B9DA51CC3A729000C4CD4 /* PersonModel.h */,
-				BB8B9DA61CC3A729000C4CD4 /* PersonModel.m */,
-				BB8B9DA81CC3B6C2000C4CD4 /* PersonMovieModel.h */,
-				BB8B9DA91CC3B6C2000C4CD4 /* PersonMovieModel.m */,
-				BB8B9DAB1CC3B8F7000C4CD4 /* CinemaFeatureModel.h */,
-				BB8B9DAC1CC3B8F7000C4CD4 /* CinemaFeatureModel.m */,
+				BBA40E9F1CC59BBB00764CCA /* SearchHint */,
+				BBA40E9E1CC59BA400764CCA /* SearchResult */,
 			);
 			name = SearchModels;
 			sourceTree = "<group>";
@@ -6260,6 +6307,7 @@
 				4ECEC4BF1C425F5000EF0113 /* ZQLBaseViewController.m in Sources */,
 				BBBC5A841CB89C2400B071AA /* SearchKeyWordsModel.m in Sources */,
 				BBF6F3781CA03165007FC0E9 /* VideoModel.m in Sources */,
+				BBACE0931CC646FC00E266A0 /* UIScrollView+TouchEvent.m in Sources */,
 				4ECDE1591C43B48D00813DBA /* DJRefresh.m in Sources */,
 				4ECDE1711C43B48D00813DBA /* NSManagedObject+MagicalRecord.m in Sources */,
 				BB0C44721C5C5CE000CB2C35 /* MovieHeaderView.m in Sources */,
@@ -6287,6 +6335,7 @@
 				4ECDE16C1C43B48D00813DBA /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				BBAF60C71CC23EDE00167E28 /* SearchPersonModel.m in Sources */,
 				BBD053641C630B5400C2BF2F /* ImagesCell.m in Sources */,
+				BBA40EAA1CC5A0B000764CCA /* SearchHintCell.m in Sources */,
 				BBB8429F1C8D6D0900C51F6F /* LongCommentCell.m in Sources */,
 				4ECDE0B71C43B28300813DBA /* ZQLCoreDataManager.m in Sources */,
 				4EC493601C5085E400D9430A /* UIAlertView+AFNetworking.m in Sources */,
@@ -6407,6 +6456,7 @@
 				BB1639951CB3C471004D77C8 /* UIFont+ScreenFont.m in Sources */,
 				4ECDE1891C43B48D00813DBA /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				BBB842AF1C8D729800C51F6F /* CommentDetailModel.m in Sources */,
+				BBA40EA21CC59BD900764CCA /* SearchHintModel.m in Sources */,
 				4EC7CBB71C4525BC009B5C11 /* StoreViewController.m in Sources */,
 				4ECDE1741C43B48D00813DBA /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				4ED0DD881C40F71600E1AFB0 /* ZQLHotMovieLine.xcdatamodeld in Sources */,

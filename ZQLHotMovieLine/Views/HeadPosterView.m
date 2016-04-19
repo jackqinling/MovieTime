@@ -115,7 +115,7 @@
         
         ZQLDefinedImageView * button = [[ZQLDefinedImageView alloc] initWithFrame:CGRectMake(PreGap + ImageWidth * (0.5 + i) + (i + 1) * HeadImageSpace, ImageWidth * 0.38 + NaviBarHeight, ImageWidth, ImageWidth * 1.4)];
         
-        [button setImageWithURL:[NSURL URLWithString:model.img]];
+        [button setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:LVRectangleHolder];
         [button addTarget:self action:@selector(onClickImage:)];
         
         button.highlighted = NO;

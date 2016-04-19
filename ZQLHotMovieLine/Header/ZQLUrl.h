@@ -16,8 +16,7 @@
 //首页头视图 GET
 #define HeadUrl @"http://api.m.mtime.cn/PageSubArea/HotPlayMovies.api"
 
-//搜索按钮
-#define KeyWordButtonUrl @"http://api.m.mtime.cn/Search/HotKeyWords.api"
+
 
 //电影详情页  拼locationId  movieId
 #define MovieDetailUrl @"http://m.mtime.cn/Service/callback.mi/movie/Detail.api"
@@ -51,7 +50,12 @@
 //seach按钮和关键字按钮跳转 url POST 传入二进制keyword  searchType 0 movie  2  peson
 // cinema 1
 #define SearchKeyWordUrl @"http://api.m.mtime.cn/Showtime/SearchVoice.api"
+//搜索按钮
+#define KeyWordButtonUrl @"http://api.m.mtime.cn/Search/HotKeyWords.api"
 
+//http://api.m.mtime.cn/Search/SearchSuggestionNew.api?locationId=290&keyword=%u4e07
+//传入locationId  keyword post
+#define SearchHintUrl @"http://api.m.mtime.cn/Search/SearchSuggestionNew.api"
 /*******购票  第二页********/
 //上映的电影
 #define ShowingUrl @"http://api.m.mtime.cn/Showtime/LocationMovies.api?locationId=290"

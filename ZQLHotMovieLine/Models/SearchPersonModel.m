@@ -24,7 +24,7 @@
 //        [model setValuesForKeysWithDictionary:dic];
 //        [resultArray addObject:model];
 //    }
-    return @[models];
+    return models;
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
